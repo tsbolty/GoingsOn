@@ -1,8 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CreateTest from './CreateTest'
+import axios from 'axios';
 
 const ViewTest = ()=>{
     const [array, setArray] = useState([])
+    
+    const getTestItems = ()=>{
+        axios.get("/api/test/test").then(res => setArray(res.data))
+    }
+    
+    useEffect(()=>{
+        getTestItems()
+    }, [])
+
     return(
         <div>
             <ul>
@@ -13,7 +23,7 @@ const ViewTest = ()=>{
                 </>
             ))}
             </ul>
-            <CreateTest />
+            <CreateTest getTestItems= {getTestItems}/>
         </div>
     )
 }
