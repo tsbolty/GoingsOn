@@ -4,6 +4,7 @@ const LocationCard = ()=>{
 
     const [dailySpecials, setDailySpecials] = useState(false)
     const [weeklySpecials, setWeeklySpecials] = useState(false)
+    const [specialEvents, setSpecialEvents] = useState([])
 
     const showDailySpecials = (e)=>{
         e.preventDefault()
@@ -12,6 +13,7 @@ const LocationCard = ()=>{
         } else if (!dailySpecials){
             setDailySpecials(true)
             setWeeklySpecials(false)
+            setSpecialEvents([])
         }
     }
 
@@ -22,6 +24,19 @@ const LocationCard = ()=>{
         } else if (!weeklySpecials){
             setWeeklySpecials(true)
             setDailySpecials(false)
+            setSpecialEvents([])
+        }
+    }
+
+    const showSpecialEvents = (e)=>{
+        e.preventDefault()
+        if (specialEvents){
+            setSpecialEvents([{title: "special event from database", date: "Saturday July 4th, 2020"}])
+            setDailySpecials(false)
+            setWeeklySpecials(false)
+        } 
+        else if(!specialEvents.length){
+            return false
         }
     }
 
@@ -31,6 +46,7 @@ const LocationCard = ()=>{
             <p>123 main st Denver, CO 80202</p>
             <button onClick= {showDailySpecials}>Daily Specials</button>
             <button onClick= {showWeeklySpecials}>Weekly Specials</button>
+            {specialEvents && <button onClick= {showSpecialEvents}>Special Events</button>}
             {dailySpecials
             &&
             <ul>
@@ -56,6 +72,17 @@ const LocationCard = ()=>{
                 <li>Saturday: Botomless mimossas</li>
                 <li>Sunday: Brunch</li>
             </ul>
+            }
+            {specialEvents
+            &&
+            <>
+            {specialEvents.map(event=>(
+            <>
+                <h3>{event.title}</h3>
+                <p>{event.date}</p>
+            </>
+            ))}
+            </>
             }
         </div>
     )
