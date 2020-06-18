@@ -12,6 +12,7 @@ const CreateTest = ({ getTestItems })=>{
             title: titleRef.current.value,
             body: bodyRef.current.value
         })
+        .then(res => console.log(res))
         .then(res => getTestItems())
         .catch(err => console.log(err))
     }

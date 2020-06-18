@@ -10,12 +10,12 @@ router.get("/test", (req, res)=>{
         .then(data=> res.json(data))
 })
 
-// router.delete("/test/:id", (req, res)=>{
-//     db.Test.findByIdAndDelete(req.params.id)
-//     .then(data=> res.json(data))
-//     .catch(err =>{
-//         res.json(err)
-//     })
-// })
+router.delete("/test/:id", (req, res)=>{
+    db.Test.findByIdAndDelete(req.params.id)
+    .then(data=> res.json(data))
+    .catch(err =>{
+        res.json(err)
+    })
+})
 
 module.exports = router;
