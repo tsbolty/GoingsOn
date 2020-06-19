@@ -6,12 +6,14 @@ const ViewTest = ()=>{
     const [array, setArray] = useState([])
     
     const getTestItems = ()=>{
-        axios.get("/api/testing/get").then(res => setArray(res.data))
+        axios.get("/api/test/get")
+            .then(res => setArray(res.data))
+            .catch(err => console.log("error line 11 ViewTest.js"))
     }
     
-    useEffect(()=>{
-        getTestItems()
-    }, [])
+    // useEffect(()=>{
+    //     getTestItems()
+    // }, [])
 
     const handleDelete = (e, id)=>{
         e.preventDefault()

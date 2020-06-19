@@ -8,12 +8,12 @@ const CreateTest = ({ getTestItems })=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        axios.post("/api/testing/add", {
+        axios.post("/api/test/add", {
             title: titleRef.current.value,
             body: bodyRef.current.value
         })
         .then(res => getTestItems())
-        .catch(err => console.log(err))
+        .catch(err => console.log("error line 16 CreateTest.js"))
     }
 
     return(
