@@ -8,11 +8,10 @@ const CreateTest = ({ getTestItems })=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        axios.post("/api/testing/testing", {
+        axios.post("/api/testing/add", {
             title: titleRef.current.value,
             body: bodyRef.current.value
         })
-        .then(res => console.log(res))
         .then(res => getTestItems())
         .catch(err => console.log(err))
     }

@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const db = require("../../models");
 
-router.post("/testing", ({body}, res)=>{
-    db.Test.create(body, {new: true}).then(data => console.log(data))
+router.post("/add", ({body}, res)=>{
+    db.Test.create(body, {new: true}).then(data => res.json(data))
 })
 
-router.get("/test", (req, res)=>{
+router.get("/get", (req, res)=>{
     db.Test.find()
         .then(data=> res.json(data))
 })

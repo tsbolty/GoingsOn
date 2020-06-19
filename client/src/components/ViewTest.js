@@ -6,7 +6,7 @@ const ViewTest = ()=>{
     const [array, setArray] = useState([])
     
     const getTestItems = ()=>{
-        axios.get("/api/testing/testing").then(res => setArray(res.data))
+        axios.get("/api/testing/get").then(res => setArray(res.data))
     }
     
     useEffect(()=>{
@@ -15,7 +15,7 @@ const ViewTest = ()=>{
 
     const handleDelete = (e, id)=>{
         e.preventDefault()
-        axios.delete('/api/test/test/' + id)
+        axios.delete('/api/testing/testing/' + id)
         .then(res => getTestItems())
     }
 
