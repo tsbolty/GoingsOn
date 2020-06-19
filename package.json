@@ -30,6 +30,7 @@
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.10.0",
     "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

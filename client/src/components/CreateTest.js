@@ -8,7 +8,7 @@ const CreateTest = ({ getTestItems })=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        axios.post('/api/test/test', {
+        axios.post("/api/testing/testing", {
             title: titleRef.current.value,
             body: bodyRef.current.value
         })

@@ -77,10 +77,10 @@ const LocationCard = ()=>{
             &&
             <>
             {specialEvents.map(event=>(
-            <>
+            <div key= {Math.floor(Math.random * 1000)}>
                 <h3>{event.title}</h3>
                 <p>{event.date}</p>
-            </>
+            </div>
             ))}
             </>
             }
