@@ -6,18 +6,17 @@ const ViewTest = ()=>{
     const [array, setArray] = useState([])
     
     const getTestItems = ()=>{
-        axios.get("/api/test/get")
+        axios.get("/api/test/test")
             .then(res => setArray(res.data))
-            .catch(err => console.log("error line 11 ViewTest.js"))
+            .catch(err => console.log(err))
     }
     
-    // useEffect(()=>{
-    //     getTestItems()
-    // }, [])
+    useEffect(()=>{
+        getTestItems()
+    }, [])
 
-    const handleDelete = (e, id)=>{
-        e.preventDefault()
-        axios.delete('/api/testing/testing/' + id)
+    const handleDelete = (id)=>{
+        axios.delete('/api/test/test/' + id)
         .then(res => getTestItems())
     }
 
@@ -28,13 +27,11 @@ const ViewTest = ()=>{
             <br />
             <ul>
             {array.map(item=>(
-                <>
-                    <li>
-                        <h2>{item.title}</h2>
-                        <h2>{item.body}</h2>
-                        <button onClick={handleDelete}>Delete</button>
-                    </li>
-                </>
+                <li key= {item._id}>
+                    <h2>{item.title}</h2>
+                    <h2>{item.body}</h2>
+                    <button onClick= {()=> handleDelete(item._id)}>Delete</button>
+                </li>
             ))}
             </ul>
         </div>

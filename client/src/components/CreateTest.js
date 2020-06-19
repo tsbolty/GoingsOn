@@ -13,7 +13,7 @@ const CreateTest = ({ getTestItems })=>{
             body: bodyRef.current.value
         })
         .then(res => getTestItems())
-        .catch(err => console.log("error line 16 CreateTest.js"))
+        .catch(err => console.log(err))
     }
 
     return(
