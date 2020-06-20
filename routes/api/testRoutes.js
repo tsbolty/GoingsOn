@@ -8,7 +8,7 @@ router.post("/add", ({body}, res)=>{
         .catch(err => console.log(err))
 })
 
-router.get("/test", (req, res)=>{
+router.get("/get", (req, res)=>{
     db.Test.find()
         .then(data=> res.json(data))
         .catch(err => console.log(err))

@@ -6,7 +6,7 @@ const ViewTest = ()=>{
     const [array, setArray] = useState([])
     
     const getTestItems = ()=>{
-        axios.get("/api/test/test")
+        axios.get("/api/test/get")
             .then(res => setArray(res.data))
             .catch(err => console.log(err))
     }
