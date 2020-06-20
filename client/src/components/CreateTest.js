@@ -8,6 +8,7 @@ const CreateTest = ({ getTestItems })=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault()
+
         axios.post("/api/test/add", {
             title: titleRef.current.value,
             body: bodyRef.current.value
@@ -18,8 +19,8 @@ const CreateTest = ({ getTestItems })=>{
 
     return(
         <div>
-            <input ref={titleRef} placeholder= "title"></input>
-            <input ref={bodyRef} placeholder= "body"></input>
+            <input ref={titleRef} name= "title" placeholder= "title"></input>
+            <input ref={bodyRef} name= "body" placeholder= "body"></input>
             <button onClick={handleSubmit}>Submit</button>
         </div>
     )
