@@ -22,8 +22,8 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
 
     const handleSpecialSubmit= ()=>{
         axios.post("/api/happyhour/add", {
-            foodSpecial1: foodSpecial1Ref,
-            drinkSpecial: drinkSpecial1Ref
+            foodSpecial1: foodSpecial1Ref.current.value,
+            drinkSpecial: drinkSpecial1Ref.current.value
         })
     }
 

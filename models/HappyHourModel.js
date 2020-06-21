@@ -17,7 +17,7 @@ const HappyHourSchema = new Schema({
     drinkSpecial7: String,
     drinkSpecial8: String,
     drinkSpecial9: String,
-    drinkSpecial10: String,
+    drinkSpecial10: String
 })
 
 const HappyHour = mongoose.model("HappyHour", HappyHourSchema)

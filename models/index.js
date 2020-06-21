@@ -1,3 +1,4 @@
 module.exports = {
-    Test: require('./TestModel')
+    Test: require('./TestModel'),
+    HappyHour: require('./HappyHourModel')
 };
