@@ -1,13 +1,18 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import FoodSpecialInput from './FoodSpecialInput'
 
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
-    const foodSpecial1Ref = useRef()
+    const [iState, setIState] = useState(1)
+    const [foodSpecial, setFoodSpecial] = useState({})
+    const [drinkSpecial, setDrinkSpecial] = useState({})
+
+    // const foodSpecial1Ref = useRef()
     // const foodSpecial2Ref = useRef()
     // const foodSpecial3Ref = useRef()
     // const foodSpecial4Ref = useRef()
     // const foodSpecial5Ref = useRef()
-    const drinkSpecial1Ref = useRef()
+    // const drinkSpecial1Ref = useRef()
     // const drinkSpecial2Ref = useRef()
     // const drinkSpecial3Ref = useRef()
     // const drinkSpecial4Ref = useRef()
@@ -21,17 +26,38 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     // Add buttons to create input elements. Include the ability to grab value of input and post it to database with the rest of the info
 
     const handleSpecialSubmit= ()=>{
+
         axios.post("/api/happyhour/add", {
-            foodSpecial1: foodSpecial1Ref.current.value,
-            drinkSpecial: drinkSpecial1Ref.current.value
+            foodSpecial1: foodSpecial,
+            drinkSpecial1: drinkSpecial
         })
+    }
+
+    // const addFoodSpecialInput = (e)=>{
+    //     e.preventDefault()
+    //     setIState(iState + 1)
+    //     return(
+    //         <FoodSpecialInput iState= {iState}/>
+    //     )
+    // }
+
+    const handleFoodInputChange = (event) => {
+        const value = event.target.value;
+        return setFoodSpecial(value);
+    }
+
+    const handleDrinkInputChange = (event) => {
+        const value = event.target.value;
+        return setDrinkSpecial(value);
     }
 
     return(
         <>
-            <input ref={foodSpecial1Ref} placeholder= "Food special (optional)"></input>
+            <input name= "foodSpecial1" onChange= {handleFoodInputChange} placeholder= "Food special (optional)"></input>
+            {/* <button onClick= {()=> addFoodSpecialInput}>Add another food special</button> */}
+            {/* <FoodSpecialInput iState= {iState} setIState= {setIState} /> */}
             <br />
-            <input ref={drinkSpecial1Ref} placeholder= "Drink special (optional)"></input>
+            <input name= "drinkSpecial1" onChange= {handleDrinkInputChange} placeholder= "Drink special (optional)"></input>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
         </>
