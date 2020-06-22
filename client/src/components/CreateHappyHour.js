@@ -6,6 +6,7 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
     const [foodSpecial, setFoodSpecial] = useState({})
     const [drinkSpecial, setDrinkSpecial] = useState({})
+    const specialInputEl = document.querySelectorAll("specialInput")
 
     // const foodSpecial1Ref = useRef()
     // const foodSpecial2Ref = useRef()
@@ -30,7 +31,8 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         axios.post("/api/happyhour/add", {
             foodSpecial1: foodSpecial,
             drinkSpecial1: drinkSpecial
-        })
+        }).then(setFoodSpecial(""), setDrinkSpecial(""))
+        // .then redirect to another page. Currently does not reset text fields
     }
 
     // const addFoodSpecialInput = (e)=>{
@@ -43,21 +45,21 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
 
     const handleFoodInputChange = (event) => {
         const value = event.target.value;
-        return setFoodSpecial(value);
+        return setFoodSpecial(value)
     }
 
     const handleDrinkInputChange = (event) => {
         const value = event.target.value;
-        return setDrinkSpecial(value);
+        return setDrinkSpecial(value)
     }
 
     return(
         <>
-            <input name= "foodSpecial1" onChange= {handleFoodInputChange} placeholder= "Food special (optional)"></input>
+            <input name= "foodSpecial1" className= "specialInput" onChange= {handleFoodInputChange} placeholder= "Food special (optional)"></input>
             {/* <button onClick= {()=> addFoodSpecialInput}>Add another food special</button> */}
             {/* <FoodSpecialInput iState= {iState} setIState= {setIState} /> */}
             <br />
-            <input name= "drinkSpecial1" onChange= {handleDrinkInputChange} placeholder= "Drink special (optional)"></input>
+            <input name= "drinkSpecial1" className= "specialInput" onChange= {handleDrinkInputChange} placeholder= "Drink special (optional)"></input>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
         </>
