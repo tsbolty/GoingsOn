@@ -3,21 +3,21 @@ const Schema = mongoose.Schema;
 
 const HappyHourSchema = new Schema({
     time: String,
-    foodSpecial1: String,
-    foodSpecial2: String,
-    foodSpecial3: String,
-    foodSpecial4: String,
-    foodSpecial5: String,
-    drinkSpecial1: String,
-    drinkSpecial2: String,
-    drinkSpecial3: String,
-    drinkSpecial4: String,
-    drinkSpecial5: String,
-    drinkSpecial6: String,
-    drinkSpecial7: String,
-    drinkSpecial8: String,
-    drinkSpecial9: String,
-    drinkSpecial10: String
+    foodSpecial1Heading: String,
+    foodSpecial1Description: String,
+    // foodSpecial3: String,
+    // foodSpecial4: String,
+    // foodSpecial5: String,
+    drinkSpecial1Heading: String,
+    // drinkSpecial2: String,
+    // drinkSpecial3: String,
+    // drinkSpecial4: String,
+    // drinkSpecial5: String,
+    // drinkSpecial6: String,
+    // drinkSpecial7: String,
+    // drinkSpecial8: String,
+    // drinkSpecial9: String,
+    drinkSpecial1Description: String
 })
 
 const HappyHour = mongoose.model("HappyHour", HappyHourSchema)

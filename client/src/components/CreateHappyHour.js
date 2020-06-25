@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import FoodSpecialInput from './FoodSpecialInput'
 
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
-    const [foodSpecial, setFoodSpecial] = useState({})
-    const [drinkSpecial, setDrinkSpecial] = useState({})
+    const [foodSpecialHeading, setFoodSpecialHeading] = useState({})
+    const [foodSpecialDescription, setFoodSpecialDescription] = useState({})
+    const [drinkSpecialHeading, setDrinkSpecialHeading] = useState({})
+    const [drinkSpecialDescription, setDrinkSpecialDescription] = useState({})
     const specialInputEl = document.querySelectorAll("specialInput")
 
     // const foodSpecial1Ref = useRef()
@@ -29,9 +31,11 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const handleSpecialSubmit= ()=>{
 
         axios.post("/api/happyhour/add", {
-            foodSpecial1: foodSpecial,
-            drinkSpecial1: drinkSpecial
-        }).then(setFoodSpecial(""), setDrinkSpecial(""))
+            foodSpecial1Heading: foodSpecialHeading,
+            foodSpecial1Description: foodSpecialDescription,
+            drinkSpecial1Heading: drinkSpecialHeading,
+            drinkSpecial1Description: drinkSpecialDescription
+        }).then(setFoodSpecialHeading(""), setFoodSpecialDescription(""), setDrinkSpecialHeading(""), setDrinkSpecialDescription(""))
         // .then redirect to another page. Currently does not reset text fields
     }
 
@@ -43,23 +47,35 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     //     )
     // }
 
-    const handleFoodInputChange = (event) => {
+    const handleFoodHeadingInputChange = (event) => {
         const value = event.target.value;
-        return setFoodSpecial(value)
+        return setFoodSpecialHeading(value)
     }
 
-    const handleDrinkInputChange = (event) => {
+    const handleFoodDescriptionInputChange = (event) => {
         const value = event.target.value;
-        return setDrinkSpecial(value)
+        return setFoodSpecialDescription(value)
+    }
+
+    const handleDrinkHeadingInputChange = (event) => {
+        const value = event.target.value;
+        return setDrinkSpecialHeading(value)
+    }
+    
+    const handleDrinkDescriptionInputChange = (event) => {
+        const value = event.target.value;
+        return setDrinkSpecialDescription(value)
     }
 
     return(
         <>
-            <input name= "foodSpecial1" className= "specialInput" onChange= {handleFoodInputChange} placeholder= "Food special (optional)"></input>
+            <input name= "foodSpecial1Heading" className= "specialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
+            <input name = "foodSpecial1Description" className= "specialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             {/* <button onClick= {()=> addFoodSpecialInput}>Add another food special</button> */}
             {/* <FoodSpecialInput iState= {iState} setIState= {setIState} /> */}
             <br />
-            <input name= "drinkSpecial1" className= "specialInput" onChange= {handleDrinkInputChange} placeholder= "Drink special (optional)"></input>
+            <input name= "drinkSpecial1" className= "specialInput" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
+            <input name = "drinkSpecial1Description" className= "specialInput" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
         </>
