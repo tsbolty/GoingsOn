@@ -4,7 +4,7 @@ import FoodSpecialInput from './FoodSpecialInput'
 
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
-    const [foodSpecialHeading, setFoodSpecialHeading] = useState({})
+    const [foodSpecialHeading, setFoodSpecialHeading] = useState([])
     const [foodSpecialDescription, setFoodSpecialDescription] = useState({})
     const [drinkSpecialHeading, setDrinkSpecialHeading] = useState({})
     const [drinkSpecialDescription, setDrinkSpecialDescription] = useState({})
@@ -39,15 +39,10 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         // .then redirect to another page. Currently does not reset text fields
     }
 
-    // const addFoodSpecialInput = (e)=>{
-    //     e.preventDefault()
-    //     setIState(iState + 1)
-    //     return(
-    //         <FoodSpecialInput iState= {iState}/>
-    //     )
-    // }
+    
 
     const handleFoodHeadingInputChange = (event) => {
+        // const name = event.target.name
         const value = event.target.value;
         return setFoodSpecialHeading(value)
     }
@@ -67,15 +62,23 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         return setDrinkSpecialDescription(value)
     }
 
+    const addFoodSpecialInput = ()=>{
+        return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
+    }
+
     return(
         <>
-            <input name= "foodSpecial1Heading" className= "specialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
-            <input name = "foodSpecial1Description" className= "specialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
-            {/* <button onClick= {()=> addFoodSpecialInput}>Add another food special</button> */}
+        <ul className= "foodSpecials">
+            <li>
+                <input name= "foodSpecial1Heading" className= "foodSpecialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
+                <input name = "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
+            </li>
+        </ul>
+            <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             {/* <FoodSpecialInput iState= {iState} setIState= {setIState} /> */}
             <br />
-            <input name= "drinkSpecial1" className= "specialInput" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
-            <input name = "drinkSpecial1Description" className= "specialInput" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
+            <input name= "drinkSpecial1" className= "drinkSpecialInput" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
+            <input name = "drinkSpecial1Description" className= "drinkSpecialInput" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
         </>
