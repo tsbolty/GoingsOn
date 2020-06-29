@@ -8,6 +8,7 @@ const FoodSpecialInput = ( { handleFoodHeadingInputChange ,handleFoodDescription
     //     const refAtt = document.createAttribute("ref")
     //     return input.setAttribute.setAttribute(refAtt(iState))
     // }
+    
     return(
         <>
             <input name= "foodSpecial1Heading" className= "foodSpecialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>

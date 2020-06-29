@@ -1,9 +1,10 @@
 import React from 'react';
 import CreateHappyHour from './CreateHappyHour'
+import SpecialDate from './SpecialDate'
 
 const Main = ()=>{
     return(
-        <CreateHappyHour />
+        <SpecialDate />
     )
 }
 
