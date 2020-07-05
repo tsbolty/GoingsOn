@@ -14,7 +14,6 @@ const SpecialDate = () => {
       />
     </div>
   );
-  
 }
 
 export default SpecialDate;
