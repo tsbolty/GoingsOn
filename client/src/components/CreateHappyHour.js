@@ -48,7 +48,9 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     }
 
     const addFoodSpecialInput = ()=>{
-        return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
+        return React.createElement('h1', {}, "Hello")
+        // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
+        // return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
     }
 
     return(
@@ -56,7 +58,7 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         <ul className= "foodSpecials">
             <li>
                 <input name= "foodSpecial1Heading" className= "foodSpecialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
-                <input name = "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
+                <input name= "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             </li>
         </ul>
             <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
