@@ -14,4 +14,12 @@ router.get('/get', (req, res)=>{
         .catch(err=> console.log(err))
 })
 
+router.delete('/delete:id', (req, res)=>{
+    db.HappyHour.findByIdAndDelete(req.params.id)
+        .then(data => res.json(data))
+        .catch(err => {
+            res.json(err)
+        })
+})
+
 module.exports= router;

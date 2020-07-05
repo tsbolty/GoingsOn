@@ -10,19 +10,25 @@ const ViewHappyHour = ()=>{
             .then(res => setArray(res.data))
     }
 
+    const handleDelete = (id)=>{
+        axios.delete('/api/happyhour/delete' + id)
+            .then(res=> getHappyHourSpecials())
+    }
+
     useEffect(()=>{
         getHappyHourSpecials()
     }, [])
 
     return(
         <>
+        <CreateHappyHour getHappyHourSpecials= {getHappyHourSpecials}/>
         {array.map(special=>(
             <>
                 <h3>{special.foodSpecial1}</h3>
                 <h3>{special.drinkSpecial1}</h3>
+                <button onClick = {()=> handleDelete(special._id)}>Delete</button>
             </>
         ))}
-        <CreateHappyHour getHappyHourSpecials= {getHappyHourSpecials}/>
         </>
     )
 }
