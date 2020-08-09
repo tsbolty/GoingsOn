@@ -4,11 +4,11 @@ import FoodSpecialInput from './FoodSpecialInput'
 
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
-    const [foodSpecialHeading, setFoodSpecialHeading] = useState([])
+    const [foodSpecialHeading, setFoodSpecialHeading] = useState({})
     const [foodSpecialDescription, setFoodSpecialDescription] = useState({})
     const [drinkSpecialHeading, setDrinkSpecialHeading] = useState({})
     const [drinkSpecialDescription, setDrinkSpecialDescription] = useState({})
-    const specialInputEl = document.querySelectorAll("specialInput")
+    // const specialInputEl = document.querySelectorAll("specialInput")
 
     // Add buttons to create input elements. Include the ability to grab value of input and post it to database with the rest of the info
     // figure out how to scale additional food and drink specials and their key value pairs for database.
@@ -23,8 +23,6 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         }).then(setFoodSpecialHeading(""), setFoodSpecialDescription(""), setDrinkSpecialHeading(""), setDrinkSpecialDescription(""))
         // .then redirect to another page. Currently does not reset text fields
     }
-
-    
 
     const handleFoodHeadingInputChange = (event) => {
         // const name = event.target.name
@@ -47,11 +45,11 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         return setDrinkSpecialDescription(value)
     }
 
-    const addFoodSpecialInput = ()=>{
-        return React.createElement('h1', {}, "Hello")
-        // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
-        // return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
-    }
+    // const addFoodSpecialInput = ()=>{
+    //     return React.createElement('h1', {}, "Hello")
+    //     // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
+    //     // return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
+    // }
 
     return(
         <>
@@ -61,8 +59,7 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
                 <input name= "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             </li>
         </ul>
-            <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
-            {/* <FoodSpecialInput iState= {iState} setIState= {setIState} /> */}
+            {/* <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button> */}
             <br />
             <input name= "drinkSpecial1" className= "drinkSpecialInput" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
             <input name = "drinkSpecial1Description" className= "drinkSpecialInput" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>

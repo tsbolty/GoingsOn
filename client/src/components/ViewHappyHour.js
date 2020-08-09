@@ -24,8 +24,8 @@ const ViewHappyHour = ()=>{
         <CreateHappyHour getHappyHourSpecials= {getHappyHourSpecials}/>
         {array.map(special=>(
             <>
-                <h3>{special.foodSpecial1}</h3>
-                <h3>{special.drinkSpecial1}</h3>
+                <h3>{special.foodSpecial1Heading}</h3>
+                <h3>{special.drinkSpecial1Description}</h3>
                 <button onClick = {()=> handleDelete(special._id)}>Delete</button>
             </>
         ))}
