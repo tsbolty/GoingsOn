@@ -53,18 +53,24 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
 
     return(
         <>
-        <ul className= "foodSpecials">
+        <ul className= "create-food-specials">
             <li>
-                <input name= "foodSpecial1Heading" className= "foodSpecialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
-                <input name= "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
+                <input name= "foodSpecial1Heading" className= "foodSpecialInput special-input" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
+                <input name= "foodSpecial1Description" className= "foodSpecialInput special-input" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             </li>
         </ul>
             {/* <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button> */}
             <br />
-            <input name= "drinkSpecial1" className= "drinkSpecialInput" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
-            <input name = "drinkSpecial1Description" className= "drinkSpecialInput" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
+        <ul className= "create-drink-specials">
+            <li>
+                <input name= "drinkSpecial1" className= "drinkSpecialInput special-input" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
+                <input name = "drinkSpecial1Description" className= "drinkSpecialInput special-input" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
+            </li>
+        </ul>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
+            <br />
+            <br />
         </>
     )
 }

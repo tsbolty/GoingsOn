@@ -29,7 +29,7 @@ const ViewHappyHour = ()=>{
                 <h3 className= "drink-special-heading">{special.drinkSpecial1Heading}</h3>
                 <p className= "drink-special-description">{special.drinkSpecial1Description}</p>
                 <button className= "delete-food-special-button" onClick = {()=> handleDelete(special._id)}>Delete</button>
-                <br></br>
+                <br />
             </>
         ))}
         </>
