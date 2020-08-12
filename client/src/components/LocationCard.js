@@ -45,7 +45,9 @@ const LocationCard = ()=>{
             <h2>Business Name</h2>
             <p>123 main st Denver, CO 80202</p>
             <button onClick= {showDailySpecials}>Daily Specials</button>
+            <br />
             <button onClick= {showWeeklySpecials}>Weekly Specials</button>
+            <br />
             {specialEvents && <button onClick= {showSpecialEvents}>Special Events</button>}
             {dailySpecials
             &&
@@ -62,36 +64,48 @@ const LocationCard = ()=>{
             }
             {weeklySpecials
             &&
-            <table className= "weekly-specials weekly-specials-table">
-                <thead>
-                    <tr className= "specials-table-row">
-                        <th>Weekly Specials</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr className= "specials-table-row">
-                        <td>Monday: BOGO Pizza</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Tuesday: All you can drink</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Wednesday: Fish fry</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Thursday: Martini Thursday</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Friday: Prime Rib Special</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Saturday: Botomless mimossas</td>
-                    </tr>
-                    <tr className= "specials-table-row">
-                        <td>Sunday: Brunch</td>
-                    </tr>
-                </tbody>
-            </table>
+            <>
+                <h2>Weekly Specials</h2>
+                <table className= "weekly-specials weekly-specials-table">
+                    <thead>
+                        <tr className= "specials-table-row">
+                            <th>Day</th>
+                            <th>Special</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className= "specials-table-row">
+                            <td>Monday
+                            </td>
+                            <td>BOGO Pizza</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Tuesday</td>
+                            <td>All you can drink</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Wednesday</td>
+                            <td>Fish fry</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Thursday</td>
+                            <td>Martini Thursday</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Friday</td>
+                            <td>Prime Rib Special</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Saturday</td>
+                            <td>Botomless mimossas</td>
+                        </tr>
+                        <tr className= "specials-table-row">
+                            <td>Sunday</td>
+                            <td>Brunch</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </>
             }
             {specialEvents
             &&

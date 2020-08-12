@@ -26,8 +26,8 @@
     list-style: none;
 }
 
-.weekly-specials{
-    list-style: none;
+.weekly-specials-table{
+    border: 9px;
 }
 
 .special-events{
@@ -35,5 +35,6 @@
 }
 
 .specials-table-row{
-    border: 2px;
+    background-color: lightsalmon;
+    border: 4px, solid, black;
 }
