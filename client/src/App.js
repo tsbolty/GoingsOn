@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './style.scss'
 // import ViewTest from './components/ViewTest'
 // import LocationCard from './components/LocationCard'
 // import NavBar from "./components/NavBar";
