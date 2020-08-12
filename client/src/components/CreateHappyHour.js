@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, reactDOM } from 'react';
 import axios from 'axios';
 import FoodSpecialInput from './FoodSpecialInput'
 
@@ -10,7 +10,7 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [foodSpecialDescription, setFoodSpecialDescription] = useState({})
     const [drinkSpecialHeading, setDrinkSpecialHeading] = useState({})
     const [drinkSpecialDescription, setDrinkSpecialDescription] = useState({})
-    // const specialInputEl = document.querySelectorAll("specialInput")
+    const [addInput, setAddInput] = useState(false)
 
     // Add buttons to create input elements. Include the ability to grab value of input and post it to database with the rest of the info
     // figure out how to scale additional food and drink specials and their key value pairs for database.
@@ -48,10 +48,29 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     }
 
     const addFoodSpecialInput = ()=>{
-        // return React.createElement('h1', {}, "Hello")
-        // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
-        // return document.querySelectorAll("create-food-specials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
+        setAddInput(true)
     }
+
+    // THE FOLLOWING COMMENT TAKES A NEW APPROACH TO STORING AND PASSING SPECIALS. HOPING TO SCALE UP
+    // const handleSubmitSpecials = (e)=>{
+    //     e.preventDefault()
+    //     setArray()
+    // }
+
+    // const array = [
+    // {
+    //     foodSpecial1Heading: "food special heading",
+    //     foodSpecial1Description: "food special description",
+    //     drinkSpecial1Heading: "drink special heading",
+    //     drinkSpecial1Description: "drink special description"
+    // },
+    // {
+    //     foodSpecial2Heading: "food special heading",
+    //     foodSpecial2Description: "food special description",
+    //     drinkSpecial2Heading: "drink special heading",
+    //     drinkSpecial2Description: "drink special description"
+    // }
+    // ]
 
     return(
         <>
@@ -60,6 +79,15 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
                 <input name= "foodSpecial1Heading" className= "foodSpecialInput special-input" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
                 <input name= "foodSpecial1Description" className= "foodSpecialInput special-input" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             </li>
+            {addInput
+            ?
+            <li>
+                <input name= "foodSpecial2Heading" className= "foodSpecialInput special-input" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
+                <input name= "foodSpecial2Description" className= "foodSpecialInput special-input" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
+            </li>
+            :
+            null
+            }
         </ul>
             <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             <br />

@@ -11,8 +11,8 @@ const Main = ()=>{
         <>
             <NavBar />
             {/* <SpecialDate /> */}
-            {/* <ViewHappyHour /> */}
-            <LocationCard />
+            <ViewHappyHour />
+            {/* <LocationCard /> */}
             {/* <DatePicker /> */}
         </>
     )
