@@ -49,7 +49,7 @@ const LocationCard = ()=>{
             {specialEvents && <button onClick= {showSpecialEvents}>Special Events</button>}
             {dailySpecials
             &&
-            <ul>
+            <ul className= "daily-specials">
                 <h3>Daily Specials</h3>
                 <li>Monday: BOGO Pizza</li>
                 <li>Tuesday: All you can drink</li>
@@ -62,22 +62,42 @@ const LocationCard = ()=>{
             }
             {weeklySpecials
             &&
-            <ul>
-                <h3>Weekly Specials</h3>
-                <li>Monday: BOGO Pizza</li>
-                <li>Tuesday: All you can drink</li>
-                <li>Wednesday: Fish fry</li>
-                <li>Thursday: Martini Thursday</li>
-                <li>Friday: Prime Rib Special</li>
-                <li>Saturday: Botomless mimossas</li>
-                <li>Sunday: Brunch</li>
-            </ul>
+            <table className= "weekly-specials weekly-specials-table">
+                <thead>
+                    <tr className= "specials-table-row">
+                        <th>Weekly Specials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className= "specials-table-row">
+                        <td>Monday: BOGO Pizza</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Tuesday: All you can drink</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Wednesday: Fish fry</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Thursday: Martini Thursday</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Friday: Prime Rib Special</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Saturday: Botomless mimossas</td>
+                    </tr>
+                    <tr className= "specials-table-row">
+                        <td>Sunday: Brunch</td>
+                    </tr>
+                </tbody>
+            </table>
             }
             {specialEvents
             &&
             <>
             {specialEvents.map(event=>(
-            <div key= {Math.floor(Math.random * 1000)}>
+            <div className= "special-events" key= {Math.floor(Math.random * 1000)}>
                 <h3>{event.title}</h3>
                 <p>{event.date}</p>
             </div>
