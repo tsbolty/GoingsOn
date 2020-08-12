@@ -51,16 +51,47 @@ const LocationCard = ()=>{
             {specialEvents && <button onClick= {showSpecialEvents}>Special Events</button>}
             {dailySpecials
             &&
-            <ul className= "daily-specials">
-                <h3>Daily Specials</h3>
-                <li>Monday: BOGO Pizza</li>
-                <li>Tuesday: All you can drink</li>
-                <li>Wednesday: Fish fry</li>
-                <li>Thursday: Martini Thursday</li>
-                <li>Friday: Prime Rib Special</li>
-                <li>Saturday: Botomless mimossas</li>
-                <li>Sunday: Brunch</li>
-            </ul>
+            <>
+                <h2>Daily Specials</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Special</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>BOGO Pizza</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>All You Can Drink</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>Fish Fry</td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td>Martini Thursday</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>Prime Rib Special</td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td>Bottomless Mimossas</td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td>Brunch</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </>
             }
             {weeklySpecials
             &&
