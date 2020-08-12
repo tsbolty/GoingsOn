@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import FoodSpecialInput from './FoodSpecialInput'
 
+// Look into react hook to create a template for each food and drink special. store gereric values for element in state, then use those values to create an element template. Store each of those objects in an array and loop through that array to display input fields on the page. store all objects in state. use index to establish individual classnames and id's
+
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
     const [foodSpecialHeading, setFoodSpecialHeading] = useState({})
@@ -45,11 +47,11 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         return setDrinkSpecialDescription(value)
     }
 
-    // const addFoodSpecialInput = ()=>{
-    //     return React.createElement('h1', {}, "Hello")
-    //     // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
-    //     // return document.querySelectorAll("foodSpecials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
-    // }
+    const addFoodSpecialInput = ()=>{
+        // return React.createElement('h1', {}, "Hello")
+        // React.createElement('input', {name: 'foodSpecialHeading', className: 'foodSpecialInput', placeholder: 'Food special title'}, 'an input')
+        // return document.querySelectorAll("create-food-specials").appendChild(<FoodSpecialInput handleFoodHeadingInputChange= {handleFoodHeadingInputChange()} handleFoodDescriptionInputChange= {handleFoodDescriptionInputChange()}/>)
+    }
 
     return(
         <>
@@ -59,7 +61,7 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
                 <input name= "foodSpecial1Description" className= "foodSpecialInput special-input" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
             </li>
         </ul>
-            {/* <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button> */}
+            <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             <br />
         <ul className= "create-drink-specials">
             <li>
