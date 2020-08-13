@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FoodSpecialInput = ( { handleFoodHeadingInputChange ,handleFoodDescriptionInputChange })=>{
+const FoodSpecialInput = ( { handleInputChange, data, iState})=>{
 
     // const createInput = ()=>{
     //     const input = document.createElement("input")
@@ -10,11 +10,20 @@ const FoodSpecialInput = ( { handleFoodHeadingInputChange ,handleFoodDescription
     // }
     
     return(
-        <>
-            <input name= "foodSpecial1Heading" className= "foodSpecialInput" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
-            <input name = "foodSpecial1Description" className= "foodSpecialInput" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
-
-        </>
+        <li>
+            <input type= "text"
+            name= {`foodSpecialHeading`} 
+            value= {data.foodSpecialHeading}
+            className= "foodSpecialInput" 
+            onChange= {handleInputChange} 
+            placeholder= "Food special Title"></input>
+            <input type= "text"
+            name = {`foodSpecialDescription`}
+            value= {data.drinkSpecialHeading}
+            className= "foodSpecialInput"
+            onChange= {handleInputChange}
+            placeholder= "Food special description"></input>
+        </li>
     )
 }
 
