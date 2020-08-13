@@ -17,7 +17,7 @@ const ViewHappyHour = ()=>{
 
     useEffect(()=>{
         getHappyHourSpecials()
-    }, [])
+    }, [array])
 
     return(
         <>

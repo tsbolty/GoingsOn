@@ -19,18 +19,8 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const handleSpecialSubmit= ()=>{
 
         axios.post("/api/happyhour/add", data).then(console.log("success"))
-        // {
-            // foodSpecial1Heading: foodSpecialHeading,
-            // foodSpecial1Description: foodSpecialDescription,
-            // drinkSpecial1Heading: drinkSpecialHeading,
-            // drinkSpecial1Description: drinkSpecialDescription
-        // }
         // ).then(setFoodSpecialHeading(""), setFoodSpecialDescription(""), setDrinkSpecialHeading(""), setDrinkSpecialDescription(""))
         // .then redirect to another page. Currently does not reset text fields
-    }
-
-    const showData = ()=>{
-        console.log(data)
     }
 
     // const addFoodSpecialInput = ()=>{
@@ -50,14 +40,14 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         <ul className= "create-food-specials">
             <li>
                 <input type= "text" 
-                name= "foodSpecialHeading"
-                value= {data.foodSpecialHeading}
+                name= "foodSpecial1Heading"
+                value= {data.foodSpecial1Heading}
                 className= "foodSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Food special Title" />
                 <input type= "text"
-                name= "foodSpecialDescription" 
-                value= {data.foodSpecialDescription}
+                name= "foodSpecial1Description" 
+                value= {data.foodSpecial1Description}
                 className= "foodSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Food special description" />
@@ -77,14 +67,14 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
         <ul className= "create-drink-specials">
             <li>
                 <input type= "text"
-                name= "drinkSpecialHeading"
-                value= {data.drinkSpecialHeading}
+                name= "drinkSpecial1Heading"
+                value= {data.drinkSpecial1Heading}
                 className= "drinkSpecialInput special-input"
                 onChange= {handleInputChange}
                 placeholder= "Drink special Title" />
                 <input type= "text"
-                name= "drinkSpecialDescription" 
-                value= {data.drinkSpecialDescription}
+                name= "drinkSpecial1Description" 
+                value= {data.drinkSpecial1Description}
                 className= "drinkSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Drink special description" />
