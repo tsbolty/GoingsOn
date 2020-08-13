@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const MondayFoodSpecials = ()=>{
-    const [array, setArray] = useState({value: ""})
+    const [state, setState] = useState({})
     
     
     const gatherData = (e)=>{
         let nam = e.target.name
         let val = e.target.value
-        setArray({value: val})
+        setState({...state, [nam]: val})
     }
     
     const handleSubmit = ()=>{
@@ -19,8 +19,8 @@ const MondayFoodSpecials = ()=>{
             <label>
                 Monday:
                 <br />
-                <textarea type= "text" name= "mondayFoodSpecialHeader" onChange= {()=> gatherData} placeholder= "Monday Food Special Title"></textarea>
-                {/* <input type= "text" name= "mondayFoodSpecialDescription" onChange= {()=> gatherData()} placeholder= "Monday Food Special Description"></input> */}
+                <textarea type= "text" name= "mondayFoodSpecialHeader" value= {state.mondayFoodSpecialHeader} onChange= {gatherData} placeholder= "Monday Food Special Title"></textarea>
+                <input type= "text" name= "mondayFoodSpecialDescription" value= {state.mondayFoodSpecialDescription} onChange= {gatherData} placeholder= "Monday Food Special Description"></input>
                 <button onClick= {()=> handleSubmit()}>Submit</button>
             </label>
         </form>
