@@ -6,6 +6,7 @@ import FoodSpecialInput from './FoodSpecialInput'
 
 const CreateHappyHour = ({ getHappyHourSpecials })=>{
     const [iState, setIState] = useState(1)
+    const [data, setData] = useState([])
     const [foodSpecialHeading, setFoodSpecialHeading] = useState({})
     const [foodSpecialDescription, setFoodSpecialDescription] = useState({})
     const [drinkSpecialHeading, setDrinkSpecialHeading] = useState({})
@@ -17,69 +18,51 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
 
     const handleSpecialSubmit= ()=>{
 
-        axios.post("/api/happyhour/add", {
-            foodSpecial1Heading: foodSpecialHeading,
-            foodSpecial1Description: foodSpecialDescription,
-            drinkSpecial1Heading: drinkSpecialHeading,
-            drinkSpecial1Description: drinkSpecialDescription
-        }).then(setFoodSpecialHeading(""), setFoodSpecialDescription(""), setDrinkSpecialHeading(""), setDrinkSpecialDescription(""))
+        axios.post("/api/happyhour/add", data).then(console.log("success"))
+        // {
+            // foodSpecial1Heading: foodSpecialHeading,
+            // foodSpecial1Description: foodSpecialDescription,
+            // drinkSpecial1Heading: drinkSpecialHeading,
+            // drinkSpecial1Description: drinkSpecialDescription
+        // }
+        // ).then(setFoodSpecialHeading(""), setFoodSpecialDescription(""), setDrinkSpecialHeading(""), setDrinkSpecialDescription(""))
         // .then redirect to another page. Currently does not reset text fields
     }
 
-    const handleFoodHeadingInputChange = (event) => {
-        // const name = event.target.name
-        const value = event.target.value;
-        return setFoodSpecialHeading(value)
+    const showData = ()=>{
+        console.log(data)
     }
 
-    const handleFoodDescriptionInputChange = (event) => {
-        const value = event.target.value;
-        return setFoodSpecialDescription(value)
+    // const addFoodSpecialInput = ()=>{
+    //     setAddInput(true)
+    // }
+
+    const handleInputChange = (e)=>{
+        let nam = e.target.name;
+        let val = e.target.value;
+        setData({...data, [nam]: val})
     }
 
-    const handleDrinkHeadingInputChange = (event) => {
-        const value = event.target.value;
-        return setDrinkSpecialHeading(value)
-    }
     
-    const handleDrinkDescriptionInputChange = (event) => {
-        const value = event.target.value;
-        return setDrinkSpecialDescription(value)
-    }
-
-    const addFoodSpecialInput = ()=>{
-        setAddInput(true)
-    }
-
-    // THE FOLLOWING COMMENT TAKES A NEW APPROACH TO STORING AND PASSING SPECIALS. HOPING TO SCALE UP
-    // const handleSubmitSpecials = (e)=>{
-    //     e.preventDefault()
-    //     setArray()
-    // }
-
-    // const array = [
-    // {
-    //     foodSpecial1Heading: "food special heading",
-    //     foodSpecial1Description: "food special description",
-    //     drinkSpecial1Heading: "drink special heading",
-    //     drinkSpecial1Description: "drink special description"
-    // },
-    // {
-    //     foodSpecial2Heading: "food special heading",
-    //     foodSpecial2Description: "food special description",
-    //     drinkSpecial2Heading: "drink special heading",
-    //     drinkSpecial2Description: "drink special description"
-    // }
-    // ]
 
     return(
         <>
         <ul className= "create-food-specials">
             <li>
-                <input name= "foodSpecial1Heading" className= "foodSpecialInput special-input" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
-                <input name= "foodSpecial1Description" className= "foodSpecialInput special-input" onChange= {handleFoodDescriptionInputChange} placeholder= "Food special description"></input>
+                <input type= "text" 
+                name= "foodSpecialHeading"
+                value= {data.foodSpecialHeading}
+                className= "foodSpecialInput special-input" 
+                onChange= {handleInputChange} 
+                placeholder= "Food special Title" />
+                <input type= "text"
+                name= "foodSpecialDescription" 
+                value= {data.foodSpecialDescription}
+                className= "foodSpecialInput special-input" 
+                onChange= {handleInputChange} 
+                placeholder= "Food special description" />
             </li>
-            {addInput
+            {/* {addInput
             ?
             <li>
                 <input name= "foodSpecial2Heading" className= "foodSpecialInput special-input" onChange= {handleFoodHeadingInputChange} placeholder= "Food special Title"></input>
@@ -87,20 +70,30 @@ const CreateHappyHour = ({ getHappyHourSpecials })=>{
             </li>
             :
             null
-            }
+            } */}
         </ul>
-            <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
+            {/* <button>Add another food special</button> */}
             <br />
         <ul className= "create-drink-specials">
             <li>
-                <input name= "drinkSpecial1" className= "drinkSpecialInput special-input" onChange= {handleDrinkHeadingInputChange} placeholder= "Drink special Title"></input>
-                <input name = "drinkSpecial1Description" className= "drinkSpecialInput special-input" onChange= {handleDrinkDescriptionInputChange} placeholder= "Drink special description"></input>
+                <input type= "text"
+                name= "drinkSpecialHeading"
+                value= {data.drinkSpecialHeading}
+                className= "drinkSpecialInput special-input"
+                onChange= {handleInputChange}
+                placeholder= "Drink special Title" />
+                <input type= "text"
+                name= "drinkSpecialDescription" 
+                value= {data.drinkSpecialDescription}
+                className= "drinkSpecialInput special-input" 
+                onChange= {handleInputChange} 
+                placeholder= "Drink special description" />
             </li>
         </ul>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
-            <br />
-            <br />
+            {/* <br />
+            <br /> */}
         </>
     )
 }

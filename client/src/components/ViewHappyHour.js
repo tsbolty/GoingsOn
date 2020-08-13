@@ -24,10 +24,10 @@ const ViewHappyHour = ()=>{
         <CreateHappyHour getHappyHourSpecials= {getHappyHourSpecials}/>
         {array.map(special=>(
             <>
-                <h3 className= "food-special-heading">{special.foodSpecial1Heading}</h3>
-                <p className= "food-special-description">{special.foodSpecial1Description}</p>
-                <h3 className= "drink-special-heading">{special.drinkSpecial1Heading}</h3>
-                <p className= "drink-special-description">{special.drinkSpecial1Description}</p>
+                <h3 className= "food-special-heading">{special.foodSpecialHeading}</h3>
+                <p className= "food-special-description">{special.foodSpecialDescription}</p>
+                <h3 className= "drink-special-heading">{special.drinkSpecialHeading}</h3>
+                <p className= "drink-special-description">{special.drinkSpecialDescription}</p>
                 <button className= "delete-food-special-button" onClick = {()=> handleDelete(special._id)}>Delete</button>
                 <br />
             </>

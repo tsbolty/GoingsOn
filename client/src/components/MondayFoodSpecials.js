@@ -9,19 +9,15 @@ const MondayFoodSpecials = ()=>{
         let val = e.target.value
         setState({...state, [nam]: val})
     }
-    
-    const handleSubmit = ()=>{
-        gatherData()
-    }
 
     return(
         <form>
             <label>
                 Monday:
                 <br />
-                <textarea type= "text" name= "mondayFoodSpecialHeader" value= {state.mondayFoodSpecialHeader} onChange= {gatherData} placeholder= "Monday Food Special Title"></textarea>
+                <input type= "text" name= "mondayFoodSpecialHeader" value= {state.mondayFoodSpecialHeader} onChange= {gatherData} placeholder= "Monday Food Special Title"></input>
                 <input type= "text" name= "mondayFoodSpecialDescription" value= {state.mondayFoodSpecialDescription} onChange= {gatherData} placeholder= "Monday Food Special Description"></input>
-                <button onClick= {()=> handleSubmit()}>Submit</button>
+                <button>Submit</button>
             </label>
         </form>
     )
