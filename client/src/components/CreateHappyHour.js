@@ -5,7 +5,6 @@ import FoodSpecialInput from './FoodSpecialInput'
 const CreateHappyHour = ()=>{
     const [iState, setIState] = useState(1)
     const [data, setData] = useState([])
-    const [addInput, setAddInput] = useState(false)
 
     const handleSpecialSubmit= ()=>{
         axios.post("/api/happyhour/add", data)
@@ -47,8 +46,6 @@ const CreateHappyHour = ()=>{
 
     return(
         <>
-        <ul>
-            <li id= "food-special-inputs">
                 <input type= "text" 
                 name= "foodSpecial1Heading"
                 value= {data.foodSpecial1Heading}
@@ -61,12 +58,10 @@ const CreateHappyHour = ()=>{
                 className= "foodSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Food special description" />
-            </li>
             <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             <br />
-        </ul>    
-        <ul className= "create-drink-specials">
-            <li>
+           
+        
                 <input type= "text"
                 name= "drinkSpecial1Heading"
                 value= {data.drinkSpecial1Heading}
@@ -79,8 +74,6 @@ const CreateHappyHour = ()=>{
                 className= "drinkSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Drink special description" />
-            </li>
-        </ul>
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
             {/* <br />
