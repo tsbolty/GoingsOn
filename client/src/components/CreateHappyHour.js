@@ -5,6 +5,7 @@ import FoodSpecialInput from './FoodSpecialInput'
 const CreateHappyHour = ()=>{
     const [iState, setIState] = useState(1)
     const [data, setData] = useState([])
+    const [newInput, setNewInput] = useState(false)
 
     const handleSpecialSubmit= ()=>{
         axios.post("/api/happyhour/add", data)
@@ -41,44 +42,43 @@ const CreateHappyHour = ()=>{
         })
 
     const addFoodSpecialInput = ()=>{
+
         // setFoodSpecialInputs(...foodSpecialInputs, <FoodSpecialInput handleInputChange = {handleInputChange} data= {data} iState= {iState} />)
     }
 
     return(
-        <>
-                <input type= "text" 
-                name= "foodSpecial1Heading"
-                value= {data.foodSpecial1Heading}
-                className= "foodSpecialInput special-input" 
-                onChange= {handleInputChange} 
-                placeholder= "Food special Title" />
-                <input type= "text"
-                name= "foodSpecial1Description" 
-                value= {data.foodSpecial1Description}
-                className= "foodSpecialInput special-input" 
-                onChange= {handleInputChange} 
-                placeholder= "Food special description" />
+        <div id= "specials-input">
+            <input type= "text" 
+            name= "foodSpecial1Heading"
+            value= {data.foodSpecial1Heading}
+            className= "foodSpecialInput special-input" 
+            onChange= {handleInputChange}
+            placeholder= "Food special Title" />
+            <input type= "text"
+            name= "foodSpecial1Description" 
+            value= {data.foodSpecial1Description}
+            className= "foodSpecialInput special-input" 
+            onChange= {handleInputChange} 
+            placeholder= "Food special description" />
             <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             <br />
-           
-        
-                <input type= "text"
-                name= "drinkSpecial1Heading"
-                value= {data.drinkSpecial1Heading}
-                className= "drinkSpecialInput special-input"
-                onChange= {handleInputChange}
-                placeholder= "Drink special Title" />
-                <input type= "text"
-                name= "drinkSpecial1Description" 
-                value= {data.drinkSpecial1Description}
-                className= "drinkSpecialInput special-input" 
-                onChange= {handleInputChange} 
-                placeholder= "Drink special description" />
+            <input type= "text"
+            name= "drinkSpecial1Heading"
+            value= {data.drinkSpecial1Heading}
+            className= "drinkSpecialInput special-input"
+            onChange= {handleInputChange}
+            placeholder= "Drink special Title" />
+            <input type= "text"
+            name= "drinkSpecial1Description" 
+            value= {data.drinkSpecial1Description}
+            className= "drinkSpecialInput special-input" 
+            onChange= {handleInputChange} 
+            placeholder= "Drink special description" />
             <br />
             <button onClick= {()=> handleSpecialSubmit()}>submit specials</button>
-            {/* <br />
-            <br /> */}
-        </>
+            <br />
+            <br />
+        </div>
     )
 }
 
