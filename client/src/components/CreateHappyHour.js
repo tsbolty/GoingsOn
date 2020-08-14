@@ -17,33 +17,38 @@ const CreateHappyHour = ()=>{
         setData({...data, [nam]: val})
     }
     
-    const [foodSpecialInputs, setFoodSpecialInputs] = useState([
-    <li>
-        <input type= "text" 
-        name= "foodSpecial1Heading"
-        value= {data.foodSpecial1Heading}
-        className= "foodSpecialInput special-input" 
-        onChange= {handleInputChange}
-        placeholder= "Food special Title" />
-        <input type= "text"
-        name= "foodSpecial1Description" 
-        value= {data.foodSpecial1Description}
-        className= "foodSpecialInput special-input" 
-        onChange= {handleInputChange} 
-        placeholder= "Food special description" />
-    </li>])
+    // const [foodSpecialInputs, setFoodSpecialInputs] = useState([
+    // <>
+    //     <input type= "text" 
+    //     name= "foodSpecial1Heading"
+    //     value= {data.foodSpecial1Heading}
+    //     className= "foodSpecialInput special-input" 
+    //     onChange= {handleInputChange}
+    //     placeholder= "Food special Title" />
+    //     <input type= "text"
+    //     name= "foodSpecial1Description" 
+    //     value= {data.foodSpecial1Description}
+    //     className= "foodSpecialInput special-input" 
+    //     onChange= {handleInputChange} 
+    //     placeholder= "Food special description" />
+    // </>])
+    
+    const input = React.createElement("input", {
+            type: "text" ,
+            name: "foodSpecial2Heading",
+            value: data.foodSpecial2Heading,
+            className: "foodSpecialInput special-input",
+            onChange: handleInputChange
+        })
 
     const addFoodSpecialInput = ()=>{
-        setFoodSpecialInputs(...foodSpecialInputs, <FoodSpecialInput handleInputChange = {handleInputChange} data= {data} iState= {iState} />)
+        // setFoodSpecialInputs(...foodSpecialInputs, <FoodSpecialInput handleInputChange = {handleInputChange} data= {data} iState= {iState} />)
     }
 
     return(
         <>
-        <ul className= "create-food-specials" id= "create-food-specials">
-            {foodSpecialInputs.map(input=>{
-                return input
-            })}
-            {/* <li>
+        <ul>
+            <li id= "food-special-inputs">
                 <input type= "text" 
                 name= "foodSpecial1Heading"
                 value= {data.foodSpecial1Heading}
@@ -56,10 +61,10 @@ const CreateHappyHour = ()=>{
                 className= "foodSpecialInput special-input" 
                 onChange= {handleInputChange} 
                 placeholder= "Food special description" />
-            </li> */}
-        </ul>
+            </li>
             <button onClick= {()=> addFoodSpecialInput()}>Add another food special</button>
             <br />
+        </ul>    
         <ul className= "create-drink-specials">
             <li>
                 <input type= "text"

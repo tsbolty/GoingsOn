@@ -10,7 +10,7 @@ const FoodSpecialInput = ( { handleInputChange, data, iState})=>{
     // }
     
     return(
-        <li>
+        <>
             <input type= "text"
             name= {`foodSpecialHeading`} 
             value= {data.foodSpecialHeading}
@@ -23,7 +23,7 @@ const FoodSpecialInput = ( { handleInputChange, data, iState})=>{
             className= "foodSpecialInput"
             onChange= {handleInputChange}
             placeholder= "Food special description"></input>
-        </li>
+        </>
     )
 }
 
