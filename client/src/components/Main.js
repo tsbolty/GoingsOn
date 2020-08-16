@@ -5,17 +5,18 @@ import ViewHappyHour from './ViewHappyHour'
 import DatePicker from './DatePicker'
 import NavBar from './NavBar'
 import LocationCard from './LocationCard'
-import MondayFoodSpecials from './MondayFoodSpecials'
+import CreateMondaySpecials from './CreateMondaySpecials'
+
 
 const Main = ()=>{
     return(
         <>
             <NavBar />
             {/* <SpecialDate /> */}
-            {/* <ViewHappyHour /> */}
+            <ViewHappyHour />
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
-            <MondayFoodSpecials />
+            <CreateMondaySpecials />
         </>
     )
 }

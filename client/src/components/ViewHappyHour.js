@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreateHappyHour from './CreateHappyHour';
-import Card from './Card';
 
 const ViewHappyHour = ()=>{
     const [array, setArray] = useState([])
