@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreateHappyHour from './CreateHappyHour';
 
-const ViewHappyHour = ()=>{
+const ViewHappyHour = ({ mondaySpecials })=>{
     const [mondaySpecialsData, setMondaySpecialsData] = useState([])
 
     const getMondaySpecials = ()=>{
@@ -10,14 +10,14 @@ const ViewHappyHour = ()=>{
         .then(res => setMondaySpecialsData(res.data))
     }
 
+    useEffect(()=>{
+        getMondaySpecials()
+    }, [])
+
     const handleDelete = (id)=>{
         axios.delete('/api/dailySpecials/delete/monday/' + id)
             .then(res=> getMondaySpecials())
     }
-
-    useEffect(()=>{
-        getMondaySpecials()
-    }, [])
 
     return(
         <>

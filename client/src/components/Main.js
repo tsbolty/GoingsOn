@@ -13,7 +13,7 @@ const Main = ()=>{
         <>
             <NavBar />
             {/* <SpecialDate /> */}
-            <ViewHappyHour />
+            {/* <ViewHappyHour /> */}
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
             <CreateMondaySpecials />

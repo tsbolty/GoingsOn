@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BusinessInfo from './BusinessInfo'
 import axios from 'axios';
 
 
-const LocationCard = ()=>{
+const LocationCard = ({ mondaySpecials })=>{
 
     const [displayDailySpecials, setDisplayDailySpecials] = useState(false)
     const [displayWeeklySpecials, setDisplayWeeklySpecials] = useState(false)
@@ -13,7 +13,6 @@ const LocationCard = ()=>{
     const getWeeklySpecials = ()=>{
         axios.get('/api/happyhour/get')
         .then(res => setWeeklySpecials(res.data))
-        .then(console.log(weeklySpecials))
     }
 
     const showDisplayDailySpecials = (e)=>{
@@ -72,7 +71,9 @@ const LocationCard = ()=>{
                     <tbody>
                         <tr>
                             <td>Monday</td>
-                            <td>BOGO Pizza</td>
+                            {mondaySpecials.length > 0 &&
+                            <td>{mondaySpecials[0].mondayFoodSpecialHeading}</td>
+                            }
                         </tr>
                         <tr>
                             <td>Tuesday</td>
@@ -115,8 +116,7 @@ const LocationCard = ()=>{
                     </thead>
                     <tbody>
                         <tr className= "specials-table-row">
-                            <td>Monday
-                            </td>
+                            <td>Monday</td>
                             <td>{weeklySpecials.foodSpecial1Heading}</td>
                         </tr>
                         <tr className= "specials-table-row">
