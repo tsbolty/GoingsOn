@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
+import BusinessInfo from './BusinessInfo'
+import axios from 'axios';
+
 
 const LocationCard = ()=>{
 
-    const [dailySpecials, setDailySpecials] = useState(false)
-    const [weeklySpecials, setWeeklySpecials] = useState(false)
+    const [displayDailySpecials, setDisplayDailySpecials] = useState(false)
+    const [displayWeeklySpecials, setDisplayWeeklySpecials] = useState(false)
     const [specialEvents, setSpecialEvents] = useState([])
+    const [weeklySpecials, setWeeklySpecials] =useState([])
 
-    const showDailySpecials = (e)=>{
+    const getWeeklySpecials = ()=>{
+        axios.get('/api/happyhour/get')
+        .then(res => setWeeklySpecials(res.data))
+        .then(console.log(weeklySpecials))
+    }
+
+    const showDisplayDailySpecials = (e)=>{
         e.preventDefault()
-        if(dailySpecials){
-            setDailySpecials(false)
-        } else if (!dailySpecials){
-            setDailySpecials(true)
-            setWeeklySpecials(false)
+        if(displayDailySpecials){
+            setDisplayDailySpecials(false)
+        } else if (!displayDailySpecials){
+            setDisplayDailySpecials(true)
+            setDisplayWeeklySpecials(false)
             setSpecialEvents([])
         }
     }
 
     const showWeeklySpecials = (e)=>{
         e.preventDefault()
-        if(weeklySpecials){
-            setWeeklySpecials(false)
-        } else if (!weeklySpecials){
-            setWeeklySpecials(true)
-            setDailySpecials(false)
+        if(displayWeeklySpecials){
+            setDisplayWeeklySpecials(false)
+        } else if (!displayWeeklySpecials){
+            setDisplayWeeklySpecials(true)
+            setDisplayDailySpecials(false)
             setSpecialEvents([])
         }
     }
@@ -32,8 +42,8 @@ const LocationCard = ()=>{
         e.preventDefault()
         if (specialEvents){
             setSpecialEvents([{title: "special event from database", date: "Saturday July 4th, 2020"}])
-            setDailySpecials(false)
-            setWeeklySpecials(false)
+            setDisplayDailySpecials(false)
+            setDisplayWeeklySpecials(false)
         } 
         else if(!specialEvents.length){
             return false
@@ -42,14 +52,13 @@ const LocationCard = ()=>{
 
     return(
         <div className= "card location-card">
-            <h2>Business Name</h2>
-            <p>123 main st Denver, CO 80202</p>
-            <button onClick= {showDailySpecials}>Daily Specials</button>
-            <br />
-            <button onClick= {showWeeklySpecials}>Weekly Specials</button>
-            <br />
-            {specialEvents && <button onClick= {showSpecialEvents}>Special Events</button>}
-            {dailySpecials
+            <BusinessInfo businessName= "Business Name" businessAddress= "123 Main st"/>
+            <div className= "show-specials-button">
+            <button onClick= {showDisplayDailySpecials} className= "btn show-specials-button">Daily Specials</button>
+            <button onClick= {showWeeklySpecials} className= "btn show-specials-button">Weekly Specials</button>
+            {specialEvents && <button onClick= {showSpecialEvents} className= "btn show-specials-button">Special Events</button>}
+            </div>
+            {displayDailySpecials
             &&
             <>
                 <h2>Daily Specials</h2>
@@ -93,7 +102,7 @@ const LocationCard = ()=>{
                 </table>
             </>
             }
-            {weeklySpecials
+            {displayWeeklySpecials
             &&
             <>
                 <h2>Weekly Specials</h2>
@@ -108,7 +117,7 @@ const LocationCard = ()=>{
                         <tr className= "specials-table-row">
                             <td>Monday
                             </td>
-                            <td>BOGO Pizza</td>
+                            <td>{weeklySpecials.foodSpecial1Heading}</td>
                         </tr>
                         <tr className= "specials-table-row">
                             <td>Tuesday</td>
@@ -149,6 +158,7 @@ const LocationCard = ()=>{
             ))}
             </>
             }
+            <button onClick= {()=> getWeeklySpecials()}>get weekly specials</button>
         </div>
     )
 }

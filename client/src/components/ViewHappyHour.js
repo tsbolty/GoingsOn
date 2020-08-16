@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CreateHappyHour from './CreateHappyHour';
+import Card from './Card';
 
 const ViewHappyHour = ()=>{
     const [array, setArray] = useState([])
@@ -22,6 +23,7 @@ const ViewHappyHour = ()=>{
     return(
         <>
         <CreateHappyHour getHappyHourSpecials= {getHappyHourSpecials}/>
+        <div className= "card">
         {array.map(special=>(
             <>
                 <h3 className= "food-special-heading">{special.foodSpecial1Heading}</h3>
@@ -32,6 +34,7 @@ const ViewHappyHour = ()=>{
                 <br />
             </>
         ))}
+        </div>
         </>
     )
 }

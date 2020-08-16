@@ -1,25 +1,52 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const MondayFoodSpecials = ()=>{
-    const [state, setState] = useState({})
+    const [mondaySpecials, setMondaySpecials] = useState({})
+
+    const postMondaySpecials = ()=>{
+        axios.post('/api/dailySpecials/post/monday', mondaySpecials)
+    }
     
+    const console = ()=>{
+        axios.get('/api/dailySpecials/get/monday')
+        .then(res => console.log(res.data))
+    }
     
     const gatherData = (e)=>{
         let nam = e.target.name
         let val = e.target.value
-        setState({...state, [nam]: val})
+        setMondaySpecials({...mondaySpecials, [nam]: val})
     }
 
     return(
-        <form>
-            <label>
+        <div>
                 Monday:
                 <br />
-                <input type= "text" name= "mondayFoodSpecialHeader" value= {state.mondayFoodSpecialHeader} onChange= {gatherData} placeholder= "Monday Food Special Title"></input>
-                <input type= "text" name= "mondayFoodSpecialDescription" value= {state.mondayFoodSpecialDescription} onChange= {gatherData} placeholder= "Monday Food Special Description"></input>
-                <button>Submit</button>
-            </label>
-        </form>
+                <input type= "text" 
+                name= "mondayFoodSpecialHeading" 
+                value= {mondaySpecials.mondayFoodSpecialHeading} 
+                onChange= {gatherData} 
+                placeholder= "Monday Food Special Title"></input>
+                <input type= "text" 
+                name= "mondayFoodSpecialDescription" 
+                value= {mondaySpecials.mondayFoodSpecialDescription} 
+                onChange= {gatherData} 
+                placeholder= "Monday Food Special Description"></input>
+                <br />
+                <input type= "text" 
+                name= "mondayDrinkSpecialHeading" 
+                value= {mondaySpecials.mondayDrinkSpecialHeading} 
+                onChange= {gatherData} 
+                placeholder= "Monday Drink Special Title"></input>
+                <input type= "text" 
+                name= "mondayDrinkSpecialDescription" 
+                value= {mondaySpecials.mondayDrinkSpecialDescription} 
+                onChange= {gatherData} 
+                placeholder= "Monday Drink Special Description"></input>
+                <button onClick= {()=> postMondaySpecials()}>Submit</button>
+
+        </div>
     )
 }
 

@@ -1,3 +1,4 @@
 module.exports = {
-    HappyHour: require('./HappyHourModel')
+    HappyHour: require('./HappyHourModel'),
+    MondaySpecials: require('./MondaySpecialsModel')
 };
