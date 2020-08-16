@@ -34,12 +34,12 @@ const CreateMondaySpecials = ()=>{
                 name= "mondayFoodSpecialHeading" 
                 value= {mondaySpecials.mondayFoodSpecialHeading} 
                 onChange= {handleInputChange} 
-                placeholder= "Monday Food Special Title"></input>
+                placeholder= "Monday Food Special Title" />
                 <input type= "text" 
                 name= "mondayFoodSpecialDescription" 
                 value= {mondaySpecials.mondayFoodSpecialDescription} 
                 onChange= {handleInputChange} 
-                placeholder= "Monday Food Special Description"></input>
+                placeholder= "Monday Food Special Description" />
                 <br />
                 <input type= "text" 
                 name= "mondayDrinkSpecialHeading" 

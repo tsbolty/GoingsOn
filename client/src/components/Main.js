@@ -6,6 +6,7 @@ import DatePicker from './DatePicker'
 import NavBar from './NavBar'
 import LocationCard from './LocationCard'
 import CreateMondaySpecials from './CreateMondaySpecials'
+import CreateProfile from './CreateProfile'
 
 
 const Main = ()=>{
@@ -16,7 +17,8 @@ const Main = ()=>{
             {/* <ViewHappyHour /> */}
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
-            <CreateMondaySpecials />
+            {/* <CreateMondaySpecials /> */}
+            <CreateProfile />
         </>
     )
 }
