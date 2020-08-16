@@ -8,6 +8,7 @@ import LocationCard from './LocationCard'
 import CreateMondaySpecials from './CreateMondaySpecials'
 import CreateProfile from './CreateProfile'
 import Map from './map/Map'
+import EditBusinessInfo from './EditBusinessInfo'
 
 
 const Main = ()=>{
@@ -25,9 +26,9 @@ const Main = ()=>{
             {/* <ViewHappyHour /> */}
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
-            {/* <CreateMondaySpecials /> */}
-            {/* <CreateProfile /> */}
-            <Map location={location} zoomLevel={10} />        </>
+            <EditBusinessInfo />
+            {/* <Map location={location} zoomLevel={10} /> */}
+            </>
     )
 }
 

@@ -51,7 +51,6 @@ const LocationCard = ({ mondaySpecials })=>{
 
     return(
         <div className= "card location-card">
-            <BusinessInfo businessName= "Business Name" businessAddress= "123 Main st"/>
             <div className= "show-specials-button">
             <button onClick= {showDisplayDailySpecials} className= "btn show-specials-button">Daily Specials</button>
             <button onClick= {showWeeklySpecials} className= "btn show-specials-button">Weekly Specials</button>

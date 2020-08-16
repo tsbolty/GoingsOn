@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {Dropdown} from 'react-bootstrap'
+import BusinessInfo from './BusinessInfo'
+
 const CreateProfile = ()=>{
     const [businessInfo, setBusinessInfo] = useState([])
     const [businessType, setBusinessType] = useState("")
@@ -13,10 +15,12 @@ const CreateProfile = ()=>{
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
         // let val = e.target.value
-        setBusinessType({[nam]: true})
+        setBusinessType(nam)
     }
 
     return(
+        <>
+        <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} />
         <div>
             <input type= "text"
             name= "businessName"
@@ -48,6 +52,7 @@ const CreateProfile = ()=>{
                 </Dropdown.Menu>
             </Dropdown>
         </div>
+        </>
     )
 }
 

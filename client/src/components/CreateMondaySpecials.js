@@ -13,7 +13,7 @@ const CreateMondaySpecials = ()=>{
 
     const getMondaySpecials = ()=>{
         axios.get('/api/dailySpecials/get/monday')
-        .then(res => setMondaySpecials(...mondaySpecials, res.data))
+        .then(res => setMondaySpecials(res.data))
     }
     
     const handleInputChange = (e)=>{
