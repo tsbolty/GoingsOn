@@ -7,9 +7,17 @@ import NavBar from './NavBar'
 import LocationCard from './LocationCard'
 import CreateMondaySpecials from './CreateMondaySpecials'
 import CreateProfile from './CreateProfile'
+import Map from './map/Map'
 
 
 const Main = ()=>{
+
+    const location = {
+        address: '4500 E Jewell Ave Denver, CO 80222',
+        lat: 39.681760,
+        lng: -104.935120,
+    }
+
     return(
         <>
             <NavBar />
@@ -18,8 +26,8 @@ const Main = ()=>{
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
             {/* <CreateMondaySpecials /> */}
-            <CreateProfile />
-        </>
+            {/* <CreateProfile /> */}
+            <Map location={location} zoomLevel={10} />        </>
     )
 }
 
