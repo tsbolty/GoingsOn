@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import LocationCard from './LocationCard'
+import ViewDaySpecials from './ViewDaySpecials'
 import { Dropdown } from 'react-bootstrap';
 
 const CreateDaySpecials = ()=>{
@@ -51,6 +51,7 @@ const CreateDaySpecials = ()=>{
                     <Dropdown.Item  name= "sunday" onClick= {handleDayChosenClick}>Sunday</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            <h3>{day}</h3>
             <br />
             <input type= "text" 
             name= "foodSpecialHeading" 
@@ -74,7 +75,7 @@ const CreateDaySpecials = ()=>{
             onChange= {handleInputChange} 
             placeholder= "Drink Special Description"></input>
             <button onClick= {()=> postDaySpecials()}>Submit</button>
-            {/* <LocationCard daySpecials= {daySpecials}/> */}
+            <ViewDaySpecials day= {day}/>
         </div>
     )
 }

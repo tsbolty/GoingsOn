@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const LocationCard = ({ mondaySpecials })=>{
+const LocationCard = ({ daySpecials, day })=>{
 
     const [displayDailySpecials, setDisplayDailySpecials] = useState(false)
     const [displayWeeklySpecials, setDisplayWeeklySpecials] = useState(false)
@@ -69,8 +69,8 @@ const LocationCard = ({ mondaySpecials })=>{
                     <tbody>
                         <tr>
                             <td>Monday</td>
-                            {mondaySpecials.length > 0 &&
-                            <td>{mondaySpecials[0].mondayFoodSpecialHeading}</td>
+                            {daySpecials.length > 0 &&
+                            <td>{daySpecials[0].foodSpecialHeading}</td>
                             }
                         </tr>
                         <tr>
