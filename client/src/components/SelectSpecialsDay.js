@@ -11,12 +11,6 @@ const SelectSpecialsDay = ()=>{
         setDayChosen(e.target.name)
     }
 
-    useEffect(()=>{
-        axios.get('/api/dailySpecials/get/monday')
-        .then(res => setMondaySpecials(res.data))
-    }, [])
-
-
     return(
         <Dropdown>
             <Dropdown.Toggle variant= "success" id= "dropdown-basic">Day
@@ -31,7 +25,9 @@ const SelectSpecialsDay = ()=>{
                 <Dropdown.Item  name= "sunday" onClick= {handleDayChosenClick}>Sunday</Dropdown.Item>
             </Dropdown.Menu>
             <br />
-            <ViewSingleDaySpecials mondaySpecials= {"something"}/>
+            {dayChosen === "monday" &&
+            <ViewSingleDaySpecials day= {dayChosen}/>
+            }
         </Dropdown>
     )
 }
