@@ -5,7 +5,7 @@ import ViewHappyHour from './ViewHappyHour'
 import DatePicker from './DatePicker'
 import NavBar from './NavBar'
 import LocationCard from './LocationCard'
-import CreateMondaySpecials from './CreateMondaySpecials'
+import CreateDaySpecials from './CreateDaySpecials'
 import CreateProfile from './CreateProfile'
 import Map from './map/Map'
 import EditBusinessInfo from './EditBusinessInfo'
@@ -28,7 +28,8 @@ const Main = ()=>{
             {/* <LocationCard /> */}
             {/* <DatePicker /> */}
             {/* <EditBusinessInfo /> */}
-            <SelectSpecialsDay />
+            {/* <SelectSpecialsDay /> */}
+            <CreateDaySpecials />
             {/* <Map location={location} zoomLevel={10} /> */}
             </>
     )

@@ -1,13 +1,13 @@
 import React from 'react';
 import BusinessInfo from './BusinessInfo';
-import CreateMondaySpecials from './CreateMondaySpecials';
+import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 
 const EditBusinessInfo = ()=>{
     return(
         <>
         <CreateProfile />
-        <CreateMondaySpecials />
+        <CreateDaySpecials />
         </>
     )
 }
