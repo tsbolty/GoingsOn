@@ -14,7 +14,7 @@ const CreateProfile = ()=>{
     }
 
     const submitBusinessInfo = ()=>{
-        axios.post('/api/businessInfo/post', {
+        axios.post('/api/businessInfo/add', {
             businessName: businessInfo.businessName,
             businessAddress: businessInfo.businessAddress,
             businessType: businessType
@@ -23,7 +23,6 @@ const CreateProfile = ()=>{
 
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
-        // let val = e.target.value
         setBusinessType(nam)
     }
 
@@ -41,16 +40,7 @@ const CreateProfile = ()=>{
             value= {businessInfo.businessAddress}
             onChange= {handleInputChange}
             placeholder= "Business Address" />
-            {/* <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Business Type
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <p className="dropdown-item" name= "restaurant" value= {businessInfo.restaurant}>Restaurant</p>
-                    <p className="dropdown-item" name= "bar" value= {businessInfo.bar}>Bar</p>
-                    <p className="dropdown-item" name= "both" value= {businessInfo.both}>Both</p>
-                </div>
-            </div> */}
+            <br />
             <Dropdown>
                 <Dropdown.Toggle variant= "success" id= "dropdown-basic">Business Type
                 </Dropdown.Toggle>
@@ -62,7 +52,9 @@ const CreateProfile = ()=>{
             </Dropdown>
             <br />
             <button onClick= {()=> submitBusinessInfo()}>Submit Business Info</button>
+            <p>___________________________________________________________</p>
         </div>
+        <br />
         </>
     )
 }

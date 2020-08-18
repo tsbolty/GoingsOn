@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const db = require('../../models');
 
-router.post('/post', ({body}, res)=>{
+router.post('/add', ({body}, res)=>{
     db.BusinessInfo.create(body)
         .then(data=> res.json(data))
         .catch(err=> console.log(err))

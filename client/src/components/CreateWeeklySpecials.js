@@ -3,13 +3,6 @@ import axios from 'axios';
 
 const CreateWeeklySpecials = ()=>{
     const [weeklySpecials, setWeeklySpecials] = useState({})
-    // const [mondaySpecials, setMondaySpecials] = useState({})
-    // const [tuesdaySpecials, setTuesdaySpecials] = useState({})
-    // const [wednesdaySpecials, setWednesdaySpecials] = useState({})
-    // const [thursdaySpecials, setThursdaySpecials] = useState({})
-    // const [fridaySpecials, setFridaySpecials] = useState({})
-    // const [saturdaySpecials, setSaturdaySpecials] = useState({})
-    // const [sundaySpecials, setSundaySpecials] = useState({})
 
     const handleInputChange = (e)=>{
         let nam = e.target.name
@@ -22,52 +15,10 @@ const CreateWeeklySpecials = ()=>{
         axios.post('/api/weeklySpecials/add', weeklySpecials)
     }
 
-    // const handleMondayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setMondaySpecials({mondaySpecials, [nam]: val})
-    // }
-
-    // const handleTuesdayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setTuesdaySpecials({tuesdaySpecials, [nam]: val})
-    // }
-
-    // const handleWednesdayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setWednesdaySpecials({wednesdaySpecials, [nam]: val})
-    // }
-
-    // const handleThursdayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setThursdaySpecials({thursdaySpecials, [nam]: val})
-    // }
-
-    // const handleFridayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setFridaySpecials({fridaySpecials, [nam]: val})
-    // }
-
-    // const handleSaturdayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setSaturdaySpecials({saturdaySpecials, [nam]: val})
-    // }
-
-    // const handleSundayInputChange = (e)=>{
-    //     let nam = e.target.name
-    //     let val = e.target.value
-    //     setSundaySpecials({sundaySpecials, [nam]: val})
-    // }
-
     return(
         <>
         <div>
-            <h2>Create Specials Here:</h2>
+            <h2>Create Weekly Specials Here:</h2>
             <h4>Monday:</h4>
             <input type= "text" 
             name= "mondayFoodSpecialHeading" 
@@ -268,7 +219,6 @@ const CreateWeeklySpecials = ()=>{
             <h4>{weeklySpecials.sundayDrinkSpecialHeading}</h4>
             <p>{weeklySpecials.sundayDrinkSpecialDescription}</p>
         </div>
-        <br />
         <br />
         <button onClick= {()=> handlePostSubmit()}>Post</button>
         </>
