@@ -14,11 +14,11 @@ import SelectSpecialsDay from './SelectSpecialsDay'
 
 const Main = ()=>{
 
-    const location = {
-        address: '4500 E Jewell Ave Denver, CO 80222',
-        lat: 39.681760,
-        lng: -104.935120,
-    }
+    // const location = {
+    //     address: '4500 E Jewell Ave Denver, CO 80222',
+    //     lat: 39.681760,
+    //     lng: -104.935120,
+    // }
 
     return(
         <>

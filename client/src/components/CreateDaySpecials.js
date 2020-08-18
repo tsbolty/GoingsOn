@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ViewDaySpecials from './ViewDaySpecials'
+import ViewWeeksSpecials from './ViewWeeksSpecials'
 import { Dropdown } from 'react-bootstrap';
 
 const CreateDaySpecials = ()=>{
@@ -16,11 +17,6 @@ const CreateDaySpecials = ()=>{
             drinkSpecialDescription: daySpecials.drinkSpecialDescription
         })
     }
-
-    // const getDaySpecials = ()=>{
-    //     axios.get(`/api/dailySpecials/get/${day}`)
-    //     .then(res => setDaySpecials(res.data))
-    // }
     
     const handleInputChange = (e)=>{
         let nam = e.target.name
@@ -31,10 +27,6 @@ const CreateDaySpecials = ()=>{
     const handleDayChosenClick = (e)=>{
         setDay(e.target.name)
     }
-
-    // useEffect(()=>{
-    //     getDaySpecials()
-    // }, [day])
 
     return(
         <div>
@@ -66,7 +58,7 @@ const CreateDaySpecials = ()=>{
             <br />
             <input type= "text" 
             name= "drinkSpecialHeading" 
-            value= {daySpecials.drinkSpecialHeading} 
+            value= {daySpecials.drinkSpecialHeading}
             onChange= {handleInputChange} 
             placeholder= "Drink Special Title"></input>
             <input type= "text" 
@@ -75,7 +67,9 @@ const CreateDaySpecials = ()=>{
             onChange= {handleInputChange} 
             placeholder= "Drink Special Description"></input>
             <button onClick= {()=> postDaySpecials()}>Submit</button>
-            <ViewDaySpecials day= {day}/>
+            {/* <ViewDaySpecials day= {day}/> */}
+            <h4>Preview Specials</h4>
+            <ViewWeeksSpecials />
         </div>
     )
 }
