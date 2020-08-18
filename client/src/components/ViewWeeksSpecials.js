@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-const ViewDaySpecials = ({ day })=>{
-    const [singleDaySpecialsData, setSingleDaySpecialsData] = useState([])
+const ViewWeeksSpecials = ()=>{
+    const [weeksSpecialsData, setWeeksSpecialsData] = useState([])
 
-    const getSingleDaySpecials = ()=>{
-        axios.get(`/api/dailySpecials/get/${day}`)
-        .then(res => setSingleDaySpecialsData(res.data))
+    const getWeeksSpecials = ()=>{
+        axios.get('/api/dailySpecials/get')
+            .then(res => setWeeksSpecialsData(res.data))
     }
 
     const handleDelete = (id)=>{
         axios.delete('/api/dailySpecials/delete/' + id)
-            .then(res=> getSingleDaySpecials())
+            .then(res=> getWeeksDaySpecials())
     }
 
     return(
         <div className= "card">
-            {singleDaySpecialsData && singleDaySpecialsData.map(special=>(
+            {weeksSpecialsData && weeksSpecialsData.map(special=>(
             <>
+                <h2>{special.day}</h2>
                 <h3>{special.foodSpecialHeading}</h3>
                 <p>{special.foodSpecialDescription}</p>
                 <h3>{special.drinkSpecialHeading}</h3>
@@ -26,9 +27,9 @@ const ViewDaySpecials = ({ day })=>{
                 <br />
             </>
         ))}
-        <button onClick= {()=> getSingleDaySpecials()}>Get Single Day Specials</button>
+        <button onClick= {()=> getWeeksSpecials()}>Get All Days Specials</button>
         </div>
     )
 }
 
-export default ViewDaySpecials;
+export default ViewWeeksSpecials;

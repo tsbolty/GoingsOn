@@ -7,11 +7,16 @@ router.post('/post', ({body}, res)=>{
         .catch(err=> console.log(err))
 })
 
-router.get('/get', (req, res)=>{
-    console.log(req.params.day)
+router.get('/get/:day', (req, res)=>{
     db.DaySpecials.find({day: req.params.day})
         .then(data => res.json(data))
         .catch(err=> console.log(err))
+})
+
+router.get('/get', (req, res)=>{
+    db.DaySpecials.find()
+        .then(data => res.json(data))
+        .catch(err => console.log(err))
 })
 
 router.delete('/delete/:id', (req, res)=>{
