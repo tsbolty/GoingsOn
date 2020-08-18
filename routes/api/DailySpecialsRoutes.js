@@ -8,7 +8,8 @@ router.post('/post', ({body}, res)=>{
 })
 
 router.get('/get', (req, res)=>{
-    db.DaySpecials.find()
+    console.log(req.params.day)
+    db.DaySpecials.find({day: req.params.day})
         .then(data => res.json(data))
         .catch(err=> console.log(err))
 })
