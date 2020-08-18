@@ -10,6 +10,7 @@ import CreateProfile from './CreateProfile'
 import Map from './map/Map'
 import EditBusinessInfo from './EditBusinessInfo'
 import SelectSpecialsDay from './SelectSpecialsDay'
+import CreateWeeklySpecials from './CreateWeeklySpecials'
 
 
 const Main = ()=>{
@@ -31,6 +32,7 @@ const Main = ()=>{
             {/* <SelectSpecialsDay /> */}
             {/* <CreateDaySpecials /> */}
             <CreateProfile />
+            <CreateWeeklySpecials />
             {/* <Map location={location} zoomLevel={10} /> */}
             </>
     )

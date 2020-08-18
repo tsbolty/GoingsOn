@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ViewWeeksSpecials = ()=>{
-    const [weeksSpecialsData, setWeeksSpecialsData] = useState([])
+const ViewEveryDaySpecials = ()=>{
+    const [everyDaySpecialsData, setEveryDaySpecialsData] = useState([])
 
-    const getWeeksSpecials = ()=>{
+    const getEveryDaySpecials = ()=>{
         axios.get('/api/dailySpecials/get')
-            .then(res => setWeeksSpecialsData(res.data))
+            .then(res => setEveryDaySpecialsData(res.data))
     }
 
     const handleDelete = (id)=>{
         axios.delete('/api/dailySpecials/delete/' + id)
-            .then(res=> getWeeksSpecials())
+            .then(res=> getEveryDaySpecials())
     }
 
     return(
         <div className= "card">
-            {weeksSpecialsData && weeksSpecialsData.map(special=>(
+            {everyDaySpecialsData && everyDaySpecialsData.map(special=>(
             <div key= {special._id}>
                 <h2 className= "weekly-special-day">{special.day}</h2>
                 <h4>{special.foodSpecialHeading}</h4>
@@ -27,9 +27,9 @@ const ViewWeeksSpecials = ()=>{
                 <br />
             </div>
         ))}
-        <button onClick= {()=> getWeeksSpecials()}>Get All Days Specials</button>
+        <button onClick= {()=> getEveryDaySpecials()}>Get All Days Specials</button>
         </div>
     )
 }
 
-export default ViewWeeksSpecials;
+export default ViewEveryDaySpecials;

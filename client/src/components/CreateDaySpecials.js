@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ViewDaySpecials from './ViewDaySpecials'
-import ViewWeeksSpecials from './ViewWeeksSpecials'
+import ViewEveryDaySpecials from './ViewEveryDaySpecials'
 import { Dropdown } from 'react-bootstrap';
 
 const CreateDaySpecials = ()=>{
@@ -69,7 +69,7 @@ const CreateDaySpecials = ()=>{
             <button onClick= {()=> postDaySpecials()}>Submit</button>
             {/* <ViewDaySpecials day= {day}/> */}
             <h4>Preview Specials</h4>
-            <ViewWeeksSpecials />
+            <ViewEveryDaySpecials />
         </div>
     )
 }
