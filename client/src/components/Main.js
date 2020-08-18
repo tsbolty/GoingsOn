@@ -29,7 +29,8 @@ const Main = ()=>{
             {/* <DatePicker /> */}
             {/* <EditBusinessInfo /> */}
             {/* <SelectSpecialsDay /> */}
-            <CreateDaySpecials />
+            {/* <CreateDaySpecials /> */}
+            <CreateProfile />
             {/* <Map location={location} zoomLevel={10} /> */}
             </>
     )

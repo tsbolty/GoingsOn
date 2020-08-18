@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {Dropdown} from 'react-bootstrap'
 import BusinessInfo from './BusinessInfo'
 
 const CreateProfile = ()=>{
-    const [businessInfo, setBusinessInfo] = useState([])
+    const [businessInfo, setBusinessInfo] = useState({})
     const [businessType, setBusinessType] = useState("")
 
     const handleInputChange = (e)=>{
         let nam = e.target.name
         let val = e.target.value
         setBusinessInfo({...businessInfo, [nam]: val})
+    }
+
+    const submitBusinessInfo = ()=>{
+        axios.post('/api/businessInfo/post', {
+            businessName: businessInfo.businessName,
+            businessAddress: businessInfo.businessAddress,
+            businessType: businessType
+        })
     }
 
     const handleBusinessTypeClick = (e)=>{
@@ -51,6 +60,8 @@ const CreateProfile = ()=>{
                     <Dropdown.Item name= "both" value= "both" onClick= {handleBusinessTypeClick}>Both</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            <br />
+            <button onClick= {()=> submitBusinessInfo()}>Submit Business Info</button>
         </div>
         </>
     )
