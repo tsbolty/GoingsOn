@@ -7,8 +7,8 @@ router.post('/add', ({body}, res)=>{
         .catch(err=> console.log(err))
 })
 
-router.get('/get', (req, res)=>{
-    db.WeeklySpecials.find()
+router.get('/get/:email', (req, res)=>{
+    db.WeeklySpecials.find({email: req.params.email})
         .then(data => res.json(data))
         .catch(err => console.log(err))
 })

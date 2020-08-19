@@ -11,6 +11,6 @@ const BusinessInfoSchema = new Schema({
     businessType: String
 })
 
-const BusinessInfo = mongoose.model("BusinessInfo", BusinessInfoSchema)
+const BusinessInfo = mongoose.model("BusinessInfo", BusinessInfoSchema, "businessesinfo")
 
 module.exports = BusinessInfo;

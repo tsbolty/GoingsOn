@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useAuth0 } from "../react-auth0-spa";
 
 const ViewEveryDaySpecials = ()=>{
     const [everyDaySpecialsData, setEveryDaySpecialsData] = useState([])
+    const { user } = useAuth0();
 
     const getEveryDaySpecials = ()=>{
-        axios.get('/api/dailySpecials/get')
+        axios.get(`/api/dailySpecials/get/${user.email}`)
             .then(res => setEveryDaySpecialsData(res.data))
     }
 

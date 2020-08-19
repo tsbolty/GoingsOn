@@ -7,14 +7,16 @@ router.post('/post', ({body}, res)=>{
         .catch(err=> console.log(err))
 })
 
-router.get('/get/:day', (req, res)=>{
-    db.DaySpecials.find({day: req.params.day})
+router.get('/get/:email/:day', (req, res)=>{
+    db.DaySpecials.find({
+        email: req.params.email,
+        day: req.params.day})
         .then(data => res.json(data))
         .catch(err=> console.log(err))
 })
 
-router.get('/get', (req, res)=>{
-    db.DaySpecials.find()
+router.get('/get/:email', (req, res)=>{
+    db.DaySpecials.find({email: req.params.email})
         .then(data => res.json(data))
         .catch(err => console.log(err))
 })

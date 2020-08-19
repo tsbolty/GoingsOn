@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth0 } from "../react-auth0-spa";
 
 const ViewWeeklySpecials = ()=>{
     const [weeklySpecials, setWeeklySpecials] = useState({})
+    const { user } = useAuth0();
 
-    useEffect(()=>{
-        axios.get('/api/weeklySpecials/get')
-            .then(res => setWeeklySpecials(res.data))
-    }, [])
+    const getWeeklySpecials = ()=>{
+        axios.get(`/api/weeklySpecials/get/${user.email}`)
+            .then(res => setWeeklySpecials(res.data[0]))
+    }
 
     return(
         <>
         <div>
+        <button onClick= {()=> getWeeklySpecials()}>Get Weekly Specials</button>
         <h3>Monday</h3>
             <h4>{weeklySpecials.mondayFoodSpecialHeading}</h4>
             <p>{weeklySpecials.mondayFoodSpecialDescription}</p>

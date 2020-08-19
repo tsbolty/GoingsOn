@@ -9,8 +9,8 @@ const BusinessInfo = (props)=>{
     const [businessInfo, setBusinessInfo] = useState({})
 
     const showBusinessInfo = ()=>{
-        axios.get('/api/businessInfo/get/' + user.email)
-            .then(res => setBusinessInfo(res.data))
+        axios.get(`/api/businessInfo/get/${user.email}`)
+            .then(res => setBusinessInfo(res.data[0]))
     }
 
     return(
@@ -20,10 +20,13 @@ const BusinessInfo = (props)=>{
             <button onClick= {()=> showBusinessInfo()}>Show Business Info</button>
             <h2>{businessInfo.businessName} {`(${businessInfo.businessType})`}</h2>
             <p>{businessInfo.businessAddress}</p>
-            <ViewEveryDaySpecials />
+            {/* <br />
+            <p>________________________________</p>
+            <ViewEveryDaySpecials /> */}
             <br />
-            <p>______________________________</p>
+            <p>_________________________________</p>
             <ViewWeeklySpecials />
+            
         </>
         }
         </>

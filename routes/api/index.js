@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const happyhourRoutes = require('./HappyHourRoutes')
 const dailySpecials = require('./DailySpecialsRoutes')
-const businessInfo = require('./BusinessInfo')
+const businessInfo = require('./BusinessInfoRoutes')
 const weeklySpecials = require('./WeeklySpecialsRoutes')
 
 router.use("/happyhour", happyhourRoutes)
