@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
 import './style.scss'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 // import ViewTest from './components/ViewTest'
 // import LocationCard from './components/LocationCard'
 // import NavBar from "./components/NavBar";
 import { useAuth0 } from "./react-auth0-spa";
 import Main from './components/Main'
+import NavBar from './components/NavBar'
+import EditBusinessInfo from './components/EditBusinessInfo'
+import BusinessInfo from './components/BusinessInfo'
 
 
 function App() {
@@ -17,7 +26,33 @@ function App() {
 
   return (
     <div className="App">
-      <Main />
+      <header>
+            <NavBar />
+            <Router>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/editbusinessinfo">Edit Profile</Link>
+                    </li>
+                    <li>
+                        <Link to="/businessinfo">View Profile</Link>
+                    </li>
+                </ul>
+                <Switch>
+                    <Route path="/editbusinessinfo">
+                        <EditBusinessInfo />
+                    </Route>
+                    <Route path="/businessinfo">
+                        <BusinessInfo />
+                    </Route>
+                    <Route path="/">
+                        <Main />
+                    </Route>
+                </Switch>
+            </Router>
+        </header>
     </div>
   );
 }

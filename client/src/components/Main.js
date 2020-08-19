@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 // import CreateHappyHour from './CreateHappyHour'
 import SpecialDate from './SpecialDate'
 import ViewHappyHour from './ViewHappyHour'
@@ -10,7 +16,6 @@ import CreateProfile from './CreateProfile'
 import Map from './map/Map'
 import EditBusinessInfo from './EditBusinessInfo'
 import BusinessInfo from './BusinessInfo'
-import SelectSpecialsDay from './SelectSpecialsDay'
 import CreateWeeklySpecials from './CreateWeeklySpecials'
 
 
@@ -24,7 +29,34 @@ const Main = ()=>{
 
     return(
         <>
+        {/* <header>
             <NavBar />
+            <Router>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/editbusinessinfo">Edit Profile</Link>
+                    </li>
+                    <li>
+                        <Link to="/businessinfo">View Profile</Link>
+                    </li>
+                </ul>
+                <Switch>
+                    <Route path="/editbusinessinfo">
+                        <EditBusinessInfo />
+                    </Route>
+                    <Route path="/businessinfo">
+                        <BusinessInfo />
+                    </Route>
+                    <Route path="/">
+                        <Main />
+                    </Route>
+                </Switch>
+            </Router>
+        </header> */}
+
             {/* <SpecialDate /> */}
             {/* <ViewHappyHour /> */}
             {/* <LocationCard /> */}
@@ -34,10 +66,9 @@ const Main = ()=>{
             {/* <CreateDaySpecials /> */}
             {/* <CreateProfile /> */}
             {/* <BusinessInfo /> */}
-            <SelectSpecialsDay />
             {/* <CreateWeeklySpecials /> */}
             {/* <Map location={location} zoomLevel={10} /> */}
-            </>
+        </>
     )
 }
 

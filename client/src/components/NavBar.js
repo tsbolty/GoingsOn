@@ -1,5 +1,8 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
+import EditBusinessInfo from './EditBusinessInfo';
+import BusinessInfo from './BusinessInfo';
+import Main from './Main';
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -11,13 +14,10 @@ const NavBar = () => {
       )}
 
       {isAuthenticated &&
-      <>
       <button onClick={() => logout()}>Log out</button>
-      <button onClick= {() => console.log("something")}>View Profile</button>
-      </>
-      }
+    }
     </div>
-    );
+  );
 };
 
 export default NavBar;

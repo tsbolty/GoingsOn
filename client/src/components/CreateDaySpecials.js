@@ -65,7 +65,6 @@ const CreateDaySpecials = ()=>{
             value= {daySpecials.drinkSpecialDescription} 
             onChange= {handleInputChange} 
             placeholder= "Drink Special Description"></input>
-            <button onClick= {()=> postDaySpecials()}>Submit</button>
             {/* <ViewDaySpecials day= {day}/> */}
             <h2>Preview Specials</h2>
             <h3>{day}:</h3>
@@ -74,7 +73,8 @@ const CreateDaySpecials = ()=>{
             <h4>{daySpecials.drinkSpecialHeading}</h4>
             <p>{daySpecials.drinkSpecialDescription}</p>
             <br />
-            <ViewEveryDaySpecials />
+            {/* <ViewEveryDaySpecials /> */}
+            <button onClick= {()=> postDaySpecials()}>Submit</button>
         </div>
     )
 }
