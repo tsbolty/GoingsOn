@@ -3,12 +3,12 @@ import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
 
-const EditBusinessInfo = ()=>{
+const EditBusinessInfo = ({ user })=>{
     return(
         <>
-        <CreateProfile />
-        <CreateDaySpecials />
-        <CreateWeeklySpecials />
+        <CreateProfile user= {user}/>
+        <CreateDaySpecials user= {user}/>
+        <CreateWeeklySpecials user= {user}/>
         </>
     )
 }

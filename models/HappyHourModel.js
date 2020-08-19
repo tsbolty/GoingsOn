@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const HappyHourSchema = new Schema({
+    email: {
+        type: String,
+        unique: true
+    },
     time: String,
     foodSpecial1Heading: String,
     foodSpecial1Description: String,

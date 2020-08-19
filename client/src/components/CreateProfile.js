@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Dropdown} from 'react-bootstrap'
 import BusinessInfo from './BusinessInfo'
 
-const CreateProfile = ()=>{
+const CreateProfile = ({ user })=>{
     const [businessInfo, setBusinessInfo] = useState({})
     const [businessType, setBusinessType] = useState("")
 
@@ -15,6 +15,7 @@ const CreateProfile = ()=>{
 
     const submitBusinessInfo = ()=>{
         axios.post('/api/businessInfo/add', {
+            email: user.email,
             businessName: businessInfo.businessName,
             businessAddress: businessInfo.businessAddress,
             businessType: businessType
@@ -28,7 +29,12 @@ const CreateProfile = ()=>{
 
     return(
         <>
-        <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} />
+        {/* <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} /> */}
+        <div>
+            <p strong>Preview Business Information:</p>
+            <h2>{businessInfo.businessName} {businessType && `(${businessType})`}</h2>
+            <p>{businessInfo.businessAddress}</p>
+        </div>
         <div>
             <input type= "text"
             name= "businessName"

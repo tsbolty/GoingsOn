@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateWeeklySpecials = ()=>{
+const CreateWeeklySpecials = ({ user })=>{
     const [weeklySpecials, setWeeklySpecials] = useState({})
 
     const handleInputChange = (e)=>{
@@ -12,7 +12,37 @@ const CreateWeeklySpecials = ()=>{
 
     const handlePostSubmit = ()=>{
         // Will need to add validation to make sure each key value pair gets passed, not just the ones that have text.
-        axios.post('/api/weeklySpecials/add', weeklySpecials)
+        axios.post('/api/weeklySpecials/add', {
+            email: user.email,
+            mondayFoodSpecialHeading: weeklySpecials.mondayFoodSpecialHeading,
+            mondayFoodSpecialDescription: weeklySpecials.mondayFoodSpecialDescription,
+            mondayDrinkSpecialHeading: weeklySpecials.mondayDrinkSpecialHeading,
+            mondayDrinkSpecialDescription: weeklySpecials.mondayDrinkSpecialDescription,
+            tuesdayFoodSpecialHeading: weeklySpecials.tuesdayFoodSpecialHeading,
+            tuesdayFoodSpecialDescription: weeklySpecials.tuesdayFoodSpecialDescription,
+            tuesdayDrinkSpecialHeading: weeklySpecials.tuesdayDrinkSpecialHeading,
+            tuesdayDrinkSpecialDescription: weeklySpecials.tuesdayDrinkSpecialDescription,
+            wednesdayFoodSpecialHeading: weeklySpecials.wednesdayFoodSpecialHeading,
+            wednesdayFoodSpecialDescription: weeklySpecials.wednesdayFoodSpecialDescription,
+            wednesdayDrinkSpecialHeading: weeklySpecials.wednesdayDrinkSpecialHeading,
+            wednesdayDrinkSpecialDescription: weeklySpecials.wednesdayDrinkSpecialDescription,
+            thursdayFoodSpecialHeading: weeklySpecials.thursdayFoodSpecialHeading,
+            thursdayFoodSpecialDescription: weeklySpecials.thursdayFoodSpecialDescription,
+            thursdayDrinkSpecialHeading: weeklySpecials.thursdayDrinkSpecialHeading,
+            thursdayDrinkSpecialDescription: weeklySpecials.thursdayDrinkSpecialDescription,
+            fridayFoodSpecialHeading: weeklySpecials.fridayFoodSpecialHeading,
+            fridayFoodSpecialDescription: weeklySpecials.fridayFoodSpecialDescription,
+            fridayDrinkSpecialHeading: weeklySpecials.fridayDrinkSpecialHeading,
+            fridayDrinkSpecialDescription: weeklySpecials.fridayDrinkSpecialDescription,
+            saturdayFoodSpecialHeading: weeklySpecials.saturdayFoodSpecialHeading,
+            saturdayFoodSpecialDescription: weeklySpecials.saturdayFoodSpecialDescription,
+            saturdayDrinkSpecialHeading: weeklySpecials.saturdayDrinkSpecialHeading,
+            saturdayDrinkSpecialDescription: weeklySpecials.saturdayDrinkSpecialDescription,
+            sundayFoodSpecialHeading: weeklySpecials.sundayFoodSpecialHeading,
+            sundayFoodSpecialDescription: weeklySpecials.sundayFoodSpecialDescription,
+            sundayDrinkSpecialHeading: weeklySpecials.sundayDrinkSpecialHeading,
+            sundayDrinkSpecialDescription: weeklySpecials.sundayDrinkSpecialDescription,
+        })
     }
 
     return(

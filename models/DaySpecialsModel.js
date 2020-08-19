@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const DaySpecialsSchema = new Schema({
+    email: {
+        type: String,
+        unique: true
+    },
     day: String,
     foodSpecialHeading: String,
     foodSpecialDescription: String,

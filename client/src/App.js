@@ -18,6 +18,7 @@ import BusinessInfo from './components/BusinessInfo'
 
 
 function App() {
+    const { user } = useAuth0();
   const { loading } = useAuth0();
 
   if (loading) {
@@ -42,10 +43,10 @@ function App() {
                 </ul>
                 <Switch>
                     <Route path="/editbusinessinfo">
-                        <EditBusinessInfo />
+                        <EditBusinessInfo user= {user}/>
                     </Route>
                     <Route path="/businessinfo">
-                        <BusinessInfo />
+                        <BusinessInfo user= {user}/>
                     </Route>
                     <Route path="/">
                         <Main />

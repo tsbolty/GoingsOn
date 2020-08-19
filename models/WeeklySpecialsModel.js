@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WeeklySpecialsSchema = new Schema({
+    email: {
+        type: String,
+    },
     mondayFoodSpecialHeading: String,
     mondayFoodSpecialDescription: String,
     mondayDrinkSpecialHeading: String,
