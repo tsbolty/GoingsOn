@@ -1,5 +1,4 @@
 import React from 'react';
-import BusinessInfo from './BusinessInfo';
 import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';

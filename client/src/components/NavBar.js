@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   return (
     <div className= "navbar">
@@ -10,9 +10,14 @@ const NavBar = () => {
         <button onClick={() => loginWithRedirect({})}>Log in</button>
       )}
 
-      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+      {isAuthenticated &&
+      <>
+      <button onClick={() => logout()}>Log out</button>
+      <button onClick= {() => console.log("something")}>View Profile</button>
+      </>
+      }
     </div>
-  );
+    );
 };
 
 export default NavBar;

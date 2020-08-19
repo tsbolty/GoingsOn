@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import FoodSpecialInput from './FoodSpecialInput'
 
+// This file is used to try to dynamically create an input field with with unique name to be saved in state
+
 const CreateHappyHour = ()=>{
     const [iState, setIState] = useState(1)
     const [data, setData] = useState([])
@@ -16,22 +18,6 @@ const CreateHappyHour = ()=>{
         let val = e.target.value;
         setData({...data, [nam]: val})
     }
-    
-    // const [foodSpecialInputs, setFoodSpecialInputs] = useState([
-    // <>
-    //     <input type= "text" 
-    //     name= "foodSpecial1Heading"
-    //     value= {data.foodSpecial1Heading}
-    //     className= "foodSpecialInput special-input" 
-    //     onChange= {handleInputChange}
-    //     placeholder= "Food special Title" />
-    //     <input type= "text"
-    //     name= "foodSpecial1Description" 
-    //     value= {data.foodSpecial1Description}
-    //     className= "foodSpecialInput special-input" 
-    //     onChange= {handleInputChange} 
-    //     placeholder= "Food special description" />
-    // </>])
     
     const input = React.createElement("input", {
             type: "text" ,
