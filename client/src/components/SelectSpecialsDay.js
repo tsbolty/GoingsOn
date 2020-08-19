@@ -5,7 +5,6 @@ import ViewSingleDaySpecials from './ViewSingleDaySpecials'
 
 const SelectSpecialsDay = ()=>{
     const [dayChosen, setDayChosen] = useState("")
-    const [mondaySpecials, setMondaySpecials] = useState([])
 
     const handleDayChosenClick = (e)=>{
         setDayChosen(e.target.name)
@@ -25,7 +24,7 @@ const SelectSpecialsDay = ()=>{
                 <Dropdown.Item  name= "sunday" onClick= {handleDayChosenClick}>Sunday</Dropdown.Item>
             </Dropdown.Menu>
             <br />
-            {dayChosen === "monday" &&
+            {dayChosen &&
             <ViewSingleDaySpecials day= {dayChosen}/>
             }
         </Dropdown>

@@ -33,7 +33,8 @@ const Main = ()=>{
             {/* <SelectSpecialsDay /> */}
             {/* <CreateDaySpecials /> */}
             {/* <CreateProfile /> */}
-            <BusinessInfo />
+            {/* <BusinessInfo /> */}
+            <SelectSpecialsDay />
             {/* <CreateWeeklySpecials /> */}
             {/* <Map location={location} zoomLevel={10} /> */}
             </>
