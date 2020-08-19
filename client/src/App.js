@@ -35,16 +35,16 @@ function App() {
                         <Link to="/">Home</Link>
                     </li>
                     {/* The following commented out code will only display edit and view profile options if the user is logged in. Commented out for development purposes. */}
-                    {/* {user &&
-                    <> */}
+                    {user &&
+                    <>
                     <li>
                         <Link to="/editbusinessinfo">Edit Profile</Link>
                     </li>
                     <li>
                         <Link to="/businessinfo">View Profile</Link>
                     </li>
-                    {/* </>
-                    } */}
+                    </>
+                    }
                 </ul>
                 <Switch>
                     <Route path="/editbusinessinfo">

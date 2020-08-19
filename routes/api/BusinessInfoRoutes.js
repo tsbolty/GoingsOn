@@ -7,8 +7,8 @@ router.post('/add', ({body}, res)=>{
         .catch(err=> console.log(err))
 })
 
-router.get('/get/:businessEmail', (req, res)=>{
-    db.BusinessInfo.find({businessEmail: req.body.businessEmail})
+router.get('/get/:email', (req, res)=>{
+    db.BusinessInfo.find({email: req.params.email})
         .then(data => res.json(data))
         .catch(err => console.log(err))
 })

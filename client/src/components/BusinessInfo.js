@@ -20,9 +20,9 @@ const BusinessInfo = (props)=>{
             <button onClick= {()=> showBusinessInfo()}>Show Business Info</button>
             <h2>{businessInfo.businessName} {`(${businessInfo.businessType})`}</h2>
             <p>{businessInfo.businessAddress}</p>
-            {/* <br />
+            <br />
             <p>________________________________</p>
-            <ViewEveryDaySpecials /> */}
+            <ViewEveryDaySpecials />
             <br />
             <p>_________________________________</p>
             <ViewWeeklySpecials />
