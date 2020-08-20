@@ -4,7 +4,7 @@ import {Dropdown} from 'react-bootstrap'
 
 
 const CreateProfile = ({ user })=>{
-    const [businessInfo, setBusinessInfo] = useState({})
+    const [businessInfo, setBusinessInfo] = useState([])
     const [businessType, setBusinessType] = useState("")
 
     useEffect(()=>{
@@ -33,7 +33,7 @@ const CreateProfile = ({ user })=>{
 
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
-        setBusinessInfo(...businessInfo, {businessType: nam})
+        setBusinessType(nam)
     }
 
     return(
@@ -60,9 +60,9 @@ const CreateProfile = ({ user })=>{
                 <Dropdown.Toggle variant= "success" id= "dropdown-basic">Business Type
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item name= "businessType" value= "restaurant" onClick= {handleInputChange}>Restaurant</Dropdown.Item>
-                    <Dropdown.Item name= "businessType" value= "bar" onClick= {handleInputChange}>Bar</Dropdown.Item>
-                    <Dropdown.Item name= "businessType" value= "both" onClick= {handleInputChange}>Both</Dropdown.Item>
+                    <Dropdown.Item name= "restaurant" value= "restaurant" onClick= {handleBusinessTypeClick}>Restaurant</Dropdown.Item>
+                    <Dropdown.Item name= "bar" value= "bar" onClick= {handleBusinessTypeClick}>Bar</Dropdown.Item>
+                    <Dropdown.Item name= "both" value= "both" onClick= {handleBusinessTypeClick}>Both</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <br />
