@@ -7,6 +7,23 @@ router.post('/add', ({body}, res)=>{
         .catch(err=> console.log(err))
 })
 
+router.post('/update', ({body}, res)=>{
+    const _id = body._id;
+    const updated = {
+        firstObject: body.firstObject,
+        secondObject: body.secondObject
+    }
+
+    db.Test.findByIdAndUpdate(_id, updated, {new: true}, (err, data)=>{
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.json(data)
+        }
+    })
+})
+
 router.get('/get', (req, res)=>{
     db.Test.find()
         .then(data => res.json(data))

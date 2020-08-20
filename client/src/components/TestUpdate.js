@@ -14,8 +14,16 @@ const TestUpdate = ()=>{
         setData({...data, [nam]: val})
     }
 
+    const handleUpdateData = ()=>{
+        axios.post("/api/test/update", data)
+            .then(res => setData(res.data))
+            .catch(console.log("something went wrong"))
+    }
+
     return(
         <>
+        <h3>{data && data.firstObject}</h3>
+        <h3>{data && data.secondObject}</h3>
         <input type= "text"
         name= "firstObject"
         value= {data.firstObject}
@@ -27,6 +35,7 @@ const TestUpdate = ()=>{
         onChange= {handleInputChange}
         placeholder= "second object" />
         <button onClick= {postData}>Post</button>
+        <button onClick= {handleUpdateData}>Update Info</button>
         </>
     )
 }
