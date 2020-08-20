@@ -6,10 +6,15 @@ import CreateWeeklySpecials from './CreateWeeklySpecials';
 const EditBusinessInfo = ({ user })=>{
     return(
         <>
+        {user &&
+        <>
         <CreateProfile user= {user}/>
         <CreateDaySpecials user= {user}/>
         <CreateWeeklySpecials user= {user}/>
         </>
+        }
+        </>
+
     )
 }
 

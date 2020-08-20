@@ -1,8 +1,6 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import EditBusinessInfo from './EditBusinessInfo';
-import BusinessInfo from './BusinessInfo';
-import Main from './Main';
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -10,11 +8,29 @@ const NavBar = () => {
   return (
     <div className= "navbar">
       {!isAuthenticated && (
+        <>
         <button onClick={() => loginWithRedirect({})}>Log in</button>
+        <li className= "navbar-links">
+          <Link to="/">Home</Link>
+        </li>
+        </>
       )}
 
       {isAuthenticated &&
+      <>
       <button onClick={() => logout()}>Log out</button>
+      <ul>
+          <li className= "navbar-links">
+              <Link to="/">Home</Link>
+          </li>
+          <li className= "navbar-links">
+              <Link to="/editbusinessinfo">Edit Profile</Link>
+          </li>
+          <li className= "navbar-links">
+              <Link to="/businessinfo">View Profile</Link>
+          </li>
+      </ul>
+      </>
     }
     </div>
   );

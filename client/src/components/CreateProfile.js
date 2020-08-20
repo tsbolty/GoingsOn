@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Dropdown} from 'react-bootstrap'
+
 
 const CreateProfile = ({ user })=>{
     const [businessInfo, setBusinessInfo] = useState({})
     const [businessType, setBusinessType] = useState("")
+
+    useEffect(()=>{
+        axios.get(`/api/businessInfo/get/${user.email}`)
+            .then(res => setBusinessInfo({
+                businessName: res.data[0].businessName,
+                businessAddress: res.data[0].businessAddress
+            }))
+            // .then(res => setBusinessType(res.data[0].businessType))
+    }, [user])
 
     const handleInputChange = (e)=>{
         let nam = e.target.name
@@ -23,7 +33,7 @@ const CreateProfile = ({ user })=>{
 
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
-        setBusinessType(nam)
+        setBusinessInfo(...businessInfo, {businessType: nam})
     }
 
     return(
@@ -50,9 +60,9 @@ const CreateProfile = ({ user })=>{
                 <Dropdown.Toggle variant= "success" id= "dropdown-basic">Business Type
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item  name= "restaurant" value= "restaurant" onClick= {handleBusinessTypeClick}>Restaurant</Dropdown.Item>
-                    <Dropdown.Item  name= "bar" value= "bar" onClick= {handleBusinessTypeClick}>Bar</Dropdown.Item>
-                    <Dropdown.Item name= "both" value= "both" onClick= {handleBusinessTypeClick}>Both</Dropdown.Item>
+                    <Dropdown.Item name= "businessType" value= "restaurant" onClick= {handleInputChange}>Restaurant</Dropdown.Item>
+                    <Dropdown.Item name= "businessType" value= "bar" onClick= {handleInputChange}>Bar</Dropdown.Item>
+                    <Dropdown.Item name= "businessType" value= "both" onClick= {handleInputChange}>Both</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <br />
