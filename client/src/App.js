@@ -7,9 +7,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-// import ViewTest from './components/ViewTest'
-// import LocationCard from './components/LocationCard'
-// import NavBar from "./components/NavBar";
 import { useAuth0 } from "./react-auth0-spa";
 import Main from './components/Main'
 import NavBar from './components/NavBar'
@@ -31,14 +28,18 @@ function App() {
             <Router>
             <NavBar />
                 <Switch>
+                  {user &&
+                  <>
                     <Route path="/editbusinessinfo">
                         <EditBusinessInfo user= {user}/>
                     </Route>
                     <Route path="/businessinfo">
                         <BusinessInfo user= {user}/>
                     </Route>
+                  </>
+                  }
                     <Route path="/">
-                        <Main />
+                        <Main user= {user}/>
                     </Route>
                 </Switch>
             </Router>

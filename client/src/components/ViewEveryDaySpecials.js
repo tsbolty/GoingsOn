@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth0 } from "../react-auth0-spa";
 
-const ViewEveryDaySpecials = ()=>{
+const ViewEveryDaySpecials = ({ user })=>{
     const [everyDaySpecialsData, setEveryDaySpecialsData] = useState([])
-    const { user } = useAuth0();
+
+    useEffect(()=>{
+        axios.get(`/api/dailySpecials/get/${user.email}`)
+        .then(res => setEveryDaySpecialsData(res.data))
+    }, [user])
 
     const getEveryDaySpecials = ()=>{
         axios.get(`/api/dailySpecials/get/${user.email}`)
@@ -29,7 +32,6 @@ const ViewEveryDaySpecials = ()=>{
                 <br />
             </div>
         ))}
-        <button onClick= {()=> getEveryDaySpecials()}>Get All Days Specials</button>
         </div>
     )
 }

@@ -3,12 +3,12 @@ import TestUpdate from './TestUpdate';
 import EditBusinessInfo from './EditBusinessInfo'
 
 
-const Main = ()=>{
+const Main = ({ user })=>{
 
     return(
         <>
         {/* <TestUpdate /> */}
-        <EditBusinessInfo />
+        <EditBusinessInfo user= {user}/>
         </>
     )
 }
