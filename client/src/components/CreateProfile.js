@@ -11,10 +11,12 @@ const CreateProfile = ({ user })=>{
         axios.get(`/api/businessInfo/get/${user.email}`)
             .then(res => setBusinessInfo({
                 businessName: res.data[0].businessName,
-                businessAddress: res.data[0].businessAddress
+                businessAddress: res.data[0].businessAddress,
+                businessType: res.data[0].businessType
             }))
-            // .then(res => setBusinessType(res.data[0].businessType))
     }, [user])
+
+
 
     const handleInputChange = (e)=>{
         let nam = e.target.name
@@ -41,7 +43,7 @@ const CreateProfile = ({ user })=>{
         {/* <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} /> */}
         <div>
             <p>Preview Business Information:</p>
-            <h2>{businessInfo.businessName} {businessType && `(${businessType})`}</h2>
+            <h2>{businessInfo.businessName} {businessInfo.businessType && `(${businessInfo.businessType})`}</h2>
             <p>{businessInfo.businessAddress}</p>
         </div>
         <div>
