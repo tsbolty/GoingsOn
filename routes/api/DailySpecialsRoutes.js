@@ -3,6 +3,7 @@ const db = require('../../models');
 
 router.post('/post', ({body}, res)=>{
     db.DaySpecials.create(body)
+        .then(({ _id }) => db.AllBusinessInfo.findOneAndUpdate({}, {$push: {daySpecials: _id}}, {new: true}))
         .then(data=> res.json(data))
         .catch(err=> console.log(err))
 })

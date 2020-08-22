@@ -13,12 +13,4 @@ router.get('/get/:email', (req, res)=>{
         .catch(err => console.log(err))
 })
 
-// router.delete('/delete/:id', (req, res)=>{
-//     db.DaySpecials.findByIdAndDelete(req.params.id)
-//         .then(data => res.json(data))
-//         .catch(err => {
-//             res.json(err)
-//         })
-// })
-
 module.exports= router;

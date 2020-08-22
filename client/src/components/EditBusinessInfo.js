@@ -10,44 +10,11 @@ const EditBusinessInfo = ({ user })=>{
     const [weeklySpecialsInfo, setWeeklySpecialsInfo] = useState([])
 
     const postAllBusinessInfo = ()=>{
-        axios.post("/api/businessInfo/add", {
+        axios.post("/api/allBusinessInfo/add", {
             email: user.email,
             businessName: profileInfo.businessName,
             businessAddress: profileInfo.businessAddress,
-            businessType: profileInfo.businessType,
-            day: daySpecialsInfo.day,
-            foodSpecialHeading: daySpecialInfo.foodSpecialHeading,
-            foodSpecialDescription: daySpecialInfo.foodSpecialDescription,
-            drinkSpecialHeading: daySpecialInfo.drinkSpecialHeading,
-            drinkSpecialDescription: daySpecialInfo.drinkSpecialDescription,
-            mondayFoodSpecialHeading: weeklySpecialsInfo.mondayFoodSpecialHeading,
-            mondayFoodSpecialDescription: weeklySpecialsInfo.mondayFoodSpecialDescription,
-            mondayDrinkSpecialHeading: weeklySpecialsInfo.mondayDrinkSpecialHeading,
-            mondayDrinkSpecialDescription: weeklySpecialsInfo.mondayDrinkSpecialDescription,
-            tuesdayFoodSpecialHeading: weeklySpecialsInfo.tuesdayFoodSpecialHeading,
-            tuesdayFoodSpecialDescription: weeklySpecialsInfo.tuesdayFoodSpecialDescription,
-            tuesdayDrinkSpecialHeading: weeklySpecialsInfo.tuesdayDrinkSpecialHeading,
-            tuesdayDrinkSpecialDescription: weeklySpecialsInfo.tuesdayDrinkSpecialDescription,
-            wednesdayFoodSpecialHeading: weeklySpecialsInfo.wednesdayFoodSpecialHeading,
-            wednesdayFoodSpecialDescription: weeklySpecialsInfo.wednesdayFoodSpecialDescription,
-            wednesdayDrinkSpecialHeading: weeklySpecialsInfo.wednesdayDrinkSpecialHeading,
-            wednesdayDrinkSpecialDescription: weeklySpecialsInfo.wednesdayDrinkSpecialDescription,
-            thursdayFoodSpecialHeading: weeklySpecialsInfo.thursdayFoodSpecialHeading,
-            thursdayFoodSpecialDescription: weeklySpecialsInfo.thursdayFoodSpecialDescription,
-            thursdayDrinkSpecialHeading: weeklySpecialsInfo.thursdayDrinkSpecialHeading,
-            thursdayDrinkSpecialDescription: weeklySpecialsInfo.thursdayDrinkSpecialDescription,
-            fridayFoodSpecialHeading: weeklySpecialsInfo.fridayFoodSpecialHeading,
-            fridayFoodSpecialDescription: weeklySpecialsInfo.fridayFoodSpecialDescription,
-            fridayDrinkSpecialHeading: weeklySpecialsInfo.fridayDrinkSpecialHeading,
-            fridayDrinkSpecialDescription: weeklySpecialsInfo.fridayDrinkSpecialDescription,
-            saturdayFoodSpecialHeading: weeklySpecialsInfo.saturdayFoodSpecialHeading,
-            saturdayFoodSpecialDescription: weeklySpecialsInfo.saturdayFoodSpecialDescription,
-            saturdayDrinkSpecialHeading: weeklySpecialsInfo.saturdayDrinkSpecialHeading,
-            saturdayDrinkSpecialDescription: weeklySpecialsInfo.saturdayDrinkSpecialDescription,
-            sundayFoodSpecialHeading: weeklySpecialsInfo.sundayFoodSpecialHeading,
-            sundayFoodSpecialDescription: weeklySpecialsInfo.sundayFoodSpecialDescription,
-            sundayDrinkSpecialHeading: weeklySpecialsInfo.sundayDrinkSpecialHeading,
-            sundayDrinkSpecialDescription: weeklySpecialsInfo.sundayDrinkSpecialDescription,
+            businessType: profileInfo.businessType
         })
     }
 

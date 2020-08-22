@@ -1,7 +1,7 @@
 module.exports = {
     HappyHour: require('./HappyHourModel'),
-    AllBusinessInfo: require('./AllBusinessInfoModel'),
     DaySpecials: require('./DaySpecialsModel'),
+    AllBusinessInfo: require('./AllBusinessInfoModel'),
     BusinessInfo: require('./BusinessInfoModel'),
     WeeklySpecials: require('./WeeklySpecialsModel'),
     Test: require("./TestModel")
