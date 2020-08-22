@@ -9,7 +9,7 @@ const CreateDaySpecials = ({ user, setDaySpecialsInfo })=>{
     const [day, setDay] = useState("")
 
     const postDaySpecials = ()=>{
-        axios.post('/api/dailySpecials/post', {
+        axios.post(`/api/dailySpecials/post/${user.email}`, {
             email: user.email,
             day: day,
             foodSpecialHeading: daySpecials.foodSpecialHeading,

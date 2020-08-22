@@ -15,4 +15,11 @@ router.get('/get/:email', (req, res)=>{
         .catch(err => console.log(err))
 })
 
+router.get('/get', (req, res)=>{
+    db.AllBusinessInfo.find({})
+    .populate("daySpecials")
+    .populate("weeklySpecials")
+    .then(data => res.json(data))
+})
+
 module.exports= router;

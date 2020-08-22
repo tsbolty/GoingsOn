@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const db = require('../../models');
 
-router.post('/post', ({body}, res)=>{
-    db.DaySpecials.create(body)
-        .then(({ _id }) => db.AllBusinessInfo.findOneAndUpdate({}, {$push: {daySpecials: _id}}, {new: true}))
+router.post('/post/:email', (req, res)=>{
+    db.DaySpecials.create(req.body)
+        .then(({ _id }) => db.AllBusinessInfo.findOneAndUpdate({email: req.params.email}, {$push: {daySpecials: _id}}, {new: true}))
         .then(data=> res.json(data))
         .catch(err=> console.log(err))
 })
