@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import './style.scss'
+import './style.scss';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,9 +9,8 @@ import {
 import { useAuth0 } from "./react-auth0-spa";
 import Main from './components/Main'
 import NavBar from './components/NavBar'
-import EditBusinessInfo from './components/EditBusinessInfo'
-import BusinessInfo from './components/BusinessInfo'
-
+import EditBusinessInfo from './components/editProfile/EditBusinessInfo'
+import BusinessInfo from './components/viewProfile/BusinessInfo'
 
 function App() {
     const { user } = useAuth0();
@@ -38,9 +36,9 @@ function App() {
                     </Route>
                   </>
                   }
-                    <Route path="/">
-                        <Main user= {user}/>
-                    </Route>
+                  <Route path="/">
+                      <Main user= {user}/>
+                  </Route>
                 </Switch>
             </Router>
         </header>

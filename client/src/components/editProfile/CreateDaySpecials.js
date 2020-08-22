@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ViewEveryDaySpecials from './ViewEveryDaySpecials'
+import ViewEveryDaySpecials from '../viewProfile/ViewEveryDaySpecials'
 import { Dropdown } from 'react-bootstrap';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
 

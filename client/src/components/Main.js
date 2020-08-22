@@ -1,6 +1,6 @@
 import React from 'react';
-import EditBusinessInfo from './EditBusinessInfo';
-import HeadlineCard from './HeadlineCard';
+import EditBusinessInfo from './editProfile/EditBusinessInfo';
+import HeadlineCard from './homePage/HeadlineCard';
 
 
 const Main = ({ user })=>{
