@@ -7,15 +7,15 @@ const CreateProfile = ({ user, setProfileInfo })=>{
     const [businessInfo, setBusinessInfo] = useState([])
     const [businessType, setBusinessType] = useState("")
 
-    useEffect(()=>{
-        axios.get(`/api/businessInfo/get/${user.email}`)
-            .then(res => setBusinessInfo({
-                businessName: res.data[0].businessName,
-                businessAddress: res.data[0].businessAddress,
-                businessType: res.data[0].businessType
-            }))
-            .then(setProfileInfo(...businessInfo, businessType))
-    }, [user])
+    // useEffect(()=>{
+    //     axios.get(`/api/businessInfo/get/${user.email}`)
+    //         .then(res => businessInfo && setBusinessInfo({
+    //             businessName: res.data[0].businessName,
+    //             businessAddress: res.data[0].businessAddress,
+    //             businessType: res.data[0].businessType
+    //         }))
+    //         .then(setProfileInfo(...businessInfo, businessType))
+    // }, [user])
 
 
 
@@ -23,7 +23,7 @@ const CreateProfile = ({ user, setProfileInfo })=>{
         let nam = e.target.name
         let val = e.target.value
         setBusinessInfo({...businessInfo, [nam]: val})
-        setProfileInfo({...businessInfo, [nam]: val}, businessType)
+        setProfileInfo({...businessInfo, [nam]: val, businessType})
     }
 
     const submitBusinessInfo = ()=>{
@@ -38,6 +38,8 @@ const CreateProfile = ({ user, setProfileInfo })=>{
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
         setBusinessType(nam)
+        setProfileInfo(...businessInfo, {businessType: nam})
+
     }
 
     return(
@@ -45,7 +47,7 @@ const CreateProfile = ({ user, setProfileInfo })=>{
         {/* <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} /> */}
         <div>
             <p>Preview Business Information:</p>
-            <h2>{businessInfo.businessName} {businessInfo.businessType && `(${businessInfo.businessType})`}</h2>
+            <h2>{businessInfo.businessName} {businessInfo.businessType ? `(${businessInfo.businessType})` : businessType ? `(${businessType})` : null}</h2>
             <p>{businessInfo.businessAddress}</p>
         </div>
         <div>

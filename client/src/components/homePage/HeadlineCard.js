@@ -16,12 +16,7 @@ const HeadlineCard = ()=>{
     }
 
     // const handleShowDaySpecialsClick = ()=>{
-    //     if(!showDaySpecials){
-    //         setShowDaySpecials(true)
-    //     }
-    //     else{
-    //         setShowDaySpecials(false)
-    //     }
+
     // }
 
     return(
@@ -46,17 +41,6 @@ const HeadlineCard = ()=>{
                                 <td style= {tableStyle}>{special.drinkSpecialDescription}</td>
                             </tr>
                         </table>
-                        {/* <h5><strong>{special.day}</strong></h5>
-                        <div className= "row">
-                            <div classname= "col">
-                                <p><strong>{special.foodSpecialHeading}</strong></p>
-                                <p >{special.foodSpecialDescription}</p>
-                            </div>
-                            <div className= "col">
-                                <p><strong>{special.drinkSpecialHeading}</strong></p>
-                                <p>{special.drinkSpecialDescription}</p>
-                            </div>
-                        </div> */}
                         </>
                     ))}
                     </div>
