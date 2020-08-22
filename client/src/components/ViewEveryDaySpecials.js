@@ -5,13 +5,17 @@ const ViewEveryDaySpecials = ({ user })=>{
     const [everyDaySpecialsData, setEveryDaySpecialsData] = useState([])
 
     useEffect(()=>{
-        axios.get(`/api/dailySpecials/get/${user.email}`)
-        .then(res => setEveryDaySpecialsData(res.data))
+        axios.get(`/api/allBusinessInfo/get/${user.email}`)
+        .then(res => setEveryDaySpecialsData(res.data[0].daySpecials))
     }, [user])
 
     const getEveryDaySpecials = ()=>{
-        axios.get(`/api/dailySpecials/get/${user.email}`)
-            .then(res => setEveryDaySpecialsData(res.data))
+        axios.get(`/api/allBusinessInfo/get/${user.email}`)
+            .then(res => console.log(res.data[0].daySpecials))
+    }
+
+    const consoleSpecials = ()=>{
+        console.log(everyDaySpecialsData)
     }
 
     const handleDelete = (id)=>{
@@ -32,6 +36,7 @@ const ViewEveryDaySpecials = ({ user })=>{
                 <br />
             </div>
         ))}
+            <button onClick= {consoleSpecials}>Console Specials</button>
         </div>
     )
 }

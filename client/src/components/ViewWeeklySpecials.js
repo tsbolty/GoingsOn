@@ -5,12 +5,13 @@ const ViewWeeklySpecials = ({ user })=>{
     const [weeklySpecials, setWeeklySpecials] = useState({})
 
     useEffect(()=>{
-        axios.get(`/api/weeklySpecials/get/${user.email}`)
-            .then(res => setWeeklySpecials(res.data[0]))
+        axios.get(`/api/allBusinessInfo/get/${user.email}`)
+            .then(res => setWeeklySpecials(res.data[0].weeklySpecials[0]))
     }, [user])
 
     return(
         <>
+        {weeklySpecials &&
         <div>
         <h3>Monday</h3>
             <h4>{weeklySpecials.mondayFoodSpecialHeading}</h4>
@@ -54,6 +55,7 @@ const ViewWeeklySpecials = ({ user })=>{
             <h4>{weeklySpecials.sundayDrinkSpecialHeading}</h4>
             <p>{weeklySpecials.sundayDrinkSpecialDescription}</p>
         </div>
+        }
         </>
     )
 }

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const AllBusinessInfoSchema = new Schema({
     email: {
-        type: String
+        type: String,
+        unique: true
     },
     businessName: String,
     businessAddress: String,

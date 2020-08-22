@@ -9,6 +9,8 @@ router.post('/add', ({body}, res)=>{
 
 router.get('/get/:email', (req, res)=>{
     db.AllBusinessInfo.find({email: req.params.email})
+        .populate("daySpecials")
+        .populate("weeklySpecials")
         .then(data => res.json(data))
         .catch(err => console.log(err))
 })
