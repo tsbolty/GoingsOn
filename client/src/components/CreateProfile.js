@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Dropdown} from 'react-bootstrap'
 
 
-const CreateProfile = ({ user })=>{
+const CreateProfile = ({ user, setProfileInfo })=>{
     const [businessInfo, setBusinessInfo] = useState([])
     const [businessType, setBusinessType] = useState("")
 
@@ -14,6 +14,7 @@ const CreateProfile = ({ user })=>{
                 businessAddress: res.data[0].businessAddress,
                 businessType: res.data[0].businessType
             }))
+            .then(setProfileInfo(...businessInfo, businessType))
     }, [user])
 
 
@@ -22,6 +23,7 @@ const CreateProfile = ({ user })=>{
         let nam = e.target.name
         let val = e.target.value
         setBusinessInfo({...businessInfo, [nam]: val})
+        setProfileInfo({...businessInfo, [nam]: val}, businessType)
     }
 
     const submitBusinessInfo = ()=>{

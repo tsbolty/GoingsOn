@@ -1,6 +1,6 @@
 import React from 'react';
-import TestUpdate from './TestUpdate';
-import EditBusinessInfo from './EditBusinessInfo'
+import EditBusinessInfo from './EditBusinessInfo';
+import HeadlineCard from './HeadlineCard';
 
 
 const Main = ({ user })=>{
@@ -8,7 +8,7 @@ const Main = ({ user })=>{
     return(
         <>
         {/* <TestUpdate /> */}
-        <EditBusinessInfo user= {user}/>
+        <HeadlineCard />
         </>
     )
 }
