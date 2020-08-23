@@ -7,7 +7,7 @@ const BusinessInfo = ({ user }) => {
   const [businessInfo, setBusinessInfo] = useState({})
 
   useEffect(() => {
-    axios.get(`/api/allBusinessInfo/get/${user.email}`)
+    axios.get(`/api/allBusinessInfo/get/email/${user.email}`)
       .then(res => setBusinessInfo(res.data[0]))
   }, [user])
 

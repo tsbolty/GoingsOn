@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import FilterBusinesses from './FilterBusinesses';
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
+  const [typeFilter, setTypeFilter] = useState("")
 
   useEffect(() => {
     axios.get('/api/allBusinessInfo/get')
       .then(res => setBusinessInfo(res.data))
   }, [])
+
+  const typeFilterClick = (e)=>{
+    setTypeFilter(e.target.name)
+  }
+
+  const handleFilterSubmit = ()=>{
+    axios.get(`/api/allBusinessInfo/get/type/${typeFilter}`)
+      .then(res => setBusinessInfo(res.data))
+  }
 
   const tableStyle = {
     paddingLeft: "20px",
@@ -16,6 +27,7 @@ const HeadlineCard = () => {
 
   return (
     <>
+      <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit}/>
       {businessInfo && businessInfo.map((item, i) => (
         <div className="card headline-card">
           <h4>{`${item.businessName} (${item.businessType})`}</h4>

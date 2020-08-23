@@ -43,7 +43,6 @@ const CreateProfile = ({ user, setProfileInfo })=>{
 
     return(
         <>
-        {/* <BusinessInfo businessName= {businessInfo.businessName} businessAddress= {businessInfo.businessAddress} businessType= {businessType} /> */}
         <div>
             <p>Preview Business Information:</p>
             <h2>{businessInfo.businessName} {businessInfo.businessType ? `(${businessInfo.businessType})` : businessType ? `(${businessType})` : null}</h2>
