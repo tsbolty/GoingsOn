@@ -1,5 +1,5 @@
 import React from 'react';
-import EditBusinessInfo from './editProfile/EditBusinessInfo';
+import CreateBusinessInfo from './createProfile/CreateBusinessInfo';
 import HeadlineCard from './homePage/HeadlineCard';
 
 

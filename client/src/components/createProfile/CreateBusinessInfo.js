@@ -4,7 +4,7 @@ import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
 import axios from 'axios';
 
-const EditBusinessInfo = ({ user })=>{
+const CreateBusinessInfo = ({ user })=>{
     const [profileInfo, setProfileInfo] = useState([])
     const [daySpecialsInfo, setDaySpecialsInfo] = useState([])
     const [weeklySpecialsInfo, setWeeklySpecialsInfo] = useState([])
@@ -44,4 +44,4 @@ const EditBusinessInfo = ({ user })=>{
     )
 }
 
-export default EditBusinessInfo;
+export default CreateBusinessInfo;

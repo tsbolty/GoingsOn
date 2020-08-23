@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ViewEveryDaySpecials from '../viewProfile/ViewEveryDaySpecials'
 import { Dropdown } from 'react-bootstrap';
@@ -18,6 +18,12 @@ const CreateDaySpecials = ({ user, setDaySpecialsInfo })=>{
             drinkSpecialDescription: daySpecials.drinkSpecialDescription
         })
     }
+
+    // useEffect(()=>{
+    //     axios.get(`/api/allBusinessInfo/get/${user.email}`)
+    //         .then(res => setDaySpecials(res.data[0].daySpecials))
+    // }, [])
+    
     
     const handleInputChange = (e)=>{
         let nam = e.target.name

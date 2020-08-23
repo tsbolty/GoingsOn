@@ -9,7 +9,7 @@ import {
 import { useAuth0 } from "./react-auth0-spa";
 import Main from './components/Main'
 import NavBar from './components/NavBar'
-import EditBusinessInfo from './components/editProfile/EditBusinessInfo'
+import CreateBusinessInfo from './components/createProfile/CreateBusinessInfo'
 import BusinessInfo from './components/viewProfile/BusinessInfo'
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
                 <Switch>
                   {user &&
                   <>
-                    <Route path="/editbusinessinfo">
-                        <EditBusinessInfo user= {user}/>
+                    <Route path="/createbusinessprofile">
+                        <CreateBusinessInfo user= {user}/>
                     </Route>
                     <Route path="/businessinfo">
                         <BusinessInfo user= {user}/>

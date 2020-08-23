@@ -17,8 +17,8 @@ const BusinessInfo = ({ user })=>{
         <>
             <h2>{businessInfo.businessName} {`(${businessInfo.businessType})`}</h2>
             <p>{businessInfo.businessAddress}</p>
-            <br />
             <p>________________________________</p>
+            <br />
             <ViewEveryDaySpecials user= {user}/>
             <br />
             <p>_________________________________</p>
