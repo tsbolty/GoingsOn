@@ -1,63 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ViewWeeklySpecials = ({ user })=>{
-    const [weeklySpecials, setWeeklySpecials] = useState({})
+const ViewWeeklySpecials = ({ user }) => {
+  const [weeklySpecials, setWeeklySpecials] = useState({})
 
-    useEffect(()=>{
-        axios.get(`/api/allBusinessInfo/get/${user.email}`)
-            .then(res => setWeeklySpecials(res.data[0].weeklySpecials[0]))
-    }, [user])
+  useEffect(() => {
+    axios.get(`/api/allBusinessInfo/get/${user.email}`)
+      .then(res => setWeeklySpecials(res.data[0].weeklySpecials[0]))
+  }, [user])
 
-    return(
-        <>
-        {weeklySpecials &&
+  return (
+    <>
+      {weeklySpecials &&
         <div>
-        <h3>Monday</h3>
-            <h4>{weeklySpecials.mondayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.mondayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.mondayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.mondayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Tuesday</h3>
-            <h4>{weeklySpecials.tuesdayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.tuesdayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.tuesdayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.tuesdayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Wednesday</h3>
-            <h4>{weeklySpecials.wednesdayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.wednesdayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.wednesdayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.wednesdayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Thursday</h3>
-            <h4>{weeklySpecials.thursdayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.thursdayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.thursdayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.thursdayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Friday</h3>
-            <h4>{weeklySpecials.fridayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.fridayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.fridayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.fridayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Saturday</h3>
-            <h4>{weeklySpecials.saturdayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.saturdayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.saturdayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.saturdayDrinkSpecialDescription}</p>
-            <br />
-            <h3>Sunday</h3>
-            <h4>{weeklySpecials.sundayFoodSpecialHeading}</h4>
-            <p>{weeklySpecials.sundayFoodSpecialDescription}</p>
-            <h4>{weeklySpecials.sundayDrinkSpecialHeading}</h4>
-            <p>{weeklySpecials.sundayDrinkSpecialDescription}</p>
+          <h3>Weekly Specials</h3>
+          <table>
+            <tr>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+            </tr>
+            <tr>
+              <td><strong>{weeklySpecials.mondayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.tuesdayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.wednesdayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.thursdayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.fridayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.saturdayFoodSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.sundayFoodSpecialHeading}</strong></td>
+            </tr>
+            <tr>
+              <td>{weeklySpecials.mondayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.tuesdayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.wednesdayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.thursdayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.fridayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.saturdayFoodSpecialDescription}</td>
+              <td>{weeklySpecials.sundayFoodSpecialDescription}</td>
+            </tr>
+            <tr>
+              <td><strong>{weeklySpecials.mondayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.tuesdayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.wednesdayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.thursdayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.fridayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.saturdayDrinkSpecialHeading}</strong></td>
+              <td><strong>{weeklySpecials.sundayDrinkSpecialHeading}</strong></td>
+            </tr>
+            <tr>
+              <td>{weeklySpecials.mondayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.tuesdayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.wednesdayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.thursdayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.fridayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.saturdayDrinkSpecialDescription}</td>
+              <td>{weeklySpecials.sundayDrinkSpecialDescription}</td>
+            </tr>
+          </table>
         </div>
-        }
-        </>
-    )
+      }
+    </>
+  )
 }
 
 export default ViewWeeklySpecials;
