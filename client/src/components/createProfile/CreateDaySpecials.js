@@ -4,7 +4,7 @@ import ViewEveryDaySpecials from '../viewProfile/ViewEveryDaySpecials'
 import { Dropdown } from 'react-bootstrap';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
 
-const CreateDaySpecials = ({ user, setDaySpecialsInfo }) => {
+const CreateDaySpecials = ({ user }) => {
   const [daySpecials, setDaySpecials] = useState([])
   const [day, setDay] = useState("")
 
@@ -29,7 +29,6 @@ const CreateDaySpecials = ({ user, setDaySpecialsInfo }) => {
     let nam = e.target.name
     let val = e.target.value
     setDaySpecials({ ...daySpecials, [nam]: val })
-    setDaySpecialsInfo({ ...daySpecials, [nam]: val })
   }
 
   const handleDayChosenClick = (e) => {

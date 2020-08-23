@@ -6,8 +6,6 @@ import axios from 'axios';
 
 const CreateBusinessInfo = ({ user }) => {
   const [profileInfo, setProfileInfo] = useState([])
-  const [daySpecialsInfo, setDaySpecialsInfo] = useState([])
-  const [weeklySpecialsInfo, setWeeklySpecialsInfo] = useState([])
 
   const postAllBusinessInfo = () => {
     axios.post("/api/allBusinessInfo/add", {
@@ -23,10 +21,12 @@ const CreateBusinessInfo = ({ user }) => {
       {user &&
         <>
           <CreateProfile setProfileInfo={setProfileInfo} user={user} />
-          <CreateDaySpecials setDaySpecialsInfo={setDaySpecialsInfo} user={user} />
-          <CreateWeeklySpecials setWeeklySpecialsInfo={setWeeklySpecialsInfo} user={user} />
-          <br />
           <button onClick={postAllBusinessInfo}>Submit All Business Info</button>
+          <br />
+          <p>___________________________________________________________</p>
+          <CreateDaySpecials user={user} />
+          <CreateWeeklySpecials user={user} />
+          <br />
         </>
       }
     </>

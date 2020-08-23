@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreateWeeklySpecials = ({ user, setWeeklySpecialsInfo }) => {
+const CreateWeeklySpecials = ({ user }) => {
   const [weeklySpecials, setWeeklySpecials] = useState({})
 
   const handleInputChange = (e) => {
     let nam = e.target.name
     let val = e.target.value
     setWeeklySpecials({ ...weeklySpecials, [nam]: val })
-    setWeeklySpecialsInfo({ ...weeklySpecials, [nam]: val })
   }
 
   const handlePostSubmit = () => {
