@@ -12,7 +12,9 @@ const CreateBusinessInfo = ({ user }) => {
       email: user.email,
       businessName: profileInfo.businessName,
       businessAddress: profileInfo.businessAddress,
-      businessType: profileInfo.businessType
+      businessType: profileInfo.businessType,
+      businessHeadline: profileInfo.businessHeadline,
+      mapsLink: `https://www.google.com/maps/search/?api=1&${profileInfo.mapsAddress}`
     })
   }
 

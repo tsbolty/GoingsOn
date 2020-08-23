@@ -9,6 +9,7 @@ const AllBusinessInfoSchema = new Schema({
     businessName: String,
     businessAddress: String,
     businessType: String,
+    headline: String,
     daySpecials: [
         {
             type: Schema.Types.ObjectId,

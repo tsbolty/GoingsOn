@@ -17,12 +17,17 @@ const CreateProfile = ({ user, setProfileInfo })=>{
     //         .then(setProfileInfo(...businessInfo, businessType))
     // }, [user])
 
-
+  const searchableAddress = ()=> {
+    if(businessInfo.businessAddress){
+      setBusinessInfo({...businessInfo, mapsLink: businessInfo.businessAddress.split(" ").join("").toLowerCase()})
+      setProfileInfo({...businessInfo, mapsLink: businessInfo.businessAddress.split(" ").join("").toLowerCase()})
+    }
+  }
 
     const handleInputChange = (e)=>{
         let nam = e.target.name
         let val = e.target.value
-        setBusinessInfo({...businessInfo, [nam]: val})
+        setBusinessInfo({...businessInfo, [nam]: val,})
         setProfileInfo({...businessInfo, [nam]: val, businessType})
     }
 
@@ -54,6 +59,11 @@ const CreateProfile = ({ user, setProfileInfo })=>{
             value= {businessInfo.businessName}
             placeholder= "Business Name"
             onChange= {handleInputChange} />
+            <input type= "text"
+            name= "businessHeadline"
+            value= {businessInfo.businessHeadline}
+            placeholder= "Headline"
+            onChange= {handleInputChange, searchableAddress} />
             <input type= "text"
             name= "businessAddress"
             value= {businessInfo.businessAddress}

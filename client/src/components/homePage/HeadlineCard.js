@@ -29,6 +29,7 @@ const HeadlineCard = () => {
         <div className="card headline-card">
           <h4>{`${item.businessName} (${item.businessType})`}</h4>
           <p>{item.businessAddress}</p>
+          <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").replace(/,/gi, "%2C").toLowerCase()}`} target= "_blank">Google Maps</a>
           <p>__________________________</p>
           <HeadlineDailySpecialsCard businessInfo= {businessInfo} i= {i} />
           <br />
