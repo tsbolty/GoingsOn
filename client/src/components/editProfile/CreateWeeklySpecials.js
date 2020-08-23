@@ -13,7 +13,7 @@ const CreateWeeklySpecials = ({ user, setWeeklySpecialsInfo })=>{
 
     const handlePostSubmit = ()=>{
         // Will need to add validation to make sure each key value pair gets passed, not just the ones that have text.
-        axios.post('/api/weeklySpecials/add', {
+        axios.post(`/api/weeklySpecials/add/${user.email}`, {
             email: user.email,
             mondayFoodSpecialHeading: weeklySpecials.mondayFoodSpecialHeading,
             mondayFoodSpecialDescription: weeklySpecials.mondayFoodSpecialDescription,
@@ -251,7 +251,7 @@ const CreateWeeklySpecials = ({ user, setWeeklySpecialsInfo })=>{
             <p>{weeklySpecials.sundayDrinkSpecialDescription}</p>
         </div>
         <br />
-        <button onClick= {()=> handlePostSubmit()}>Post</button>
+        <button onClick= {()=> handlePostSubmit()}>Post Weekly Specials</button>
         </>
     )
 }
