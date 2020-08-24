@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router,
+  Route, Link } from "react-router-dom";
 import axios from 'axios';
 import FilterBusinesses from './FilterBusinesses';
 import HeadlineDailySpecialsCard from './HeadlineDailySpecialsCard'
@@ -29,11 +31,16 @@ const HeadlineCard = () => {
         <div className="card headline-card">
           <h4>{`${item.businessName} (${item.businessType})`}</h4>
           <p>{item.businessAddress}</p>
-          <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").replace(/,/gi, "%2C").toLowerCase()}`} target= "_blank">Google Maps</a>
-          <p>__________________________</p>
+          <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
+          <Router>
+            <Route>
+              <Link to= {`/infopage/${item._id}`} businessInfo= {businessInfo} i= {i}>See All the Deals</Link>
+            </Route>
+          </Router>
+          {/* <p>__________________________</p>
           <HeadlineDailySpecialsCard businessInfo= {businessInfo} i= {i} />
           <br />
-          <HeadlineWeeklySpecialsCard businessInfo= {businessInfo} i={i} />
+          <HeadlineWeeklySpecialsCard businessInfo= {businessInfo} i={i} /> */}
         </div>
       ))}
     </>

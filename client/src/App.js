@@ -11,6 +11,7 @@ import Main from './components/Main'
 import NavBar from './components/NavBar'
 import CreateBusinessInfo from './components/createProfile/CreateBusinessInfo'
 import BusinessInfo from './components/viewProfile/BusinessInfo'
+import InfoPage from './components/allInfo/InfoPage'
 
 function App() {
     const { user } = useAuth0();
@@ -38,6 +39,9 @@ function App() {
                   }
                   <Route path="/">
                       <Main user= {user}/>
+                  </Route>
+                  <Route exact path="/infopage/:id">
+                    <InfoPage />
                   </Route>
                 </Switch>
             </Router>
