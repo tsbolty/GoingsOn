@@ -22,7 +22,6 @@ router.get('/get/email/:email', (req, res)=>{
         .catch(err => console.log(err))
 })
 
-
 router.get('/get', (req, res)=>{
     db.AllBusinessInfo.find({})
     .populate("daySpecials")
