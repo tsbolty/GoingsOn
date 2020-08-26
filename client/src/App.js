@@ -40,8 +40,8 @@ function App() {
                   <Route path="/">
                       <Main user= {user}/>
                   </Route>
-                  <Route exact path="/infopage/:id">
-                    <InfoPage />
+                  <Route path="/infopage/:id" component= {InfoPage}>
+                    {/* <InfoPage /> */}
                   </Route>
                 </Switch>
             </Router>
