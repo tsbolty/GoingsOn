@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import {  useParams } from "react-router-dom";
 import axios from 'axios';
 import HeadlineDailySpecialsCard from '../homePage/HeadlineDailySpecialsCard';
 import HeadlineWeeklySpecialsCard from '../homePage/HeadlineWeeklySpecialsCard';
 
 // CURRENTLY THIS COMPONENT IS A CHILD COMPONENT OF HEADLINECARD. PROBABLY SHOULDN'T HAVE A PARENT COMPONENT IF IT'S GOING TO BE IT'S OWN PAGE. WILL NEED TO RE-TOOL
-const InfoPage = ({ email }) => {
+const InfoPage = () => {
   const [specials, setSpecials] = useState([])
+  let {id} = useParams();
 
   useEffect(() => {
-    axios.get(`/api/allBusinessInfo/get/${email}`)
-      .then(res => setSpecials(res.data))
+    axios.get(`/api/allBusinessInfo/get/id/${id}`)
+      .then(res => setSpecials(res.data[0]))
   }, [])
 
   const tableStyle = {

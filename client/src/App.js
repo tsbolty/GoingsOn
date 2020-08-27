@@ -25,8 +25,8 @@ function App() {
     <div className="App">
       <header>
             <Router>
-            <NavBar />
-                <Switch>
+              <NavBar />
+                <div>
                   {user &&
                   <>
                     <Route path="/createbusinessprofile">
@@ -37,13 +37,13 @@ function App() {
                     </Route>
                   </>
                   }
-                  <Route path="/">
+                  <Route exact path="/">
                       <Main user= {user}/>
                   </Route>
-                  <Route path="/infopage/:id" component= {InfoPage}>
-                    {/* <InfoPage /> */}
+                  <Route path="/infopage/:id">
+                    <InfoPage />
                   </Route>
-                </Switch>
+                </div>
             </Router>
         </header>
     </div>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router,
-  Route, Link } from "react-router-dom";
+  Route, 
+  Link,
+  useParams
+ } from "react-router-dom";
 import axios from 'axios';
 import FilterBusinesses from './FilterBusinesses';
 import HeadlineDailySpecialsCard from './HeadlineDailySpecialsCard'
@@ -10,6 +13,7 @@ import InfoPage from '../allInfo/InfoPage';
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
   const [typeFilter, setTypeFilter] = useState("")
+  let {id} = useParams();
 
   useEffect(() => {
     axios.get('/api/allBusinessInfo/get')
@@ -27,14 +31,19 @@ const HeadlineCard = () => {
 
   return (
     <>
-      <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit}/>
+      <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit} />
       {businessInfo && businessInfo.map((item, i) => (
         <div className="card headline-card">
           <h4>{`${item.businessName} (${item.businessType})`}</h4>
           <p>{item.businessAddress}</p>
           <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
-          <Link to= {`/infopage/${item._id}`} email= {item.email}>See All the Deals</Link>
-          <Route path= {`/infopage/${item._id}`} component= {InfoPage} email= {item.email}/>
+          <Link to= {{
+            pathname: `/infopage/${item._id}`,
+            state: {businessInfo: businessInfo}
+          }}
+          email= {item.email}
+          id= {id}>See All the Deals</Link>
+          {/* <Route path= {`/infopage/${item._id}`} component= {InfoPage} email= {item.email}/> */}
           {/* <p>__________________________</p>
           <HeadlineDailySpecialsCard businessInfo= {businessInfo} i= {i} />
           <br />
