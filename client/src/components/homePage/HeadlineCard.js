@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import Calendar from 'react-input-calendar'
 import FilterBusinesses from './FilterBusinesses';
 
 const HeadlineCard = () => {
@@ -24,6 +25,7 @@ const HeadlineCard = () => {
 
   return (
     <>
+      <Calendar format='DD/MM/YYYY' />
       <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit} />
       {businessInfo && businessInfo.map((item, i) => (
         <div className="card headline-card" key= {item._id}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {  useParams } from "react-router-dom";
-import Moment from 'react-moment'
+// import Moment from 'react-moment'
 import axios from 'axios';
 import HeadlineDailySpecialsCard from '../homePage/HeadlineDailySpecialsCard';
 import HeadlineWeeklySpecialsCard from '../homePage/HeadlineWeeklySpecialsCard';
@@ -11,7 +11,7 @@ import FullPageDailySpecials from './FullPageDailySpecials';
 const InfoPage = () => {
   const [specials, setSpecials] = useState([])
   let {id} = useParams();
-  const calendarStrings = {sameDay : 'dddd'};
+  // const calendarStrings = {sameDay : 'dddd'};
 
   useEffect(() => {
     axios.get(`/api/allBusinessInfo/get/id/${id}`)
@@ -20,7 +20,7 @@ const InfoPage = () => {
 
   return (
     <>
-      <Moment calendar={{sameDay: 'dddd'}}></Moment>
+      {/* <Moment calendar={{sameDay: 'dddd'}}></Moment> */}
       <div>
         <h1>{specials.businessName} {`(${specials.businessType})`}</h1>
         <p>{specials.businessAddress}</p>
