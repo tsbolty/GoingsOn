@@ -5,34 +5,48 @@ const WeeklySpecialsSchema = new Schema({
     email: {
         type: String,
     },
-    mondayFoodSpecialHeading: String,
-    mondayFoodSpecialDescription: String,
-    mondayDrinkSpecialHeading: String,
-    mondayDrinkSpecialDescription: String,
-    tuesdayFoodSpecialHeading: String,
-    tuesdayFoodSpecialDescription: String,
-    tuesdayDrinkSpecialHeading: String,
-    tuesdayDrinkSpecialDescription: String,
-    wednesdayFoodSpecialHeading: String,
-    wednesdayFoodSpecialDescription: String,
-    wednesdayDrinkSpecialHeading: String,
-    wednesdayDrinkSpecialDescription: String,
-    thursdayFoodSpecialHeading: String,
-    thursdayFoodSpecialDescription: String,
-    thursdayDrinkSpecialHeading: String,
-    thursdayDrinkSpecialDescription: String,
-    fridayFoodSpecialHeading: String,
-    fridayFoodSpecialDescription: String,
-    fridayDrinkSpecialHeading: String,
-    fridayDrinkSpecialDescription: String,
-    saturdayFoodSpecialHeading: String,
-    saturdayFoodSpecialDescription: String,
-    saturdayDrinkSpecialHeading: String,
-    saturdayDrinkSpecialDescription: String,
-    sundayFoodSpecialHeading: String,
-    sundayFoodSpecialDescription: String,
-    sundayDrinkSpecialHeading: String,
-    sundayDrinkSpecialDescription: String
+    monday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    tuesday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    wednesday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    thursday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    friday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    saturday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    },
+    sunday: {
+      foodSpecialHeading: String,
+      foodSpecialDescription: String,
+      drinkSpecialHeading: String,
+      drinkSpecialDescription: String
+    }
 })
 
 const WeeklySpecials = mongoose.model("WeeklySpecials", WeeklySpecialsSchema);
