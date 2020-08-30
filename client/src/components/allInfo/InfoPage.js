@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import {  useParams } from "react-router-dom";
-// import Moment from 'react-moment'
+import moment from 'moment';
 import axios from 'axios';
 import HeadlineDailySpecialsCard from '../homePage/HeadlineDailySpecialsCard';
 import HeadlineWeeklySpecialsCard from '../homePage/HeadlineWeeklySpecialsCard';
 import FullPageWeeklySpecials from './FullPageWeeklySpecials';
 import FullPageDailySpecials from './FullPageDailySpecials';
+import TodaysSpecials from './TodaysSpecials';
 
-// CURRENTLY THIS COMPONENT IS A CHILD COMPONENT OF HEADLINECARD. PROBABLY SHOULDN'T HAVE A PARENT COMPONENT IF IT'S GOING TO BE IT'S OWN PAGE. WILL NEED TO RE-TOOL
 const InfoPage = () => {
   const [specials, setSpecials] = useState([])
   let {id} = useParams();
-  // const calendarStrings = {sameDay : 'dddd'};
+  const today = moment().format("dddd").toLowerCase();
 
-  useEffect(() => {
+  useEffect(function() {
     axios.get(`/api/allBusinessInfo/get/id/${id}`)
       .then(res => setSpecials(res.data[0]))
+      .then(console.log(specials))
   }, [])
 
   return (
     <>
-      {/* <Moment calendar={{sameDay: 'dddd'}}></Moment> */}
       <div>
         <h1>{specials.businessName} {`(${specials.businessType})`}</h1>
         <p>{specials.businessAddress}</p>
@@ -29,6 +29,9 @@ const InfoPage = () => {
         <br />
         <p>_______________________________________</p>
       </div>
+      <TodaysSpecials specials= {specials} />
+      <br />
+      <p>_______________________________________</p>
       <FullPageDailySpecials specials= {specials} />
       <br />
       <p>_________________________________________</p>

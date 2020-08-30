@@ -8,8 +8,8 @@ const Main = ({ user }) => {
   return (
     <>
       {/* <TestUpdate /> */}
-      {/* <HeadlineCard /> */}
-      <Cal />
+      <HeadlineCard />
+      {/* <Cal /> */}
     </>
   )
 }

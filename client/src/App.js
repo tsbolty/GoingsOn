@@ -13,6 +13,8 @@ import CreateBusinessInfo from './components/createProfile/CreateBusinessInfo'
 import BusinessInfo from './components/viewProfile/BusinessInfo'
 import InfoPage from './components/allInfo/InfoPage'
 
+//LOOK IN TO USE CONTEXT HOOK TO DEFINE BUSINESS INFO MODEL AND ACCESS THAT THROUGHOUT THE APPLICATION
+
 function App() {
     const { user } = useAuth0();
   const { loading } = useAuth0();
