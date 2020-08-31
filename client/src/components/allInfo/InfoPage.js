@@ -16,8 +16,9 @@ const InfoPage = () => {
   useEffect(function() {
     axios.get(`/api/allBusinessInfo/get/id/${id}`)
       .then(res => setSpecials(res.data[0]))
-      .then(console.log(specials))
   }, [])
+
+  console.log(specials.weeklySpecials)
 
   return (
     <>
