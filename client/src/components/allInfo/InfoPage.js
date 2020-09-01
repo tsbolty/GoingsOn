@@ -18,6 +18,7 @@ const InfoPage = () => {
       .then(res => setSpecials(res.data[0]))
   }, [])
 
+  //  WONT LET ME DO ANYTHING PAST WEEKLY SPECIALS. CANNOT EVEN CONSOLE LOG ANY CHILD OBJECT OF WEEKLY SPECIALS (_ID AND EMAIL INCLUDED)
   console.log(specials.weeklySpecials)
 
   return (
