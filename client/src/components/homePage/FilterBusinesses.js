@@ -12,6 +12,7 @@ const FilterBusinesses = ({ typeFilterClick, handleFilterSubmit })=>{
           <Dropdown.Item name= "restaurant" onClick= {typeFilterClick}>Restaurants</Dropdown.Item>
           <Dropdown.Item name= "bar" onClick= {typeFilterClick}>Bar</Dropdown.Item>
           <Dropdown.Item name= "both" onClick= {typeFilterClick}>Both</Dropdown.Item>
+          <Dropdown.Item name= "all" onClick= {typeFilterClick}>All</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <button onClick= {handleFilterSubmit}>Submit Filter</button>
