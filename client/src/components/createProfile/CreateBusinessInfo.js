@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
+import PreviewInfo from './PreviewInfo';
 import axios from 'axios';
 
 const CreateBusinessInfo = ({ user }) => {
@@ -22,6 +23,7 @@ const CreateBusinessInfo = ({ user }) => {
     <>
       {user &&
         <>
+          <PreviewInfo profileInfo= {profileInfo}/>
           <CreateProfile setProfileInfo={setProfileInfo} user={user} />
           <button onClick={postAllBusinessInfo}>Submit All Business Info</button>
           <br />
