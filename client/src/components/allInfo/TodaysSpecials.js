@@ -4,7 +4,6 @@ import moment from 'moment';
 const TodaysSpecials = ({ specials })=>{
   let today = moment().format('dddd').toLowerCase();
 
-
   return(
     <div>
       {specials.weeklySpecials &&
