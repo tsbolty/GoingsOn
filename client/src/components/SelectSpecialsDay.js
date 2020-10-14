@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Dropdown } from 'react-bootstrap'
-import ViewSingleDaySpecials from './ViewSingleDaySpecials'
+import { Dropdown } from 'react-bootstrap';
+import ViewSingleDaySpecials from './ViewSingleDaySpecials';
 
 const SelectSpecialsDay = () => {
   const [dayChosen, setDayChosen] = useState("")
