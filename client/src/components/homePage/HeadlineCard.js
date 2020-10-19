@@ -5,7 +5,7 @@ import FilterBusinesses from './FilterBusinesses';
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
-  const [typeFilter, setTypeFilter] = useState("")
+  const [businessTypeFilter, setBusinessTypeFilter] = useState("")
   let {id} = useParams();
 
   useEffect(() => {
@@ -14,21 +14,60 @@ const HeadlineCard = () => {
   }, [])
 
   const typeFilterClick = (e)=>{
-    setTypeFilter(e.target.name)
-    if(typeFilter === "all"){
-      setTypeFilter("")
+    setBusinessTypeFilter(e.target.name)
+    if(businessTypeFilter === "all"){
+      setBusinessTypeFilter("")
     }
   }
 
   const handleFilterSubmit = ()=>{
-    axios.get(`/api/allBusinessInfo/get/type/${typeFilter}`)
-      .then(res => setBusinessInfo(res.data))
+    if(businessTypeFilter){
+      const filteredBusinessInfo = businessInfo.filter(item => item.businessType === businessTypeFilter)
+      console.log(filteredBusinessInfo)
+      return(
+        <>
+          {filteredBusinessInfo && filteredBusinessInfo.map((item, i) => (
+            <div className="card headline-card" key= {item._id}>
+              <h4>{`${item.businessName} (${item.businessType})`}</h4>
+              <p>{item.businessAddress}</p>
+              <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
+              <Link to= {{
+                pathname: `/infopage/${item._id}`,
+                state: {businessInfo: businessInfo}
+              }}
+              id= {id}>See All the Deals</Link>
+            </div>
+          ))}
+        </>
+      )
+    }
+  }
+
+  const displayAll = ()=>{
+    return(
+      <>
+        {businessInfo && businessInfo.map((item, i) => (
+          <div className="card headline-card" key= {item._id}>
+            <h4>{`${item.businessName} (${item.businessType})`}</h4>
+            <p>{item.businessAddress}</p>
+            <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
+            <Link to= {{
+              pathname: `/infopage/${item._id}`,
+              state: {businessInfo: businessInfo}
+            }}
+            id= {id}>See All the Deals</Link>
+          </div>
+        ))}
+      </>
+    )
   }
 
   return (
     <>
-      <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit} />
-      {businessInfo && businessInfo.map((item, i) => (
+      <FilterBusinesses typeFilterClick= {typeFilterClick}/>
+      {businessTypeFilter ? handleFilterSubmit() : displayAll()}
+
+      {/* {businessInfo && businessInfo.map((item, i) => (
         <div className="card headline-card" key= {item._id}>
           <h4>{`${item.businessName} (${item.businessType})`}</h4>
           <p>{item.businessAddress}</p>
@@ -39,7 +78,7 @@ const HeadlineCard = () => {
           }}
           id= {id}>See All the Deals</Link>
         </div>
-      ))}
+      ))} */}
     </>
   )
 }
