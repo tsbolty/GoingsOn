@@ -45,25 +45,6 @@ const HeadlineCard = () => {
   //   }
   // }
 
-  // const displayAll = ()=>{
-  //   return(
-  //     <>
-  //       {businessInfo && businessInfo.map((item, i) => (
-  //         <div className="card headline-card" key= {item._id}>
-  //           <h4>{`${item.businessName} (${item.businessType})`}</h4>
-  //           <p>{item.businessAddress}</p>
-  //           <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
-  //           <Link to= {{
-  //             pathname: `/infopage/${item._id}`,
-  //             state: {businessInfo: businessInfo}
-  //           }}
-  //           id= {id}>See All the Deals</Link>
-  //         </div>
-  //       ))}
-  //     </>
-  //   )
-  // }
-
   return (
     <>
      
@@ -72,6 +53,7 @@ const HeadlineCard = () => {
       <Filter businessInfo= {businessInfo} id= {id} setFilterState= {setFilterState} /> 
       :
       <>
+        <button onClick= {()=> setFilterState()}>Filter</button>
         {businessInfo && businessInfo.map((item, i) => (
           <div className="card headline-card" key= {item._id}>
             <h4>{`${item.businessName} (${item.businessType})`}</h4>

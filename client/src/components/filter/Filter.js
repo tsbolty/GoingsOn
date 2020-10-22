@@ -22,6 +22,7 @@ const Filter = ({businessInfo, id, setFilteredState})=>{
       console.log(filteredBusinessInfo)
       return(
         <>
+          <FilterBusinesses typeFilterClick= {typeFilterClick} handleFilterSubmit= {handleFilterSubmit}/>
           {filteredBusinessInfo && filteredBusinessInfo.map((item, i) => (
             <div className="card headline-card" key= {item._id}>
               <h4>{`${item.businessName} (${item.businessType})`}</h4>
