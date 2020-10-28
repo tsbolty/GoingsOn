@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import FilterBusinesses from './FilterBusinesses';
 
 
-const Filter = ({businessInfo, id, setFilteredState})=>{
+const Filter = ({businessInfo, id})=>{
   const [filterType, setFilterType] = useState("")
   const [businessTypeFilter, setBusinessTypeFilter] = useState("")
 

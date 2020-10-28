@@ -50,7 +50,7 @@ const HeadlineCard = () => {
      
       {filtered 
       ? 
-      <Filter businessInfo= {businessInfo} id= {id} setFilterState= {setFilterState} /> 
+      <Filter businessInfo= {businessInfo} id= {id} /> 
       :
       <>
         <button onClick= {()=> setFilterState()}>Filter</button>
