@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import FilterBusinesses from './FilterBusinesses';
 
 
-const Filter = ({businessInfo, id})=>{
+const Filter = ({businessInfo, id, setFilterState})=>{
   const [filterType, setFilterType] = useState("")
   const [businessTypeFilter, setBusinessTypeFilter] = useState("")
 
@@ -17,7 +17,7 @@ const Filter = ({businessInfo, id})=>{
 
   const handleFilterSubmit = ()=>{
     if(businessTypeFilter){
-      setFilteredState()
+      setFilterState()
       const filteredBusinessInfo = businessInfo.filter(item => item.businessType === businessTypeFilter)
       console.log(filteredBusinessInfo)
       return(
