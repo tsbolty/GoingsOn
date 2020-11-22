@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
-import Filter from '../filter/Filter';
-// import FilterBusinesses from './FilterBusinesses';
+import FilterType from '../filter/FilterType';
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
-  const [filtered, setFiltered] = useState(false)
+  const [filtered, setFiltered] = useState("")
   let {id} = useParams();
 
   useEffect(() => {
@@ -14,12 +13,11 @@ const HeadlineCard = () => {
       .then(res => setBusinessInfo(res.data))
   }, [])
 
-  const setFilterState = ()=>{
-    if(filtered === false){
-      setFiltered(true)
-    } else {
-      setFiltered(false)
-    }
+  const filterBusinessType = (businessName) =>{
+    const filteredBusinesses = businessInfo.filter(business =>{
+      return business.type == businessName
+    })
+    setBusinessInfo(filteredBusinesses)
   }
 
   // const handleFilterSubmit = ()=>{
@@ -46,15 +44,10 @@ const HeadlineCard = () => {
   // }
 
   return (
-    <>
-     
-      {filtered 
-      ? 
-      <Filter businessInfo= {businessInfo} id= {id} setFilterState= {setFilterState}/> 
-      :
       <>
-        <button onClick= {()=> setFilterState()}>Filter</button>
-        {businessInfo && businessInfo.map((item, i) => (
+      <FilterType filterBusinessType= {filterBusinessType} /> 
+        {/* <button onClick= {()=> setFiltered(!filtered)}>Filter</button> */}
+        {businessInfo && businessInfo.map((item) => (
           <div className="card headline-card" key= {item._id}>
             <h4>{`${item.businessName} (${item.businessType})`}</h4>
             <p>{item.businessAddress}</p>
@@ -67,21 +60,6 @@ const HeadlineCard = () => {
           </div>
         ))}
       </>
-      }
-
-      {/* {businessInfo && businessInfo.map((item, i) => (
-        <div className="card headline-card" key= {item._id}>
-          <h4>{`${item.businessName} (${item.businessType})`}</h4>
-          <p>{item.businessAddress}</p>
-          <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
-          <Link to= {{
-            pathname: `/infopage/${item._id}`,
-            state: {businessInfo: businessInfo}
-          }}
-          id= {id}>See All the Deals</Link>
-        </div>
-      ))} */}
-    </>
   )
 }
 
