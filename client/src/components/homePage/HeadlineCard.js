@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
-import FilterType from '../filter/FilterType';
+import Filter from '../filter/Filter';
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
-  const [filtered, setFiltered] = useState("")
+  const [filterType, setFilterType] = useState("")
   let {id} = useParams();
 
   useEffect(() => {
     axios.get('/api/allBusinessInfo/get')
       .then(res => setBusinessInfo(res.data))
   }, [])
+
+  const handleFilterTypeClick = (e)=>{
+    setFilterType(e.target.name)
+  }
 
   const filterBusinessType = (businessName) =>{
     const filteredBusinesses = businessInfo.filter(business =>{
@@ -45,7 +49,7 @@ const HeadlineCard = () => {
 
   return (
       <>
-      <FilterType filterBusinessType= {filterBusinessType} /> 
+      <Filter filterType= {filterType} filterBusinessType= {filterBusinessType} handleFilterTypeClick= {handleFilterTypeClick}/> 
         {/* <button onClick= {()=> setFiltered(!filtered)}>Filter</button> */}
         {businessInfo && businessInfo.map((item) => (
           <div className="card headline-card" key= {item._id}>
