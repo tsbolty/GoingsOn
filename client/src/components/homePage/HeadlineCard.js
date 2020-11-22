@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Filter from '../filter/Filter';
 import HeadlineCardContent from './HeadlineCardContent';
+
+// THIS COMPONENT WILL RENDER ALL BUSINESS INFO. FILTEREDINFO WILL UPDATE WITH CORRECT FILTERED RESULTS BY NAME, BUT NEED A WAY TO MAKE THIS COMPONENT RERENDER WHEN FILTERED INFO CHANGES.
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
   const [filteredInfo, setFilteredInfo] = useState([])
   const [filterType, setFilterType] = useState("")
-  let {id} = useParams();
+  const [showFiltered, setShowFiltered] = useState(false)
 
   useEffect(() => {
     axios.get('/api/allBusinessInfo/get')
@@ -38,33 +39,9 @@ const HeadlineCard = () => {
     setFilteredInfo(filteredBusinesses)
   }
 
-  // const handleFilterSubmit = ()=>{
-  //   if(businessTypeFilter){
-  //     const filteredBusinessInfo = businessInfo.filter(item => item.businessType === businessTypeFilter)
-  //     console.log(filteredBusinessInfo)
-  //     return(
-  //       <>
-  //         {filteredBusinessInfo && filteredBusinessInfo.map((item, i) => (
-  //           <div className="card headline-card" key= {item._id}>
-  //             <h4>{`${item.businessName} (${item.businessType})`}</h4>
-  //             <p>{item.businessAddress}</p>
-  //             <a href= {`https://www.google.com/maps/search/?api=1&query=${item.businessAddress.replace(/ /gi, "+").toLowerCase()}`} target= "_blank">Google Maps</a>
-  //             <Link to= {{
-  //               pathname: `/infopage/${item._id}`,
-  //               state: {businessInfo: businessInfo}
-  //             }}
-  //             id= {id}>See All the Deals</Link>
-  //           </div>
-  //         ))}
-  //       </>
-  //     )
-  //   }
-  // }
-
   return (
       <>
       <Filter filterType= {filterType} handleFilterTypeClick= {handleFilterTypeClick} filterBusinessType= {filterBusinessType} filterBusinessByName= {filterBusinessByName} /> 
-        {/* <button onClick= {()=> setFiltered(!filtered)}>Filter</button> */}
         <br/>
         <br/>
         {!filteredInfo ? businessInfo && filteredInfo.map((item) => (
