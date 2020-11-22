@@ -6,7 +6,7 @@ const FilterBusinesses = ({ filterBusinessType })=>{
 
   return(
     <>
-      <Dropdown>
+      <Dropdown style= {{display: "inline-block", float: "left"}}>
         <Dropdown.Toggle variant= "success" id= "dropdown-basic">Business Type</Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item name= "restaurant" onClick= {()=> filterBusinessType}>Restaurants</Dropdown.Item>
