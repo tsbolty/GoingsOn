@@ -5,9 +5,7 @@ const Main = ({ user }) => {
 
   return (
     <>
-      {/* <TestUpdate /> */}
       <HeadlineCard />
-      {/* <Cal /> */}
     </>
   )
 }
