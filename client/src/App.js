@@ -1,11 +1,6 @@
 import React from 'react';
 import './style.scss';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuth0 } from "./react-auth0-spa";
 import Main from './components/Main'
 import NavBar from './components/NavBar'
