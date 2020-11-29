@@ -20,10 +20,14 @@ const HeadlineCard = () => {
   }
 
   const filterBusinessByName = (name)=>{
-    const filteredBusinesses = businessInfo.filter(business =>{
-      return business.businessName.includes(name)
-    })
-    setFilteredInfo(filteredBusinesses)
+    if(!name){
+      setFilteredInfo()
+    } else {
+      const filteredBusinesses = businessInfo.filter(business =>{
+        return business.businessName.toLowerCase().includes(name.toLowerCase())
+      })
+      setFilteredInfo(filteredBusinesses)
+    }
   }
 
   const filterBusinessType = (type) =>{
@@ -32,9 +36,9 @@ const HeadlineCard = () => {
       return business.businessType === type
     })
     setFilteredInfo(filteredBusinesses)
-  } else {
-    setFilteredInfo()
-  }
+    } else {
+      setFilteredInfo()
+    }
   }
 
   return (
