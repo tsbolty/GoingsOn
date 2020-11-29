@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown'
-import FilterBusinesses from './FilterBusinesses';
+import FilterByBusiness from './FilterByBusiness';
 import FilterByName from './FilterByName';
 
 const Filter = ({ filterType, handleFilterTypeClick, filterBusinessType, filterBusinessByName })=>{
@@ -16,7 +16,7 @@ const Filter = ({ filterType, handleFilterTypeClick, filterBusinessType, filterB
       </Dropdown.Menu>
     </Dropdown>
     {filterType == "businessType" ?
-    <FilterBusinesses filterBusinessType= {filterBusinessType} />
+    <FilterByBusiness filterBusinessType= {filterBusinessType} />
     :
     filterType == "businessName" ?
     <FilterByName filterBusinessByName= {filterBusinessByName} />
