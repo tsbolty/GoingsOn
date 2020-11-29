@@ -7,9 +7,8 @@ import HeadlineCardContent from './HeadlineCardContent';
 
 const HeadlineCard = () => {
   const [businessInfo, setBusinessInfo] = useState([])
-  const [filteredInfo, setFilteredInfo] = useState([])
+  const [filteredInfo, setFilteredInfo] = useState()
   const [filterType, setFilterType] = useState("")
-  const [showFiltered, setShowFiltered] = useState(false)
 
   useEffect(() => {
     axios.get('/api/allBusinessInfo/get')
@@ -18,11 +17,6 @@ const HeadlineCard = () => {
 
   const handleFilterTypeClick = (e)=>{
     setFilterType(e.target.name)
-    if(filterType === "businessName"){
-      filterBusinessType(filterType)
-    } else if(filterType === "businessName"){
-      filterBusinessByName()
-    }
   }
 
   const filterBusinessByName = (name)=>{
@@ -33,22 +27,26 @@ const HeadlineCard = () => {
   }
 
   const filterBusinessType = (type) =>{
+    if(type !== ""){
     const filteredBusinesses = businessInfo.filter(business =>{
-      return business.type == type
+      return business.businessType === type
     })
     setFilteredInfo(filteredBusinesses)
+  } else {
+    setFilteredInfo()
+  }
   }
 
   return (
       <>
-      <Filter filterType= {filterType} handleFilterTypeClick= {handleFilterTypeClick} filterBusinessType= {filterBusinessType} filterBusinessByName= {filterBusinessByName} /> 
+        <Filter filterType= {filterType} handleFilterTypeClick= {handleFilterTypeClick} filterBusinessType= {filterBusinessType} filterBusinessByName= {filterBusinessByName} /> 
         <br/>
         <br/>
-        {!filteredInfo ? businessInfo && filteredInfo.map((item) => (
+        {businessInfo && filteredInfo ? filteredInfo.map((item) => (
           <HeadlineCardContent businessName= {item.businessName} id= {item._id} businessType= {item.businessType} businessAddress= {item.businessAddress} daySpecials= {item.daySpecials} weeklySpecials= {item.weeklySpecials} />
         ))
         :
-        businessInfo && businessInfo.map((item) => (
+         businessInfo.map((item) => (
           <HeadlineCardContent businessName= {item.businessName} id= {item._id} businessType= {item.businessType} businessAddress= {item.businessAddress} daySpecials= {item.daySpecials} weeklySpecials= {item.weeklySpecials} />
         ))
       }
