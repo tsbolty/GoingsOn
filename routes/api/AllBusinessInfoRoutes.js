@@ -6,6 +6,7 @@ router.post('/add', ({body}, res)=>{
         .then(data=> res.json(data))
         .catch(err=> console.log(err))
 })
+
 router.get('/get/type/:type', (req, res)=>{
   db.AllBusinessInfo.find({businessType: req.params.type})
       .populate("daySpecials")

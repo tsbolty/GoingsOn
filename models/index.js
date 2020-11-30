@@ -4,5 +4,4 @@ module.exports = {
     AllBusinessInfo: require('./AllBusinessInfoModel'),
     BusinessInfo: require('./BusinessInfoModel'),
     WeeklySpecials: require('./WeeklySpecialsModel'),
-    Test: require("./TestModel")
 };
