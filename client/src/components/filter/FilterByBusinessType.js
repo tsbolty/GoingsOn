@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 
 
-const FilterByBusiness = ({ filterBusinessType })=>{
+const FilterByBusinessType = ({ filterBusinessType })=>{
 
   return(
     <>
@@ -20,4 +20,4 @@ const FilterByBusiness = ({ filterBusinessType })=>{
   )
 }
 
-export default FilterByBusiness;
+export default FilterByBusinessType;
