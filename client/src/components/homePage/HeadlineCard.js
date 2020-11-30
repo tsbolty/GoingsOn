@@ -41,9 +41,36 @@ const HeadlineCard = () => {
     }
   }
 
+  const filterByKeyword = (keyword)=>{
+    if(keyword !== ""){
+      const filteredBusinesses = businessInfo.filter(business =>{
+        // return Object.values(business.weeklySpecials[0]).includes(keyword.toLowerCase())
+        const mondaySpecials = Object.values(business.weeklySpecials[0].monday)
+        const tuesdaySpecials = Object.values(business.weeklySpecials[0].tuesday)
+        const wednesdaySpecials = Object.values(business.weeklySpecials[0].wednesday)
+        const thursdaySpecials = Object.values(business.weeklySpecials[0].thursday)
+        const fridaySpecials = Object.values(business.weeklySpecials[0].friday)
+        const saturdaySpecials = Object.values(business.weeklySpecials[0].saturday)
+        const sundaySpecials = Object.values(business.weeklySpecials[0].sunday)
+        return (mondaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || tuesdaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || wednesdaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || thursdaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || fridaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || saturdaySpecials.toString().toLowerCase().includes(keyword.toLowerCase())
+        || sundaySpecials.toString().toLowerCase().includes(keyword.toLowerCase()))
+        // return business.weeklySpecials[0].join(" ").toLowerCase().includes(keyword.toLowerCase())
+      })
+      setFilteredInfo(filteredBusinesses)
+    }
+    else{
+      setFilteredInfo()
+    }
+  }
+
   return (
       <>
-        <Filter filterType= {filterType} handleFilterTypeClick= {handleFilterTypeClick} filterBusinessType= {filterBusinessType} filterBusinessByName= {filterBusinessByName} /> 
+        <Filter filterType= {filterType} handleFilterTypeClick= {handleFilterTypeClick} filterBusinessType= {filterBusinessType} filterBusinessByName= {filterBusinessByName} filterByKeyword= {filterByKeyword}/> 
         <br/>
         <br/>
         {businessInfo && filteredInfo ? filteredInfo.map((item) => (

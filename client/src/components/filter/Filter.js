@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown'
-import FilterByBusiness from './FilterByBusiness';
+import FilterByBusinessType from './FilterByBusinessType';
 import FilterByName from './FilterByName';
+import FilterByKeyword from './FilterByKeyword';
 
-const Filter = ({ filterType, handleFilterTypeClick, filterBusinessType, filterBusinessByName })=>{
+const Filter = ({ filterType, handleFilterTypeClick, filterBusinessType, filterBusinessByName, filterByKeyword })=>{
 
   return(
     <>
@@ -16,10 +17,13 @@ const Filter = ({ filterType, handleFilterTypeClick, filterBusinessType, filterB
       </Dropdown.Menu>
     </Dropdown>
     {filterType == "businessType" ?
-    <FilterByBusiness filterBusinessType= {filterBusinessType} />
+    <FilterByBusinessType filterBusinessType= {filterBusinessType} />
     :
     filterType == "businessName" ?
     <FilterByName filterBusinessByName= {filterBusinessByName} />
+    :
+    filterType == "keyword" ?
+    <FilterByKeyword filterByKeyword= {filterByKeyword} />
     :
     null
     }
