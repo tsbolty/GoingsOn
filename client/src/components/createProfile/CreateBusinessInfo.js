@@ -3,10 +3,18 @@ import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
 import PreviewInfo from './PreviewInfo';
+import HeadlineCardContent from '../homePage/HeadlineCardContent';
 import axios from 'axios';
 
 const CreateBusinessInfo = ({ user }) => {
-  const [profileInfo, setProfileInfo] = useState([])
+  const [profileInfo, setProfileInfo] = useState({
+    email: "",
+    businessName: "",
+    businessAddress: "",
+    businessType: "",
+    businessHeadline: "",
+    mapsLink: ""
+  })
 
   const postAllBusinessInfo = () => {
     axios.post("/api/allBusinessInfo/add", {
@@ -23,8 +31,9 @@ const CreateBusinessInfo = ({ user }) => {
     <>
       {user &&
         <>
-          <PreviewInfo profileInfo= {profileInfo}/>
-          <CreateProfile setProfileInfo={setProfileInfo} user={user} />
+          {/* <PreviewInfo profileInfo= {profileInfo}/> */}
+          <HeadlineCardContent businessName= {profileInfo.businessName} id= {profileInfo._id} businessType= {profileInfo.businessType} businessAddress= {profileInfo.businessAddress} businessHeadline= {profileInfo.businessHeadline} />
+          <CreateProfile profileInfo= {profileInfo} setProfileInfo={setProfileInfo} user={user} />
           <button onClick={postAllBusinessInfo}>Submit All Business Info</button>
           <br />
           <p>___________________________________________________________</p>

@@ -3,9 +3,9 @@ import axios from 'axios';
 import {Dropdown} from 'react-bootstrap'
 
 
-const CreateProfile = ({ user, setProfileInfo })=>{
-    const [businessInfo, setBusinessInfo] = useState([])
-    const [businessType, setBusinessType] = useState("")
+const CreateProfile = ({ user, profileInfo, setProfileInfo })=>{
+    // const [businessInfo, setBusinessInfo] = useState([])
+    // const [businessType, setBusinessType] = useState("")
 
     // useEffect(()=>{
     //     axios.get(`/api/businessInfo/get/${user.email}`)
@@ -18,58 +18,33 @@ const CreateProfile = ({ user, setProfileInfo })=>{
     // }, [user])
 
   const searchableAddress = ()=> {
-    if(businessInfo.businessAddress){
-      setBusinessInfo({...businessInfo, mapsLink: businessInfo.businessAddress.split(" ").join("").toLowerCase()})
-      setProfileInfo({...businessInfo, mapsLink: businessInfo.businessAddress.split(" ").join("").toLowerCase()})
-    }
+    if(profileInfo.businessAddress){
+    setProfileInfo({...profileInfo, mapsLink: profileInfo.businessAddress.split(" ").join("").toLowerCase()})
+    setProfileInfo({...profileInfo, mapsLink: profileInfo.businessAddress.split(" ").join("").toLowerCase()})
   }
-
-    const handleInputChange = (e)=>{
-        let nam = e.target.name
-        let val = e.target.value
-        setBusinessInfo({...businessInfo, [nam]: val,})
-        setProfileInfo({...businessInfo, [nam]: val, businessType})
+  }
+  
+  const handleInputChange = (e)=>{
+    let nam = e.target.name
+    let val = e.target.value
+    setProfileInfo({...profileInfo, [nam]: val,})
+    // setProfileInfo({...profileInfo, [nam]: val, businessType})
     }
-
-    // const submitBusinessInfo = ()=>{
-    //     axios.post('/api/businessInfo/add', {
-    //         email: user.email,
-    //         businessName: businessInfo.businessName,
-    //         businessAddress: businessInfo.businessAddress,
-    //         businessType: businessType
-    //     })
-    // }
 
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
-        setBusinessType(nam)
-        setProfileInfo({...businessInfo, businessType: nam})
+        setProfileInfo({...profileInfo, businessType: nam})
+        // setProfileInfo({...businessInfo, businessType: nam})
     }
 
     return(
         <>
         <div>
-            <p>Preview Business Information:</p>
-            <h2>{businessInfo.businessName} {businessInfo.businessType ? `(${businessInfo.businessType})` : businessType ? `(${businessType})` : null}</h2>
-            <p>{businessInfo.businessAddress}</p>
-        </div>
-        <div>
             <input type= "text"
             name= "businessName"
-            value= {businessInfo.businessName}
+            value= {profileInfo.businessName}
             placeholder= "Business Name"
             onChange= {handleInputChange} />
-            <input type= "text"
-            name= "businessHeadline"
-            value= {businessInfo.businessHeadline}
-            placeholder= "Headline"
-            onChange= {handleInputChange, searchableAddress} />
-            <input type= "text"
-            name= "businessAddress"
-            value= {businessInfo.businessAddress}
-            onChange= {handleInputChange}
-            placeholder= "Business Address" />
-            <br />
             <Dropdown>
                 <Dropdown.Toggle variant= "success" id= "dropdown-basic">Business Type
                 </Dropdown.Toggle>
@@ -79,6 +54,17 @@ const CreateProfile = ({ user, setProfileInfo })=>{
                     <Dropdown.Item name= "both" value= "both" onClick= {handleBusinessTypeClick}>Both</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            <input type= "text"
+            name= "businessHeadline"
+            value= {profileInfo.businessHeadline}
+            placeholder= "Headline"
+            onChange= {handleInputChange} />
+            <input type= "text"
+            name= "businessAddress"
+            value= {profileInfo.businessAddress}
+            onChange= {handleInputChange}
+            placeholder= "Business Address" />
+            <br />
             {/* <button onClick= {()=> submitBusinessInfo()}>Submit Business Info</button> */}            
         </div>
         <br />
