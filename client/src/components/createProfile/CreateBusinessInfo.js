@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import CreateDaySpecials from './CreateDaySpecials';
 import CreateProfile from './CreateProfile';
 import CreateWeeklySpecials from './CreateWeeklySpecials';
@@ -16,14 +16,38 @@ const CreateBusinessInfo = ({ user }) => {
     mapsLink: ""
   })
 
+  const getInitialInfo = async ()=>{
+    let info;
+    try{
+      info = await axios.get(`/api/allBusinessInfo/get/email/${user.email}`)
+      setProfileInfo({
+        ...profileInfo,
+        email: info.data[0].email,
+        businessName: info.data[0].businessName,
+        businessAddress: info.data[0].businessAddress,
+        businessType: info.data[0].businessType,
+        businessHeadline: info.data[0].businessHeadline,
+        mapsLink: info.data[0].mapsLink
+      })
+    } catch(err){
+      info = {}
+      console.log("There's probably no information in the database yet")
+    }
+  }
+
+  useEffect(()=>{
+    getInitialInfo()
+  }, [])
+
   const postAllBusinessInfo = () => {
+    const mapAddress = profileInfo.businessAddress.replace(/\s+/g, "").toLowerCase()
     axios.post("/api/allBusinessInfo/add", {
       email: user.email,
       businessName: profileInfo.businessName,
       businessAddress: profileInfo.businessAddress,
       businessType: profileInfo.businessType,
       businessHeadline: profileInfo.businessHeadline,
-      mapsLink: `https://www.google.com/maps/search/?api=1&${profileInfo.mapsAddress}`
+      mapsLink: `https://www.google.com/maps/search/?api=1&${mapAddress}`
     })
   }
 

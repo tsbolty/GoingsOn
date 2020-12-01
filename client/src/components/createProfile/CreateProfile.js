@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import {Dropdown} from 'react-bootstrap'
 
 
@@ -16,25 +15,16 @@ const CreateProfile = ({ user, profileInfo, setProfileInfo })=>{
     //         }))
     //         .then(setProfileInfo(...businessInfo, businessType))
     // }, [user])
-
-  const searchableAddress = ()=> {
-    if(profileInfo.businessAddress){
-    setProfileInfo({...profileInfo, mapsLink: profileInfo.businessAddress.split(" ").join("").toLowerCase()})
-    setProfileInfo({...profileInfo, mapsLink: profileInfo.businessAddress.split(" ").join("").toLowerCase()})
-  }
-  }
   
   const handleInputChange = (e)=>{
     let nam = e.target.name
     let val = e.target.value
     setProfileInfo({...profileInfo, [nam]: val,})
-    // setProfileInfo({...profileInfo, [nam]: val, businessType})
     }
 
     const handleBusinessTypeClick = (e)=>{
         let nam = e.target.name
         setProfileInfo({...profileInfo, businessType: nam})
-        // setProfileInfo({...businessInfo, businessType: nam})
     }
 
     return(
