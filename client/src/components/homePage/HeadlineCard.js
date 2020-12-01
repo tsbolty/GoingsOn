@@ -74,11 +74,29 @@ const HeadlineCard = () => {
         <br/>
         <br/>
         {businessInfo && filteredInfo ? filteredInfo.map((item) => (
-          <HeadlineCardContent businessName= {item.businessName} id= {item._id} businessType= {item.businessType} businessAddress= {item.businessAddress} daySpecials= {item.daySpecials} businessHeadline= {item.businessHeadline} weeklySpecials= {item.weeklySpecials} />
+          <HeadlineCardContent 
+          businessName= {item.businessName} 
+          id= {item._id} 
+          businessType= {item.businessType} 
+          businessAddress= {item.businessAddress}
+          daySpecials= {item.daySpecials} 
+          businessHeadline= {item.businessHeadline} 
+          weeklySpecials= {item.weeklySpecials} 
+          key= {item._id}
+          />
         ))
         :
          businessInfo.map((item) => (
-          <HeadlineCardContent businessName= {item.businessName} id= {item._id} businessType= {item.businessType} businessAddress= {item.businessAddress} businessHeadline= {item.businessHeadline} daySpecials= {item.daySpecials} weeklySpecials= {item.weeklySpecials} />
+          <HeadlineCardContent 
+          businessName= {item.businessName} 
+          id= {item._id} 
+          businessType= {item.businessType} 
+          businessAddress= {item.businessAddress} 
+          businessHeadline= {item.businessHeadline} 
+          daySpecials= {item.daySpecials} 
+          weeklySpecials= {item.weeklySpecials} 
+          key= {item._id}
+          />
         ))
       }
       </>
