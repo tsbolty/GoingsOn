@@ -28,7 +28,7 @@ const NavBar = () => {
               <Link to="/editbusinessprofile">Edit Profile</Link>
             </li>
             <li className="navbar-links">
-              <Link to="/businessinfo">View Profile</Link>
+              <Link to="/viewbusinessprofile">View Profile</Link>
             </li>
           </ul>
         </>

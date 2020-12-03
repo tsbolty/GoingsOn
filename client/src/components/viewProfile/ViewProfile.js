@@ -3,20 +3,20 @@ import axios from 'axios';
 import ViewEveryDaySpecials from './ViewEveryDaySpecials';
 import ViewWeeklySpecials from './ViewWeeklySpecials';
 
-const BusinessInfo = ({ user }) => {
-  const [businessInfo, setBusinessInfo] = useState({})
+const ViewProfile = ({ user, profileInfo }) => {
+  // const [businessInfo, setBusinessInfo] = useState({})
 
-  useEffect(() => {
-    axios.get(`/api/allBusinessInfo/get/email/${user.email}`)
-      .then(res => setBusinessInfo(res.data[0]))
-  }, [user])
+  // useEffect(() => {
+  //   axios.get(`/api/allBusinessInfo/get/email/${user.email}`)
+  //     .then(res => setBusinessInfo(res.data[0]))
+  // }, [user])
 
   return (
     <>
       {user &&
         <>
-          <h2>{businessInfo.businessName} {`(${businessInfo.businessType})`}</h2>
-          <p>{businessInfo.businessAddress}</p>
+          <h2>{profileInfo.businessName `(${profileInfo.businessType})`}</h2>
+          <p>{profileInfo.businessAddress}</p>
           <p>________________________________</p>
           <br />
           <ViewEveryDaySpecials user={user} />
@@ -30,4 +30,4 @@ const BusinessInfo = ({ user }) => {
   )
 }
 
-export default BusinessInfo;
+export default ViewProfile;
