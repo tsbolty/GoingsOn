@@ -16,7 +16,7 @@ router.get('/get/type/:type', (req, res)=>{
 })
 
 router.get('/get/email/:email', (req, res)=>{
-    db.AllBusinessInfo.find({email: req.params.email})
+    db.AllBusinessInfo.findOne({email: req.params.email})
         .populate("daySpecials")
         .populate("weeklySpecials")
         .then(data => res.json(data))
