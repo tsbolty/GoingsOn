@@ -28,8 +28,10 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-
+  if(user){
+    
+    console.log(user)
+  }
   const getInitialInfo = async ()=>{
     let info;
     try{
@@ -68,6 +70,7 @@ function App() {
                         <BusinessInfo user= {user}/>
                     </Route>
                   </>
+                  
                   }
                   <Route exact path="/">
                       <Main user= {user}/>

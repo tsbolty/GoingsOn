@@ -7,16 +7,14 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      {!isAuthenticated && (
+      {!isAuthenticated ? 
         <>
           <button onClick={() => loginWithRedirect({})}>Log in</button>
           <li className="navbar-links">
             <Link to="/">Home</Link>
           </li>
         </>
-      )}
-
-      {isAuthenticated &&
+        :
         <>
           <button onClick={() => logout()}>Log out</button>
           <ul>
