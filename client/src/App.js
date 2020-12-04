@@ -12,6 +12,8 @@ import EditBusinessInfo from './components/editBusinessInfo/EditBusinessInfo';
 //LOOK IN TO USE CONTEXT HOOK TO DEFINE BUSINESS INFO MODEL AND ACCESS THAT THROUGHOUT THE APPLICATION
 
 function App() {
+  const { user } = useAuth0();
+  const { loading } = useAuth0();
   const [profileInfo, setProfileInfo] = useState({
     email: "",
     businessName: "",
@@ -23,34 +25,34 @@ function App() {
     weeklySpecials: []
   })
 
-  const { user } = useAuth0();
-  const { loading } = useAuth0();
-
-  const getInitialInfo = () => {
-    fetch(`/api/allBusinessInfo/get/email/${user.email}`).then(info => {
-      info.json().then(async data => {
-        if (data) {
-          await setProfileInfo({
-            email: data.email,
-            businessName: data.businessName,
-            businessAddress: data.businessAddress,
-            businessType: data.businessType,
-            businessHeadline: data.businessHeadline,
-            mapsLink: data.mapsLink,
-            daySpecials: data.daySpecials,
-            weeklySpecials: data.weeklySpecials
-          })
-          console.log(data)
-          console.log(profileInfo)
-        }
-      })
-    })
-
-  }
-
   useEffect(() => {
-    getInitialInfo()
+    if (user) {
+      fetch(`/api/allBusinessInfo/get/email/${user.email}`).then(info => {
+        info.json().then(data => {
+          if (data) {
+            setProfileInfo(data
+              //    {
+              //   email: data.email,
+              //   businessName: data.businessName,
+              //   businessAddress: data.businessAddress,
+              //   businessType: data.businessType,
+              //   businessHeadline: data.businessHeadline,
+              //   mapsLink: data.mapsLink,
+              //   daySpecials: data.daySpecials,
+              //   weeklySpecials: data.weeklySpecials
+              // }
+            )
+            console.log(data)
+            
+          }
+        })
+      })
+    }
   }, [user])
+
+  useEffect(()=>{
+    console.log(profileInfo)
+  }, [profileInfo])
 
   if (loading) {
     return <div>Loading...</div>;
