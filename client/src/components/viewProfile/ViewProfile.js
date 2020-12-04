@@ -12,7 +12,7 @@ const ViewProfile = ({ user, profileInfo }) => {
           <p>{profileInfo.businessAddress}</p>
           <p>________________________________</p>
           <br />
-          {/* <ViewEveryDaySpecials user={user} />
+          {/* <ViewEveryDaySpecials user={user} weeklySpecials={profileInfo.weeklySpecials}/>
           <br />
           <p>_________________________________</p>
           <ViewWeeklySpecials user={user} /> */}

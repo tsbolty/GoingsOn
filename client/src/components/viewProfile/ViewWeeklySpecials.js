@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ViewWeeklySpecials = ({ user }) => {
-  const [weeklySpecials, setWeeklySpecials] = useState({})
+const ViewWeeklySpecials = ({ weeklySpecials }) => {
+  // const [weeklySpecials, setWeeklySpecials] = useState({})
 
-  useEffect(() => {
-    axios.get(`/api/allBusinessInfo/get/${user.email}`)
-      .then(res => setWeeklySpecials(res.data[0].weeklySpecials[0]))
-  }, [user])
+  // useEffect(() => {
+  //   axios.get(`/api/allBusinessInfo/get/${user.email}`)
+  //     .then(res => setWeeklySpecials(res.data[0].weeklySpecials[0]))
+  // }, [user])
 
   return (
     <>
-      {weeklySpecials &&
         <div>
           <h3>Weekly Specials</h3>
           <table>
@@ -24,15 +23,14 @@ const ViewWeeklySpecials = ({ user }) => {
               <th>Saturday</th>
               <th>Sunday</th>
             </tr>
+      {weeklySpecials &&
+        weeklySpecials.map(day =>(
             <tr>
-              <td><strong>{weeklySpecials.mondayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.tuesdayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.wednesdayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.thursdayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.fridayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.saturdayFoodSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.sundayFoodSpecialHeading}</strong></td>
+              <td><strong>{day.foodSpecialHeading}</strong></td>
             </tr>
+
+        ))
+        // FIGURE OUT A WAY TO NOT HAVE TO DO SEVERAL MAPS
             <tr>
               <td>{weeklySpecials.mondayFoodSpecialDescription}</td>
               <td>{weeklySpecials.tuesdayFoodSpecialDescription}</td>
