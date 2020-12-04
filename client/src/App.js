@@ -30,20 +30,19 @@ function App() {
       fetch(`/api/allBusinessInfo/get/email/${user.email}`).then(info => {
         info.json().then(data => {
           if (data) {
-            setProfileInfo(data
-              //    {
-              //   email: data.email,
-              //   businessName: data.businessName,
-              //   businessAddress: data.businessAddress,
-              //   businessType: data.businessType,
-              //   businessHeadline: data.businessHeadline,
-              //   mapsLink: data.mapsLink,
-              //   daySpecials: data.daySpecials,
-              //   weeklySpecials: data.weeklySpecials
-              // }
+            setProfileInfo(
+                 {
+                email: data.email,
+                businessName: data.businessName,
+                businessAddress: data.businessAddress,
+                businessType: data.businessType,
+                businessHeadline: data.businessHeadline,
+                mapsLink: data.mapsLink,
+                daySpecials: data.daySpecials,
+                weeklySpecials: data.weeklySpecials
+              }
             )
             console.log(data)
-            
           }
         })
       })
