@@ -22,7 +22,7 @@ function App() {
     businessHeadline: "",
     mapsLink: "",
     daySpecials: [],
-    weeklySpecials: {}
+    weeklySpecials: []
   })
 
   useEffect(() => {
