@@ -22,7 +22,7 @@ function App() {
     businessHeadline: "",
     mapsLink: "",
     daySpecials: [],
-    weeklySpecials: []
+    weeklySpecials: {}
   })
 
   useEffect(() => {
@@ -42,8 +42,9 @@ function App() {
                 weeklySpecials: data.weeklySpecials
               }
             )
-            console.log(data)
+            console.log(profileInfo)
           }
+        
         })
       })
     }
