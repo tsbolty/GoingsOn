@@ -11,12 +11,12 @@ const AllBusinessInfoSchema = new Schema({
     businessType: String,
     businessHeadline: String,
     mapsLink: String,
-    daySpecials: [
+    daySpecials: {
         // {
         //     type: Schema.Types.ObjectId,
         //     ref: "DaySpecials"
         // }
-    ],
+    },
     weeklySpecials: [
         // {
         //     type: Schema.Types.ObjectId,

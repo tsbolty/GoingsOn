@@ -15,7 +15,7 @@ let allBusinessInfoSeed = [
     businessHeadline: "Best Gyros in town!",
     mapsLink: "https://www.google.com/maps/search/?api=1&query=2325w90thst,minneapolis,mn55431",
     daySpecials: [],
-    weeklySpecials: [
+    weeklySpecials: 
       {
         monday: {
           foodSpecialHeading: "Burger Night",
@@ -60,7 +60,7 @@ let allBusinessInfoSeed = [
           drinkSpecialDescription: "$10 per person",
         },
       }
-    ]
+    
   }
 
 ]
