@@ -9,18 +9,19 @@ const AllBusinessInfoSchema = new Schema({
     businessName: String,
     businessAddress: String,
     businessType: String,
-    headline: String,
+    businessHeadline: String,
+    mapsLink: String,
     daySpecials: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "DaySpecials"
-        }
+        // {
+        //     type: Schema.Types.ObjectId,
+        //     ref: "DaySpecials"
+        // }
     ],
     weeklySpecials: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "WeeklySpecials"
-        }
+        // {
+        //     type: Schema.Types.ObjectId,
+        //     ref: "WeeklySpecials"
+        // }
     ]
 })
 

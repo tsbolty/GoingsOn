@@ -11,8 +11,9 @@ const HeadlineCard = () => {
   const [filterType, setFilterType] = useState("")
 
   useEffect(() => {
-    axios.get('/api/allBusinessInfo/get')
-      .then(res => setBusinessInfo(res.data))
+    fetch('/api/allBusinessInfo/get')
+      .then(data => data.json())
+      .then(res => setBusinessInfo(res))
   }, [])
 
   const handleFilterTypeClick = (e)=>{

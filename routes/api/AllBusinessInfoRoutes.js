@@ -33,9 +33,10 @@ router.get('/get/id/:id', (req, res)=>{
 
 router.get('/get', (req, res)=>{
     db.AllBusinessInfo.find({})
-    .populate("daySpecials")
-    .populate("weeklySpecials")
+    // .populate("daySpecials")
+    // .populate("weeklySpecials")
     .then(data => res.json(data))
+    .catch(err => console.log("line 39", err))
 })
 
 module.exports= router;

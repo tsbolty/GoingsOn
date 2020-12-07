@@ -31,36 +31,36 @@ const ViewWeeklySpecials = ({ weeklySpecials }) => {
 
         ))
         // FIGURE OUT A WAY TO NOT HAVE TO DO SEVERAL MAPS
-            <tr>
-              <td>{weeklySpecials.mondayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.tuesdayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.wednesdayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.thursdayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.fridayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.saturdayFoodSpecialDescription}</td>
-              <td>{weeklySpecials.sundayFoodSpecialDescription}</td>
-            </tr>
-            <tr>
-              <td><strong>{weeklySpecials.mondayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.tuesdayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.wednesdayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.thursdayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.fridayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.saturdayDrinkSpecialHeading}</strong></td>
-              <td><strong>{weeklySpecials.sundayDrinkSpecialHeading}</strong></td>
-            </tr>
-            <tr>
-              <td>{weeklySpecials.mondayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.tuesdayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.wednesdayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.thursdayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.fridayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.saturdayDrinkSpecialDescription}</td>
-              <td>{weeklySpecials.sundayDrinkSpecialDescription}</td>
-            </tr>
+            // <tr>
+            //   <td>{weeklySpecials.mondayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.tuesdayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.wednesdayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.thursdayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.fridayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.saturdayFoodSpecialDescription}</td>
+            //   <td>{weeklySpecials.sundayFoodSpecialDescription}</td>
+            // </tr>
+            // <tr>
+            //   <td><strong>{weeklySpecials.mondayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.tuesdayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.wednesdayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.thursdayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.fridayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.saturdayDrinkSpecialHeading}</strong></td>
+            //   <td><strong>{weeklySpecials.sundayDrinkSpecialHeading}</strong></td>
+            // </tr>
+            // <tr>
+            //   <td>{weeklySpecials.mondayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.tuesdayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.wednesdayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.thursdayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.fridayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.saturdayDrinkSpecialDescription}</td>
+            //   <td>{weeklySpecials.sundayDrinkSpecialDescription}</td>
+            // </tr>
+          }
           </table>
         </div>
-      }
     </>
   )
 }
