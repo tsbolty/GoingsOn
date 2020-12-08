@@ -169,6 +169,7 @@ let allBusinessInfoSeed = [
       },
     }
   }
+  
 ]
 
 db.AllBusinessInfo.deleteMany({})
