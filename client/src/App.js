@@ -30,29 +30,12 @@ function App() {
       fetch(`/api/allBusinessInfo/get/email/${user.email}`).then(info => {
         info.json().then(data => {
           if (data) {
-            setProfileInfo(
-                 {
-                email: data.email,
-                businessName: data.businessName,
-                businessAddress: data.businessAddress,
-                businessType: data.businessType,
-                businessHeadline: data.businessHeadline,
-                mapsLink: data.mapsLink,
-                daySpecials: data.daySpecials,
-                weeklySpecials: data.weeklySpecials
-              }
-            )
-            console.log(profileInfo)
+            setProfileInfo(data)
           }
-        
         })
       })
     }
   }, [user])
-
-  useEffect(()=>{
-    console.log(profileInfo)
-  }, [profileInfo])
 
   if (loading) {
     return <div>Loading...</div>;
