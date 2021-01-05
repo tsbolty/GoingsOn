@@ -8,6 +8,7 @@ const FilterByKeyword = ({ filterByKeyword })=>{
   }
   return(
     <input
+    style={{width: '50%', borderRadius: 5}}
     placeholder= "Search by keyword"
     onChange= {handleInputChange}
     />

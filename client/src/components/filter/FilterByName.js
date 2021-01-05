@@ -9,6 +9,7 @@ const FilterByName= ({filterBusinessByName})=>{
 
   return(
     <input 
+    style={{width: '50%', borderRadius: 5}}
     placeholder= "Search by business name"
     onChange= {handleInputChange} 
     />
