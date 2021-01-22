@@ -16,6 +16,8 @@ const onRedirectCallback = appState => {
   );
 };
 
+//app.use(cors({ origin: "url here", credentials: true}))
+
 ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
