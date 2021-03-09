@@ -3,10 +3,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import states from "../../utils/states.json";
 import EditWeeklySpecials from "./EditWeeklySpecials";
+import Col from "../Col";
 
 const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	const [businessInfo, setBusinessInfo] = useState({
@@ -57,8 +58,8 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	};
 
 	return (
-		<>
-			<div>
+		<div className='container'>
+			<div className='row'>
 				<HeadlineCardContent
 					businessName={businessInfo.businessName || profileInfo.businessName}
 					id={businessInfo._id || profileInfo._id}
@@ -73,8 +74,18 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 					weeklySpecials={
 						businessInfo.weeklySpecials || profileInfo.weeklySpecials
 					}
+					styles={{ padding: "0px" }}
+					columns='9'
 					key={businessInfo._id}
 				/>
+				<Col size='3'>
+					<div className='card'>
+						<h3 className='card-title'>
+							This is what your card will look like in search results
+						</h3>
+					</div>
+				</Col>
+
 				<Form onSubmit={handleUpdateSubmit}>
 					{["Secondary"].map((variant) => (
 						<DropdownButton
@@ -143,7 +154,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 					</Form.Group>
 
 					<Form.Row>
-						<Form.Group as={Col} controlId='formGridCity'>
+						<Form.Group controlId='formGridCity'>
 							<Form.Label>City</Form.Label>
 							<Form.Control
 								name='city'
@@ -156,7 +167,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 							/>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId='formGridState'>
+						<Form.Group controlId='formGridState'>
 							<Form.Label>State</Form.Label>
 							<Form.Control
 								as='select'
@@ -174,7 +185,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 							</Form.Control>
 						</Form.Group>
 
-						<Form.Group as={Col} controlId='formGridZip'>
+						<Form.Group controlId='formGridZip'>
 							<Form.Label>Zip</Form.Label>
 							<Form.Control
 								name='zip'
@@ -200,7 +211,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 			<p>_______________________________________</p>
 			<br />
 			<EditWeeklySpecials specials={businessInfo.weeklySpecials} />
-		</>
+		</div>
 	);
 };
 

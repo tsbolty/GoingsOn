@@ -15,15 +15,13 @@ const EditWeeklySpecials = ({ specials }) => {
 		});
 	};
 
-	const handlePreview = (value, day, type) => {
+	const handlePreview = () => {
 		setWeeklySpecials({ ...weeklySpecials, ...currentNew });
 	};
 
 	const handleTypeClick = (name) => {
 		let type = name.replace(/\s+/g, "");
-		type = type.split("");
-		type[0] = type[0].toLowerCase();
-		type = type.join("");
+		type = type.charAt(0).toLowerCase() + type.slice(1);
 		setTempItem({ ...tempItem, type: type, name: name });
 	};
 
@@ -43,17 +41,15 @@ const EditWeeklySpecials = ({ specials }) => {
 			<ViewWeeklySpecials weeklySpecials={weeklySpecials} />
 			<br />
 			<p>___________________________</p>
-			<h4>Create a new</h4>
+			<h4 style={{ float: "left" }}>Create a new </h4>
 			<Dropdown
-				className='btn btn-secondary'
 				style={{
 					display: "inline-block",
 					float: "left",
-					color: "rgb(57,96,61)"
+					color: "rgb(57,96,61)",
+					padding: "0, 20px"
 				}}>
-				<Dropdown.Toggle variant='success' className='btn btn-secondary'>
-					Type of special
-				</Dropdown.Toggle>
+				<Dropdown.Toggle variant='success'>Type of special</Dropdown.Toggle>
 				<Dropdown.Menu>
 					<Dropdown.Item
 						name='Food Special Heading'
@@ -77,13 +73,13 @@ const EditWeeklySpecials = ({ specials }) => {
 					</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
-			<h4> for this day of the week </h4>
+			<h4 style={{ float: "left" }}> for </h4>
 			<Dropdown
-				className='btn btn-secondary'
 				style={{
 					display: "inline-block",
 					float: "left",
-					color: "rgb(57,96,61)"
+					color: "rgb(57,96,61)",
+					padding: "0, 20px"
 				}}>
 				<Dropdown.Toggle variant='success' className='btn btn-secondary'>
 					Day
@@ -134,8 +130,13 @@ const EditWeeklySpecials = ({ specials }) => {
 				newItems.map((item) => {
 					return (
 						<>
-							<h5>{item.name}</h5>
+							<h5 style={{ float: "left" }}>
+								{item.day.charAt(0).toUpperCase() + item.day.slice(1)}'s
+								{" New "}
+								{item.name}
+							</h5>
 							<input
+								style={{ float: "left", padding: "0, 20px" }}
 								onChange={(e) =>
 									handleInputChange(e.currentTarget.value, item.day, item.type)
 								}
@@ -143,14 +144,7 @@ const EditWeeklySpecials = ({ specials }) => {
 								name={item.type}
 								data-day={item.day}
 							/>
-							<button
-								onClick={(e) =>
-									handlePreview(
-										currentNew.value,
-										currentNew.day,
-										currentNew.type
-									)
-								}>
+							<button style={{ float: "left" }} onClick={handlePreview}>
 								preview
 							</button>
 						</>
