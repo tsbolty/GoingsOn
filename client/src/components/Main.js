@@ -1,13 +1,12 @@
-import React from 'react';
-import HeadlineCard from './homePage/HeadlineCard';
+import React from "react";
+import HeadlineCard from "./homePage/HeadlineCard";
 
-const Main = ({ user }) => {
-
-  return (
-    <>
-      <HeadlineCard />
-    </>
-  )
-}
+const Main = () => {
+	return (
+		<>
+			<HeadlineCard />
+		</>
+	);
+};
 
 export default Main;
