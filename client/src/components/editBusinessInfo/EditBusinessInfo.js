@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import { Form, Button, Col } from "react-bootstrap";
 import { useParams } from "react-router";
 import states from "../../utils/states.json";
+import EditWeeklySpecials from "./EditWeeklySpecials";
 
 const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	const [businessInfo, setBusinessInfo] = useState({
@@ -53,102 +57,150 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	};
 
 	return (
-		<div>
-			<HeadlineCardContent
-				businessName={businessInfo.businessName || profileInfo.businessName}
-				id={businessInfo._id || profileInfo._id}
-				businessType={businessInfo.businessType || profileInfo.businessType}
-				businessAddress={
-					businessInfo.businessAddress || profileInfo.businessAddress
-				}
-				daySpecials={businessInfo.daySpecials || profileInfo.daySpecials}
-				businessHeadline={
-					businessInfo.businessHeadline || profileInfo.businessHeadline
-				}
-				weeklySpecials={
-					businessInfo.weeklySpecials || profileInfo.weeklySpecials
-				}
-				key={businessInfo._id}
-			/>
-			<Form onSubmit={handleUpdateSubmit}>
-				<Form.Group controlId='formBasicEmail'>
-					<Form.Label>Business Name</Form.Label>
-					<Form.Control
-						type='name'
-						name='businessName'
-						onChange={(e) =>
-							handleInputChange(e.currentTarget.name, e.currentTarget.value)
-						}
-						placeholder='Enter New Business Address'
-					/>
-				</Form.Group>
-				<Form.Group controlId='formBasicName'>
-					<Form.Label>Headline</Form.Label>
-					<Form.Control
-						type='name'
-						name='businessHeadline'
-						onChange={(e) =>
-							handleInputChange(e.currentTarget.name, e.currentTarget.value)
-						}
-						placeholder='Business Headline'
-					/>
-				</Form.Group>
-				<Form.Group controlId='formGridAddress'>
-					<Form.Label>Address</Form.Label>
-					<Form.Control
-						name='address'
-						onChange={(e) =>
-							handleAddressChange(e.currentTarget.name, e.currentTarget.value)
-						}
-						placeholder='Street Name and Number'
-					/>
-				</Form.Group>
-
-				<Form.Row>
-					<Form.Group as={Col} controlId='formGridCity'>
-						<Form.Label>City</Form.Label>
+		<>
+			<div>
+				<HeadlineCardContent
+					businessName={businessInfo.businessName || profileInfo.businessName}
+					id={businessInfo._id || profileInfo._id}
+					businessType={businessInfo.businessType || profileInfo.businessType}
+					businessAddress={
+						businessInfo.businessAddress || profileInfo.businessAddress
+					}
+					daySpecials={businessInfo.daySpecials || profileInfo.daySpecials}
+					businessHeadline={
+						businessInfo.businessHeadline || profileInfo.businessHeadline
+					}
+					weeklySpecials={
+						businessInfo.weeklySpecials || profileInfo.weeklySpecials
+					}
+					key={businessInfo._id}
+				/>
+				<Form onSubmit={handleUpdateSubmit}>
+					{["Secondary"].map((variant) => (
+						<DropdownButton
+							as={ButtonGroup}
+							key={variant}
+							id={`dropdown-variants-${variant}`}
+							variant={variant.toLowerCase()}
+							title='New Business Type'>
+							<Dropdown.Item
+								eventKey='1'
+								name='restaurant'
+								onClick={(e) =>
+									handleInputChange("businessType", e.currentTarget.name)
+								}>
+								Restaurant
+							</Dropdown.Item>
+							<Dropdown.Item
+								eventKey='2'
+								name='bar'
+								onClick={(e) =>
+									handleInputChange("businessType", e.currentTarget.name)
+								}>
+								Bar
+							</Dropdown.Item>
+							<Dropdown.Item
+								eventKey='2'
+								name='both'
+								onClick={(e) =>
+									handleInputChange("businessType", e.currentTarget.name)
+								}>
+								Both
+							</Dropdown.Item>
+						</DropdownButton>
+					))}
+					<Form.Group controlId='formBasicEmail'>
+						<Form.Label>Business Name</Form.Label>
 						<Form.Control
-							name='city'
+							type='name'
+							name='businessName'
+							onChange={(e) =>
+								handleInputChange(e.currentTarget.name, e.currentTarget.value)
+							}
+							placeholder='Enter New Business Address'
+						/>
+					</Form.Group>
+					<Form.Group controlId='formBasicName'>
+						<Form.Label>Headline</Form.Label>
+						<Form.Control
+							type='name'
+							name='businessHeadline'
+							onChange={(e) =>
+								handleInputChange(e.currentTarget.name, e.currentTarget.value)
+							}
+							placeholder='Business Headline'
+						/>
+					</Form.Group>
+					<Form.Group controlId='formGridAddress'>
+						<Form.Label>Address</Form.Label>
+						<Form.Control
+							name='address'
 							onChange={(e) =>
 								handleAddressChange(e.currentTarget.name, e.currentTarget.value)
 							}
+							placeholder='Street Name and Number'
 						/>
 					</Form.Group>
 
-					<Form.Group as={Col} controlId='formGridState'>
-						<Form.Label>State</Form.Label>
-						<Form.Control
-							as='select'
-							name='state'
-							onChange={(e) =>
-								handleAddressChange(e.currentTarget.name, e.currentTarget.value)
-							}
-							defaultValue='Choose...'>
-							{states.map((state) => (
-								<option value={state.abbreviation}>{state.name}</option>
-							))}
-						</Form.Control>
-					</Form.Group>
+					<Form.Row>
+						<Form.Group as={Col} controlId='formGridCity'>
+							<Form.Label>City</Form.Label>
+							<Form.Control
+								name='city'
+								onChange={(e) =>
+									handleAddressChange(
+										e.currentTarget.name,
+										e.currentTarget.value
+									)
+								}
+							/>
+						</Form.Group>
 
-					<Form.Group as={Col} controlId='formGridZip'>
-						<Form.Label>Zip</Form.Label>
-						<Form.Control
-							name='zip'
-							onChange={(e) =>
-								handleAddressChange(e.currentTarget.name, e.currentTarget.value)
-							}
-						/>
-					</Form.Group>
-				</Form.Row>
+						<Form.Group as={Col} controlId='formGridState'>
+							<Form.Label>State</Form.Label>
+							<Form.Control
+								as='select'
+								name='state'
+								onChange={(e) =>
+									handleAddressChange(
+										e.currentTarget.name,
+										e.currentTarget.value
+									)
+								}
+								defaultValue='Choose...'>
+								{states.map((state) => (
+									<option value={state.abbreviation}>{state.name}</option>
+								))}
+							</Form.Control>
+						</Form.Group>
 
-				<Form.Group controlId='formBasicCheckbox'>
-					<Form.Check type='checkbox' label='Check me out' />
-				</Form.Group>
-				<Button variant='primary' type='submit'>
-					Submit
-				</Button>
-			</Form>
-		</div>
+						<Form.Group as={Col} controlId='formGridZip'>
+							<Form.Label>Zip</Form.Label>
+							<Form.Control
+								name='zip'
+								onChange={(e) =>
+									handleAddressChange(
+										e.currentTarget.name,
+										e.currentTarget.value
+									)
+								}
+							/>
+						</Form.Group>
+					</Form.Row>
+
+					<Form.Group controlId='formBasicCheckbox'>
+						<Form.Check type='checkbox' label='Check me out' />
+					</Form.Group>
+					<Button variant='primary' type='submit'>
+						Submit
+					</Button>
+				</Form>
+			</div>
+			<br />
+			<p>_______________________________________</p>
+			<br />
+			<EditWeeklySpecials specials={businessInfo.weeklySpecials} />
+		</>
 	);
 };
 
