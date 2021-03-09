@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Filter from "../filter/Filter";
 import HeadlineCardContent from "./HeadlineCardContent";
+import BusinessInfoContext from "../../context/businessInfoContext";
 // import { slideInLeft } from "react-animations";
 // THIS COMPONENT WILL RENDER ALL BUSINESS INFO. FILTEREDINFO WILL UPDATE WITH CORRECT FILTERED RESULTS BY NAME, BUT NEED A WAY TO MAKE THIS COMPONENT RERENDER WHEN FILTERED INFO CHANGES.
 
 const HeadlineCard = () => {
-	const [businessInfo, setBusinessInfo] = useState([]);
+	// const [businessInfo, setBusinessInfo] = useState([]);
+	const businessInfo = useContext(BusinessInfoContext);
 	const [filteredInfo, setFilteredInfo] = useState();
 	const [filterType, setFilterType] = useState("");
 
-	useEffect(() => {
-		fetch("/api/allBusinessInfo/get")
-			.then((data) => data.json())
-			.then((res) => setBusinessInfo(res))
-			.catch((err) => console.log("fuck"));
-	}, []);
+	// useEffect(() => {
+	// 	fetch("/api/allBusinessInfo/get")
+	// 		.then((data) => data.json())
+	// 		.then((res) => setBusinessInfo(res))
+	// 		.catch((err) => console.log("fuck"));
+	// }, []);
 
 	const handleFilterTypeClick = (e) => {
 		setFilterType(e.target.name);
@@ -112,32 +114,28 @@ const HeadlineCard = () => {
 			<br />
 			{businessInfo && filteredInfo
 				? filteredInfo.map((item) => (
-						<div className='animate__lightSpeedInLeft'>
-							<HeadlineCardContent
-								businessName={item.businessName}
-								id={item._id}
-								businessType={item.businessType}
-								businessAddress={item.businessAddress}
-								daySpecials={item.daySpecials}
-								businessHeadline={item.businessHeadline}
-								weeklySpecials={item.weeklySpecials}
-								key={item._id}
-							/>
-						</div>
+						<HeadlineCardContent
+							businessName={item.businessName}
+							id={item._id}
+							businessType={item.businessType}
+							businessAddress={item.businessAddress}
+							daySpecials={item.daySpecials}
+							businessHeadline={item.businessHeadline}
+							weeklySpecials={item.weeklySpecials}
+							key={item._id}
+						/>
 				  ))
 				: businessInfo.map((item) => (
-						<div className='animate__lightSpeedInLeft'>
-							<HeadlineCardContent
-								businessName={item.businessName}
-								id={item._id}
-								businessType={item.businessType}
-								businessAddress={item.businessAddress}
-								businessHeadline={item.businessHeadline}
-								daySpecials={item.daySpecials}
-								weeklySpecials={item.weeklySpecials}
-								key={item._id}
-							/>
-						</div>
+						<HeadlineCardContent
+							businessName={item.businessName}
+							id={item._id}
+							businessType={item.businessType}
+							businessAddress={item.businessAddress}
+							businessHeadline={item.businessHeadline}
+							daySpecials={item.daySpecials}
+							weeklySpecials={item.weeklySpecials}
+							key={item._id}
+						/>
 				  ))}
 		</>
 	);

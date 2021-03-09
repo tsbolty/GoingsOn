@@ -3,5 +3,6 @@
         "destinationimages",
         "happyhour",
         "signin"
-    ]
+    ],
+    "editor.formatOnSave": true
 }
