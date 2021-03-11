@@ -83,6 +83,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 						<h3 className='card-title'>
 							This is what your card will look like in search results
 						</h3>
+						<i class='fa fa-arrow-left fa-4x' aria-hidden='true'></i>
 					</div>
 				</Col>
 
