@@ -69,7 +69,7 @@ const CreateWeeklySpecials = ({ user }) => {
 
 	return (
 		<>
-			<h2 className='col-12' style={{ padding: "20, 0" }}>
+			<h2 className='col-12' style={{ padding: "20px, 0" }}>
 				Create Weekly Specials Here:
 			</h2>
 			<br />
