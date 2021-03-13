@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import CreateDaySpecials from "./CreateDaySpecials";
 import CreateProfile from "./CreateProfile";
 import CreateWeeklySpecials from "./CreateWeeklySpecials";
 import Col from "../Col";
-import PreviewInfo from "./PreviewInfo";
+// import PreviewInfo from "./PreviewInfo";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import axios from "axios";
 import ViewWeeklySpecials from "../viewProfile/ViewWeeklySpecials";
-import BusinessInfoContext from "../../context/businessInfoContext";
 
 const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
-	const businessInfo = useContext(BusinessInfoContext);
 	const postAllBusinessInfo = () => {
 		const mapAddress = profileInfo.businessAddress
 			.replace(/\s+/g, "")
@@ -57,6 +55,9 @@ const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 					<CreateDaySpecials user={user} />
 					{/* <CreateWeeklySpecials user={user} /> */}
 					<ViewWeeklySpecials weeklySpecials={profileInfo.weeklySpecials} />
+					<div className='row'>
+						<CreateWeeklySpecials setProfileInfo={setProfileInfo} />
+					</div>
 					<br />
 				</div>
 			)}
