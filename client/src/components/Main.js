@@ -37,59 +37,20 @@ const Main = () => {
 	const filterByKeyword = (keyword) => {
 		if (keyword !== "") {
 			const filteredBusinesses = businessInfo.filter((business) => {
-				// return Object.values(business.weeklySpecials[0]).includes(keyword.toLowerCase())
-				const mondaySpecials = Object.values(business.weeklySpecials[0].monday);
-				const tuesdaySpecials = Object.values(
-					business.weeklySpecials[0].tuesday
+				const arr = [];
+				arr.push(
+					Object.entries(business.weeklySpecials).map((item) => {
+						return Object.values(item[1]).join("").toLowerCase();
+					})
 				);
-				const wednesdaySpecials = Object.values(
-					business.weeklySpecials[0].wednesday
-				);
-				const thursdaySpecials = Object.values(
-					business.weeklySpecials[0].thursday
-				);
-				const fridaySpecials = Object.values(business.weeklySpecials[0].friday);
-				const saturdaySpecials = Object.values(
-					business.weeklySpecials[0].saturday
-				);
-				const sundaySpecials = Object.values(business.weeklySpecials[0].sunday);
-				return (
-					mondaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					tuesdaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					wednesdaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					thursdaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					fridaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					saturdaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase()) ||
-					sundaySpecials
-						.toString()
-						.toLowerCase()
-						.includes(keyword.toLowerCase())
-				);
-				// return business.weeklySpecials[0].join(" ").toLowerCase().includes(keyword.toLowerCase())
+				return arr.join("").includes(keyword.toLowerCase());
 			});
 			setFilteredInfo(filteredBusinesses);
 		} else {
 			setFilteredInfo();
 		}
 	};
+
 	return (
 		<div className='container'>
 			<Filter

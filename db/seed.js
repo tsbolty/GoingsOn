@@ -15,7 +15,7 @@ let allBusinessInfoSeed = [
 		businessHeadline: "Best Gyros in town!",
 		mapsLink:
 			"https://www.google.com/maps/search/?api=1&query=2325w90thst,minneapolis,mn55431",
-		daySpecials: [],
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "Burger Night",
@@ -69,7 +69,7 @@ let allBusinessInfoSeed = [
 		businessHeadline: "Best Sports Bar Ever",
 		mapsLink:
 			"https://www.google.com/maps/search/?api=1&query=4217americanblvdw,bloomington,mn55437",
-		daySpecials: [],
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "Jalapeno Poppers",
@@ -123,7 +123,7 @@ let allBusinessInfoSeed = [
 		businessHeadline: "Woodfire Cooking",
 		mapsLink:
 			"https://www.google.com/maps/search/?api=1&query=1555cliffrd,eagan,mn55122",
-		daySpecials: [],
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "Bull Bites",
@@ -177,7 +177,7 @@ let allBusinessInfoSeed = [
 		businessHeadline: "Really Good Chicken Sandwiches",
 		mapsLink:
 			"https://www.google.com/maps/search/?api=1&query=1535eevansave,denver,co80210",
-		daySpecials: [],
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "Military Appreciation Day",
@@ -231,7 +231,7 @@ let allBusinessInfoSeed = [
 		businessHeadline: "Amazing Mexican Food",
 		mapsLink:
 			"https://www.google.com/maps/search/?api=1&query=4100emexicoave,denver,co80222",
-		daySpecials: [],
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "$2 Fish Tacos",
