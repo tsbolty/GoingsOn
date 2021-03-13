@@ -54,7 +54,7 @@ function App() {
 			<header>
 				<Router>
 					<BusinessInfoContext.Provider value={allBusinessInfo}>
-						<NavBar user={user} />
+						<NavBar id={profileInfo._id || "69"} />
 						<div>
 							{user && (
 								<>

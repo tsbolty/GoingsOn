@@ -2,17 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
-	const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-	const [id, setId] = useState("");
-
-	useEffect(() => {
-		user &&
-			fetch(`/api/allBusinessInfo/get/email/${user.email}`)
-				.then((res) => res.json())
-				.then((data) => setId(data._id))
-				.catch((err) => console.log("fuck"));
-	}, [user]);
+const NavBar = ({ id }) => {
+	const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
 	return (
 		<div className='navbar'>
@@ -30,9 +21,12 @@ const NavBar = () => {
 						<li className='navbar-links'>
 							<Link to='/'>Home</Link>
 						</li>
+						{/* ADD THESE COMMENTS BACK WHEN THE CREATE PROFILE IS DONE. THIS IS TO ENSURE THAT ANY USER ONLY CREATES A PROFILE ONCE. */}
+						{/* {!id && ( */}
 						<li className='navbar-links'>
 							<Link to='/createbusinessprofile'>Create Profile</Link>
 						</li>
+						{/* )} */}
 						<li className='navbar-links'>
 							<Link to={`/editbusinessprofile/${id}`}>Edit Profile</Link>
 						</li>
