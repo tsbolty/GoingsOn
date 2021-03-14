@@ -3,17 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "engines": {
-    "node": "12.x",
-    "npm": "6.13.4"
-  },
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd ../client && npm run start",
-    "seed": "node db/seed.js",
-    "build": "cd ../client && npm run build"
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node db/seed.js"
   },
   "repository": {
     "type": "git",
