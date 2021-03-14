@@ -7,6 +7,7 @@ import { Form, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import states from "../../utils/states.json";
 import EditWeeklySpecials from "./EditWeeklySpecials";
+import CreateSpecialEvent from "../createProfile/CreateSpecialEvent";
 import Col from "../Col";
 
 const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
@@ -67,7 +68,9 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 					businessAddress={
 						businessInfo.businessAddress || profileInfo.businessAddress
 					}
-					daySpecials={businessInfo.daySpecials || profileInfo.daySpecials}
+					specialEvents={
+						businessInfo.specialEvents || profileInfo.specialEvents
+					}
 					businessHeadline={
 						businessInfo.businessHeadline || profileInfo.businessHeadline
 					}
@@ -212,6 +215,9 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 			<p>_______________________________________</p>
 			<br />
 			<EditWeeklySpecials specials={businessInfo.weeklySpecials} />
+			<br />
+			<br />
+			<CreateSpecialEvent />
 		</div>
 	);
 };

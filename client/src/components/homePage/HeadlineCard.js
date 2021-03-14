@@ -15,7 +15,7 @@ const HeadlineCard = ({ businessInfo, filteredInfo, columns }) => {
 							id={item._id}
 							businessType={item.businessType}
 							businessAddress={item.businessAddress}
-							daySpecials={item.daySpecials}
+							specialEvents={item.specialEvents}
 							businessHeadline={item.businessHeadline}
 							weeklySpecials={item.weeklySpecials}
 							key={item._id}
@@ -29,7 +29,7 @@ const HeadlineCard = ({ businessInfo, filteredInfo, columns }) => {
 							businessType={item.businessType}
 							businessAddress={item.businessAddress}
 							businessHeadline={item.businessHeadline}
-							daySpecials={item.daySpecials}
+							specialEvents={item.specialEvents}
 							weeklySpecials={item.weeklySpecials}
 							key={item._id}
 							columns={columns}

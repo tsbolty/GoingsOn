@@ -52,7 +52,7 @@ const BusinessInfoContext = createContext({
 			drinkSpecialDescription: ""
 		}
 	},
-	daySpecials: {}
+	specialEvents: []
 });
 
 export default BusinessInfoContext;

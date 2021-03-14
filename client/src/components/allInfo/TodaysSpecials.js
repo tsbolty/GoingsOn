@@ -1,23 +1,41 @@
-import React from 'react';
-import moment from 'moment';
+import React from "react";
 
-const TodaysSpecials = ({ specials })=>{
-  let today = moment().format('dddd').toLowerCase();
-
-  return(
-    <div>
-      {specials.weeklySpecials &&
-      <>
-      <h2>Today's Specials:</h2>
-      <h4>{specials.weeklySpecials[0][today].foodSpecialHeading}</h4>
-      <p>{specials.weeklySpecials[0][today].foodSpecialDescription}</p>
-      <br />
-      <h4>{specials.weeklySpecials[0][today].drinkSpecialHeading}</h4>
-      <p>{specials.weeklySpecials[0][today].drinkSpecialDescription}</p>
-      </>
-      }
-    </div>
-  )
-}
+const TodaysSpecials = ({ specials, specialEvents }) => {
+	console.log(specialEvents);
+	return (
+		<div>
+			<div style={{ borderStyle: "groove" }} className='row'>
+				<div className='col-6'>
+					<h2>Today's food special</h2>
+					<h3>{specials.foodSpecialHeading}</h3>
+					<p>description:</p>
+					<p>{specials.foodSpecialDescription}</p>
+				</div>
+				<div className='col-6'>
+					<h2>Today's drink special</h2>
+					<h3>{specials.drinkSpecialHeading}</h3>
+					<p>description:</p>
+					<p>{specials.drinkSpecialDescription}</p>
+				</div>
+			</div>
+			<div>
+				<h2>Upcoming special events</h2>
+				<div className='row'>
+					{specialEvents.length &&
+						specialEvents.map((event) => {
+							return (
+								<div className='col-6' style={{ borderStyle: "groove" }}>
+									<h3>{event.headline}</h3>
+									<p>{event.description}</p>
+									<p>Date: {event.eventDate}</p>
+									<p>cost: ${event.cost}</p>
+								</div>
+							);
+						})}
+				</div>
+			</div>
+		</div>
+	);
+};
 
 export default TodaysSpecials;
