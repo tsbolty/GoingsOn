@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import moment from "moment";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import FullPageWeeklySpecials from "./FullPageWeeklySpecials";
-import FullPageDailySpecials from "./FullPageDailySpecials";
+// import FullPageWeeklySpecials from "./FullPageWeeklySpecials";
+// import FullPageDailySpecials from "./FullPageDailySpecials";
 import TodaysSpecials from "./TodaysSpecials";
 
 const InfoPage = (props) => {
-	const [specials, setSpecials] = useState({
+	const [specials] = useState({
 		...props.location.state.businessInfo
 	});
 
@@ -21,7 +19,8 @@ const InfoPage = (props) => {
 				{/* Will not let me add regex to convert business address to url accepted format. Still works though */}
 				<a
 					href={`https://www.google.com/maps/search/?api=1&query=${specials.businessAddress}`}
-					target='_blank'>
+					target='_blank'
+					rel='noopener noreferrer'>
 					Google Maps
 				</a>
 				<br />
