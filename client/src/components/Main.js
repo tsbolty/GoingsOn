@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Filter from "./filter/Filter";
 import BusinessInfoContext from "../context/businessInfoContext";
 import HeadlineCard from "./homePage/HeadlineCard";
+// import CreateSpecialEvent from "./createProfile/CreateSpecialEvent";
 
 const Main = () => {
 	const businessInfo = useContext(BusinessInfoContext);
@@ -69,6 +70,7 @@ const Main = () => {
 					columns='4'
 				/>
 			</div>
+			{/* <CreateSpecialEvent /> */}
 		</div>
 	);
 };

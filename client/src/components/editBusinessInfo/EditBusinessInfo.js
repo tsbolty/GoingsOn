@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import { Form, Button } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import states from "../../utils/states.json";
 import EditWeeklySpecials from "./EditWeeklySpecials";
 import Col from "../Col";
