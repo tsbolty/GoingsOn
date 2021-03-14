@@ -1,4 +1,4 @@
-import keys from "./mykeys";
+import keys from "./AWS";
 
 const config = {
 	bucketName: "newgoingson",
