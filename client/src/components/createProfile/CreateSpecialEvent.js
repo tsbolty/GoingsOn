@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { uploadFile } from "react-s3";
 import { useAuth0 } from "../../react-auth0-spa";
 import { FormGroup, Label, Input } from "reactstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import AWS from "../../utils/s3config";
+// import reactS3 from "react-s3";
 
 const CreateSpecialEvent = () => {
 	const [free, setFree] = useState(false);
@@ -15,6 +18,12 @@ const CreateSpecialEvent = () => {
 		eventDate: ""
 	});
 	const { user } = useAuth0();
+
+	useEffect(() => {
+		if (event.cost !== 0) {
+			setFree(false);
+		}
+	}, [event.cost]);
 
 	const handleInputChange = (name, value) => {
 		setEvent({ ...event, [name]: value });
@@ -31,9 +40,17 @@ const CreateSpecialEvent = () => {
 			)
 			.catch((err) => alert(err));
 	};
+	console.log(AWS);
+	const handleImageUpload = (e) => {
+		console.log(e.target.files[0]);
+		uploadFile(e.target.files[0], AWS)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	};
 
 	return (
 		<Form>
+			<input type='file' onChange={handleImageUpload} />
 			<FormGroup>
 				<Label for='exampleDate'>Goal End Date</Label>
 				<Input
@@ -62,12 +79,19 @@ const CreateSpecialEvent = () => {
 				value={event.description}
 				placeholder='Event Description'
 			/>
-			{!free && (
-				<Form.Group controlId='formGridZip'>
-					<Form.Label>Cost</Form.Label>
-					<Form.Control placeholder='Event Cost' />
-				</Form.Group>
-			)}
+			{/* {!free && ( */}
+			<Form.Group controlId='formGridZip'>
+				<Form.Label>Cost</Form.Label>
+				<Form.Control
+					name='cost'
+					value={event.cost}
+					onChange={(e) =>
+						handleInputChange(e.currentTarget.name, e.currentTarget.value)
+					}
+					placeholder='Event Cost'
+				/>
+			</Form.Group>
+			{/* )} */}
 			<Form.Group id='formGridCheckbox'>
 				<Form.Check
 					onClick={() => {
@@ -76,6 +100,7 @@ const CreateSpecialEvent = () => {
 					}}
 					type='checkbox'
 					label='Free?'
+					checked={free}
 				/>
 			</Form.Group>
 			<Button onClick={handleFormSubmit} size='sm'>
