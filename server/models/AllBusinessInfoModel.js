@@ -17,7 +17,6 @@ const AllBusinessInfoSchema = new Schema({
 			ref: "SpecialEvents"
 		}
 	],
-
 	weeklySpecials: {
 		type: Object
 	}

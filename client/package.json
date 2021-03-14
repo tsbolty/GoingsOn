@@ -2,7 +2,7 @@
   "name": "goingson",
   "version": "0.1.0",
   "private": true,
-  "proxy": "if-env NODE_ENV=production && \"https://ancient-caverns-48527.herokuapp.com/\" || \"http://localhost:3001/\"",
+  "proxy": "https://ancient-caverns-48527.herokuapp.com/",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.13.6",
     "@testing-library/jest-dom": "^4.2.4",
