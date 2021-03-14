@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Col from "../Col";
 
 const HeadlineCardContent = ({
@@ -24,7 +24,8 @@ const HeadlineCardContent = ({
 						href={`https://www.google.com/maps/search/?api=1&query=${businessAddress
 							.replace(/ /gi, "+")
 							.toLowerCase()}`}
-						target='_blank'>
+						target='_blank'
+						rel='noopener noreferrer'>
 						Google Maps
 					</a>
 				)}
