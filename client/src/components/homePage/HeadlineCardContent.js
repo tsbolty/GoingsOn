@@ -8,7 +8,7 @@ const HeadlineCardContent = ({
 	businessType,
 	businessAddress,
 	businessHeadline,
-	daySpecials,
+	specialEvents,
 	weeklySpecials,
 	styles,
 	columns
@@ -37,7 +37,7 @@ const HeadlineCardContent = ({
 								id,
 								businessType,
 								businessAddress,
-								daySpecials,
+								specialEvents,
 								weeklySpecials
 							}
 						}

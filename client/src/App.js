@@ -22,7 +22,7 @@ function App() {
 		businessType: "",
 		businessHeadline: "",
 		mapsLink: "",
-		daySpecials: {},
+		specialEvents: [],
 		weeklySpecials: {
 			monday: {
 				foodSpecialHeading: "",
@@ -123,9 +123,7 @@ function App() {
 							<Route exact path='/'>
 								<Main user={user} />
 							</Route>
-							<Route path='/infopage/:id'>
-								<InfoPage />
-							</Route>
+							<Route path='/infopage/:id' component={InfoPage} />
 						</div>
 					</BusinessInfoContext.Provider>
 				</Router>
