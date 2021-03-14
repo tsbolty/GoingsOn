@@ -1,4 +1,4 @@
-import keys from "./keys";
+import keys from "./mykeys";
 
 const config = {
 	bucketName: "newgoingson",
