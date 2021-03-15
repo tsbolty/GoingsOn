@@ -9,6 +9,7 @@ import states from "../../utils/states.json";
 import EditWeeklySpecials from "./EditWeeklySpecials";
 import CreateSpecialEvent from "../createProfile/CreateSpecialEvent";
 import Col from "../Col";
+import API from "../../utils/API";
 
 const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	const [businessInfo, setBusinessInfo] = useState({
@@ -49,13 +50,7 @@ const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 			});
 		}
 
-		fetch(`/api/allBusinessInfo/update/${id}`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(businessInfo)
-		});
+		API.updateBusinessInfo(businessInfo, id);
 	};
 
 	return (

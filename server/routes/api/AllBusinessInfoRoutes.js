@@ -32,6 +32,7 @@ router.get("/get/id/:id", (req, res) => {
 });
 
 router.get("/get", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	console.log("hit get route");
 	db.AllBusinessInfo.find({})
 		.populate("specialEvents")

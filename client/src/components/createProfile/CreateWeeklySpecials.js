@@ -3,6 +3,7 @@ import { useAuth0 } from "../../react-auth0-spa";
 import axios from "axios";
 import Col from "../Col";
 import Form from "react-bootstrap/Form";
+import API from "../../utils/API";
 
 const CreateWeeklySpecials = () => {
 	const [weeklySpecials, setWeeklySpecials] = useState({
@@ -62,12 +63,9 @@ const CreateWeeklySpecials = () => {
 		});
 	};
 
-	const handlePostSubmit = () => {
-		axios.post(`/api/weeklySpecials/add/${user.email}`, {
-			email: user.email,
-			...weeklySpecials
-		});
-	};
+	// const handlePostSubmit = () => {
+	// 	API.createWeeklySpecials(weeklySpecials, user.email)
+	// };
 
 	return (
 		<>
@@ -105,7 +103,10 @@ const CreateWeeklySpecials = () => {
 			<br />
 			<div className='row'>
 				<Col size='12'>
-					<button onClick={() => handlePostSubmit()}>
+					<button
+						onClick={() =>
+							API.createWeeklySpecials(weeklySpecials, user.email)
+						}>
 						Post Weekly Specials
 					</button>
 				</Col>
