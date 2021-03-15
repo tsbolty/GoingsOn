@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
-import axios from "axios";
 import Col from "../Col";
 import Form from "react-bootstrap/Form";
 import API from "../../utils/API";

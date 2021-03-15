@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { uploadFile } from "react-s3";
 import { useAuth0 } from "../../react-auth0-spa";
 import { FormGroup, Label, Input } from "reactstrap";
