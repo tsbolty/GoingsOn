@@ -3,5 +3,6 @@ module.exports = {
 	SpecialEvents: require("./SpecialEventsModel"),
 	AllBusinessInfo: require("./AllBusinessInfoModel"),
 	BusinessInfo: require("./BusinessInfoModel"),
-	WeeklySpecials: require("./WeeklySpecialsModel")
+	WeeklySpecials: require("./WeeklySpecialsModel"),
+	User: require("./User")
 };
