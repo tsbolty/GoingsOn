@@ -6,7 +6,7 @@ import { FormGroup, Label, Input } from "reactstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AWS from "../../utils/s3config";
-// import reactS3 from "react-s3";
+import API from "../../utils/API";
 
 const CreateSpecialEvent = () => {
 	const [free, setFree] = useState(false);
@@ -30,11 +30,7 @@ const CreateSpecialEvent = () => {
 	};
 
 	const handleFormSubmit = () => {
-		axios
-			.post(`/api/specialevents/post/${user.email}`, {
-				...event,
-				email: user.email
-			})
+		API.createSpecialEvent(event, user.email)
 			.then(
 				(res) => res.statusText === "OK" && alert("Event creation went well")
 			)

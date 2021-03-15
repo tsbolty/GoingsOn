@@ -1,41 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import CreateHappyHour from './CreateHappyHour';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import CreateHappyHour from "./CreateHappyHour";
+import API from "../utils/API";
 
 const ViewHappyHour = () => {
-  const [array, setArray] = useState([])
+	const [array, setArray] = useState([]);
 
-  const getHappyHourSpecials = () => {
-    axios.get('/api/happyhour/get')
-      .then(res => setArray(res.data))
-  }
+	const getHappyHourSpecials = () => {
+		API.getHappyHour()
+			.then((data) => data.json())
+			.then((res) => setArray(res.data));
+	};
 
-  const handleDelete = (id) => {
-    axios.delete('/api/happyhour/delete' + id)
-      .then(res => getHappyHourSpecials())
-  }
+	useEffect(() => {
+		getHappyHourSpecials();
+	}, []);
 
-  useEffect(() => {
-    getHappyHourSpecials()
-  }, [])
+	return (
+		<>
+			<CreateHappyHour getHappyHourSpecials={getHappyHourSpecials} />
+			<div className='card'>
+				{array.map((special) => (
+					<>
+						<h3 className='food-special-heading'>
+							{special.foodSpecial1Heading}
+						</h3>
+						<p className='food-special-description'>
+							{special.foodSpecial1Description}
+						</p>
+						<h3 className='drink-special-heading'>
+							{special.drinkSpecial1Heading}
+						</h3>
+						<p className='drink-special-description'>
+							{special.drinkSpecial1Description}
+						</p>
+						<button
+							className='delete-food-special-button'
+							onClick={() =>
+								API.deleteHappyHour(special._id).then((res) =>
+									getHappyHourSpecials()
+								)
+							}>
+							Delete
+						</button>
+						<br />
+					</>
+				))}
+			</div>
+		</>
+	);
+};
 
-  return (
-    <>
-      <CreateHappyHour getHappyHourSpecials={getHappyHourSpecials} />
-      <div className="card">
-        {array.map(special => (
-          <>
-            <h3 className="food-special-heading">{special.foodSpecial1Heading}</h3>
-            <p className="food-special-description">{special.foodSpecial1Description}</p>
-            <h3 className="drink-special-heading">{special.drinkSpecial1Heading}</h3>
-            <p className="drink-special-description">{special.drinkSpecial1Description}</p>
-            <button className="delete-food-special-button" onClick={() => handleDelete(special._id)}>Delete</button>
-            <br />
-          </>
-        ))}
-      </div>
-    </>
-  )
-}
-
-export default ViewHappyHour
+export default ViewHappyHour;

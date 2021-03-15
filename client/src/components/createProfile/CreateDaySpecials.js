@@ -2,21 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 // import ViewEveryDaySpecials from '../viewProfile/ViewEveryDaySpecials'
 import { Dropdown } from "react-bootstrap";
+import API from "../../utils/API";
 // import CreateWeeklySpecials from './CreateWeeklySpecials';
 
 const CreateDaySpecials = ({ user }) => {
-	const [daySpecials, setDaySpecials] = useState([]);
+	const [daySpecials, setDaySpecials] = useState({});
 	const [day, setDay] = useState("");
 
 	const postDaySpecials = () => {
-		axios.post(`/api/dailySpecials/post/${user.email}`, {
-			email: user.email,
-			day: day,
-			foodSpecialHeading: daySpecials.foodSpecialHeading,
-			foodSpecialDescription: daySpecials.foodSpecialDescription,
-			drinkSpecialHeading: daySpecials.drinkSpecialHeading,
-			drinkSpecialDescription: daySpecials.drinkSpecialDescription
-		});
+		API.createDaySpecials(user.email, day, daySpecials);
 	};
 
 	const handleInputChange = (e) => {
