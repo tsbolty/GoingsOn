@@ -15,7 +15,7 @@ const Main = ({ getAllBusinessInfo }) => {
 
 	useEffect(() => {
 		getAllBusinessInfo();
-	}, []);
+	}, [getAllBusinessInfo]);
 
 	const filterBusinessByName = (name) => {
 		if (!name) {
