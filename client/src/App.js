@@ -70,12 +70,12 @@ function App() {
 		}
 	});
 
-	const getAllBusinessInfo = () => {
-		API.getAllBusinessInfo()
-			.then((data) => data.json())
-			.then((res) => setAllBusinessInfo(res))
-			.catch((err) => console.log("fuck"));
-	};
+	// const getAllBusinessInfo = () => {
+	// 	API.getAllBusinessInfo()
+	// 		.then((data) => data.json())
+	// 		.then((res) => setAllBusinessInfo(res))
+	// 		.catch((err) => console.log("fuck"));
+	// };
 
 	useEffect(() => {
 		if (user) {
@@ -127,7 +127,7 @@ function App() {
 								</>
 							)}
 							<Route exact path='/'>
-								<Main user={user} getAllBusinessInfo={getAllBusinessInfo} />
+								<Main user={user} setAllBusinessInfo={setAllBusinessInfo} />
 							</Route>
 							<Route path='/infopage/:id' component={InfoPage} />
 						</div>

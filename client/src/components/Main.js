@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import Filter from "./filter/Filter";
 import BusinessInfoContext from "../context/businessInfoContext";
 import HeadlineCard from "./homePage/HeadlineCard";
+import API from "../utils/API";
 // import CreateSpecialEvent from "./createProfile/CreateSpecialEvent";
 
-const Main = ({ getAllBusinessInfo }) => {
+const Main = ({ setAllBusinessInfo }) => {
 	const businessInfo = useContext(BusinessInfoContext);
 	const [filteredInfo, setFilteredInfo] = useState();
 	const [filterType, setFilterType] = useState("");
@@ -14,8 +15,11 @@ const Main = ({ getAllBusinessInfo }) => {
 	};
 
 	useEffect(() => {
-		getAllBusinessInfo();
-	}, [getAllBusinessInfo]);
+		API.getAllBusinessInfo()
+			.then((data) => data.json())
+			.then((res) => setAllBusinessInfo(res))
+			.catch((err) => console.log("fuck"));
+	}, []);
 
 	const filterBusinessByName = (name) => {
 		if (!name) {
