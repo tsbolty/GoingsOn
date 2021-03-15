@@ -1,4 +1,4 @@
-const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
+const baseURL = "https://ancient-caverns-48527.herokuapp.com";
 
 export default {
 	getAllBusinessInfo: () => fetch(baseURL + "/api/allBusinessInfo/get"),
