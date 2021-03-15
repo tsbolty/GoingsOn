@@ -1,7 +1,6 @@
 import React from "react";
 
 const TodaysSpecials = ({ specials, specialEvents }) => {
-	console.log(specialEvents);
 	return (
 		<div>
 			<div style={{ borderStyle: "groove" }} className='row'>

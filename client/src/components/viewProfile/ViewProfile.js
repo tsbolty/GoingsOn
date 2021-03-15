@@ -14,7 +14,7 @@ const ViewProfile = ({ profileInfo }) => {
             <ViewEveryDaySpecials user={user} weeklySpecials={profileInfo.weeklySpecials}/> */}
 			<br />
 			<p>_________________________________</p>
-			<ViewWeeklySpecials weeklySpecials={profileInfo.weeklySpecials[0]} />
+			<ViewWeeklySpecials weeklySpecials={profileInfo.weeklySpecials} />
 		</>
 	);
 };

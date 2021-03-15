@@ -9,6 +9,7 @@ import CreateBusinessInfo from "./components/createProfile/CreateBusinessInfo";
 import ViewProfile from "./components/viewProfile/ViewProfile";
 import InfoPage from "./components/allInfo/InfoPage";
 import EditBusinessInfo from "./components/editBusinessInfo/EditBusinessInfo";
+import API from "./utils/API";
 
 //LOOK IN TO USE CONTEXT HOOK TO DEFINE BUSINESS INFO MODEL AND ACCESS THAT THROUGHOUT THE APPLICATION
 function App() {
@@ -69,21 +70,26 @@ function App() {
 		}
 	});
 
-	useEffect(() => {
-		fetch("/api/allBusinessInfo/get")
+	const getAllBusinessInfo = () => {
+		API.getAllBusinessInfo()
 			.then((data) => data.json())
 			.then((res) => setAllBusinessInfo(res))
 			.catch((err) => console.log("fuck"));
-	}, []);
+	};
 
 	useEffect(() => {
 		if (user) {
-			fetch(`/api/allBusinessInfo/get/email/${user.email}`).then((info) => {
-				info.json().then((data) => {
-					if (data) {
-						setProfileInfo(data);
-					}
-				});
+			API.getUserBusinessInfo(user.email).then((info) => {
+				info
+					.json()
+					.then((data) => {
+						if (data) {
+							setProfileInfo(data);
+						}
+					})
+					.catch((err) => {
+						console.log("fuck", err);
+					});
 			});
 		}
 	}, [user]);
@@ -116,12 +122,12 @@ function App() {
 										/>
 									</Route>
 									<Route path='/viewbusinessprofile'>
-										<ViewProfile profileInfo={profileInfo} user={user} />
+										<ViewProfile profileInfo={profileInfo} />
 									</Route>
 								</>
 							)}
 							<Route exact path='/'>
-								<Main user={user} />
+								<Main user={user} getAllBusinessInfo={getAllBusinessInfo} />
 							</Route>
 							<Route path='/infopage/:id' component={InfoPage} />
 						</div>

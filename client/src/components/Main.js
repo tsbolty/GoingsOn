@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Filter from "./filter/Filter";
 import BusinessInfoContext from "../context/businessInfoContext";
 import HeadlineCard from "./homePage/HeadlineCard";
 // import CreateSpecialEvent from "./createProfile/CreateSpecialEvent";
 
-const Main = () => {
+const Main = ({ getAllBusinessInfo }) => {
 	const businessInfo = useContext(BusinessInfoContext);
 	const [filteredInfo, setFilteredInfo] = useState();
 	const [filterType, setFilterType] = useState("");
@@ -12,6 +12,10 @@ const Main = () => {
 	const handleFilterTypeClick = (e) => {
 		setFilterType(e.target.name);
 	};
+
+	useEffect(() => {
+		getAllBusinessInfo();
+	}, []);
 
 	const filterBusinessByName = (name) => {
 		if (!name) {

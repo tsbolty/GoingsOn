@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CreateDaySpecials from "./CreateDaySpecials";
 import CreateProfile from "./CreateProfile";
 import CreateWeeklySpecials from "./CreateWeeklySpecials";
@@ -7,42 +7,92 @@ import Col from "../Col";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import axios from "axios";
 import ViewWeeklySpecials from "../viewProfile/ViewWeeklySpecials";
+import API from "../../utils/API";
 
 const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
+	const [newProfileInfo, setNewProfileInfo] = useState({
+		email: "",
+		businessName: "",
+		businessAddress: "",
+		businessType: "",
+		businessHeadline: "",
+		mapsLink: "",
+		specialEvents: [],
+		weeklySpecials: {
+			monday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			tuesday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			wednesday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			thursday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			friday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			saturday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			},
+			sunday: {
+				foodSpecialHeading: "",
+				foodSpecialDescription: "",
+				drinkSpecialHeading: "",
+				drinkSpecialDescription: ""
+			}
+		}
+	});
 	const postAllBusinessInfo = () => {
-		const mapAddress = profileInfo.businessAddress
+		const mapAddress = newProfileInfo.businessAddress
 			.replace(/\s+/g, "")
 			.toLowerCase();
-		axios.post("/api/allBusinessInfo/add", {
-			email: user.email,
-			businessName: profileInfo.businessName,
-			businessAddress: profileInfo.businessAddress,
-			businessType: profileInfo.businessType,
-			businessHeadline: profileInfo.businessHeadline,
-			mapsLink: `https://www.google.com/maps/search/?api=1&${mapAddress}`
-		});
+
+		API.createNewUser(user.email, newProfileInfo, mapAddress)
+			.then((res) => alert("You just created a new user :)"))
+			.catch((err) => alert("Something went wrong trying to create that user"));
 	};
 
 	return (
 		<>
 			{user && (
 				<div className='container'>
-					{/* <PreviewInfo profileInfo= {profileInfo}/> */}
+					{/* <PreviewInfo newProfileInfo= {newProfileInfo}/> */}
 					<div className='row'>
 						<HeadlineCardContent
-							businessName={profileInfo.businessName}
-							id={profileInfo._id}
-							businessType={profileInfo.businessType}
-							businessAddress={profileInfo.businessAddress}
-							businessHeadline={profileInfo.businessHeadline}
+							businessName={newProfileInfo.businessName}
+							id={newProfileInfo._id}
+							businessType={newProfileInfo.businessType}
+							businessAddress={newProfileInfo.businessAddress}
+							businessHeadline={newProfileInfo.businessHeadline}
 							columns='9'
 						/>
 					</div>
 					<div className='row'>
 						<Col size='12'>
 							<CreateProfile
-								profileInfo={profileInfo}
-								setProfileInfo={setProfileInfo}
+								profileInfo={newProfileInfo}
+								setProfileInfo={setNewProfileInfo}
 								user={user}
 							/>
 							<button onClick={postAllBusinessInfo}>
@@ -54,9 +104,9 @@ const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 					<p>___________________________________________________________</p>
 					<CreateDaySpecials user={user} />
 					{/* <CreateWeeklySpecials user={user} /> */}
-					<ViewWeeklySpecials weeklySpecials={profileInfo.weeklySpecials} />
+					<ViewWeeklySpecials weeklySpecials={newProfileInfo.weeklySpecials} />
 					<div className='row'>
-						<CreateWeeklySpecials setProfileInfo={setProfileInfo} />
+						<CreateWeeklySpecials setProfileInfo={setNewProfileInfo} />
 					</div>
 					<br />
 				</div>
