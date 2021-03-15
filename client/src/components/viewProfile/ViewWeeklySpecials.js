@@ -1,30 +1,37 @@
-import React from 'react';
+import React from "react";
 
 const ViewWeeklySpecials = ({ weeklySpecials }) => {
-
-  return (
-    <>
-      <div>
-        <h3>Weekly Specials</h3>
-        <table>
-          <tr>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-          </tr>
-          <tr>
-            <td><strong>{weeklySpecials.monday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.tuesday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.wednesday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.thursday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.friday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.saturday.foodSpecialHeading}</strong></td>
-            <td><strong>{weeklySpecials.sunday.foodSpecialHeading}</strong></td>
-          </tr>
+	return (
+		<>
+			<div>
+				<h3>Weekly Specials</h3>
+				<table>
+					<tr>
+						<th>Monday</th>
+						<th>Tuesday</th>
+						<th>Wednesday</th>
+						<th>Thursday</th>
+						<th>Friday</th>
+						<th>Saturday</th>
+						<th>Sunday</th>
+					</tr>
+					{Object.keys(weeklySpecials).forEach((item) => {
+						return (
+							<tr>
+								{Object.keys(weeklySpecials[[item]]).map((type) => (
+									<td>
+										<strong>{weeklySpecials[[item]][[type]]}</strong>
+									</td>
+								))}
+							</tr>
+						);
+					})}
+					{/* <td><strong>{weeklySpecials.tuesday.foodSpecialHeading}</strong></td>
+<td><strong>{weeklySpecials.wednesday.foodSpecialHeading}</strong></td>
+<td><strong>{weeklySpecials.thursday.foodSpecialHeading}</strong></td>
+<td><strong>{weeklySpecials.friday.foodSpecialHeading}</strong></td>
+<td><strong>{weeklySpecials.saturday.foodSpecialHeading}</strong></td>
+<td><strong>{weeklySpecials.sunday.foodSpecialHeading}</strong></td>
           <tr>
             <td>{weeklySpecials.monday.foodSpecialDescription}</td>
             <td>{weeklySpecials.tuesday.foodSpecialDescription}</td>
@@ -51,12 +58,11 @@ const ViewWeeklySpecials = ({ weeklySpecials }) => {
             <td>{weeklySpecials.friday.drinkSpecialDescription}</td>
             <td>{weeklySpecials.saturday.drinkSpecialDescription}</td>
             <td>{weeklySpecials.sunday.drinkSpecialDescription}</td>
-          </tr>
-          
-          </table>
-      </div>
-    </>
-  )
-}
+          </tr> */}
+				</table>
+			</div>
+		</>
+	);
+};
 
 export default ViewWeeklySpecials;
