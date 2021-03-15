@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 import axios from "axios";
 import Col from "../Col";
 import Form from "react-bootstrap/Form";
 
-const CreateWeeklySpecials = ({ user }) => {
+const CreateWeeklySpecials = () => {
 	const [weeklySpecials, setWeeklySpecials] = useState({
 		monday: {
 			foodSpecialHeading: "",
@@ -48,6 +49,7 @@ const CreateWeeklySpecials = ({ user }) => {
 			drinkSpecialDescription: ""
 		}
 	});
+	const { user } = useAuth0();
 
 	let weekArr = Object.entries(weeklySpecials);
 

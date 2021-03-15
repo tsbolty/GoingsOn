@@ -1,29 +1,32 @@
 import React from "react";
 
 const ViewWeeklySpecials = ({ weeklySpecials }) => {
+	console.log(weeklySpecials);
 	return (
 		<>
 			<div>
 				<h3>Weekly Specials</h3>
 				<table>
 					<tr>
-						<th>Monday</th>
-						<th>Tuesday</th>
-						<th>Wednesday</th>
-						<th>Thursday</th>
-						<th>Friday</th>
-						<th>Saturday</th>
-						<th>Sunday</th>
+						{Object.keys(weeklySpecials).map((day) => (
+							<th>{day.charAt(0).toUpperCase() + day.slice(1, day.length)}</th>
+						))}
 					</tr>
-					{Object.keys(weeklySpecials).forEach((item) => {
+					{Object.keys(weeklySpecials.monday).map((item, i) => {
 						return (
-							<tr>
-								{Object.keys(weeklySpecials[[item]]).map((type) => (
-									<td>
-										<strong>{weeklySpecials[[item]][[type]]}</strong>
-									</td>
-								))}
-							</tr>
+							<>
+								<tr>
+									{Object.keys(weeklySpecials).map((day) => (
+										<td>
+											{i % 2 === 0 ? (
+												<strong>{weeklySpecials[[day]][[item]]}</strong>
+											) : (
+												weeklySpecials[[day]][[item]]
+											)}
+										</td>
+									))}
+								</tr>
+							</>
 						);
 					})}
 					{/* <td><strong>{weeklySpecials.tuesday.foodSpecialHeading}</strong></td>
