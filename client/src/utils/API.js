@@ -1,11 +1,11 @@
-const baseURL = "https://ancient-caverns-48527.herokuapp.com";
+const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
 
 export default {
-	getAllBusinessInfo: () => fetch(baseURL + "/api/allBusinessInfo/get"),
+	getAllBusinessInfo: () => fetch(baseURL + "api/allBusinessInfo/get"),
 	getUserBusinessInfo: (email) =>
-		fetch(baseURL + `/api/allBusinessInfo/get/email/${email}`),
+		fetch(baseURL + `api/allBusinessInfo/get/email/${email}`),
 	updateBusinessInfo: (businessInfo, id) =>
-		fetch(baseURL + `/api/allBusinessInfo/update/${id}`, {
+		fetch(baseURL + `api/allBusinessInfo/update/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
@@ -13,7 +13,7 @@ export default {
 			body: JSON.stringify(businessInfo)
 		}),
 	createNewUser: (email, profileInfo, mapAddress) =>
-		fetch(baseURL + "/api/allBusinessInfo/add", {
+		fetch(baseURL + "api/allBusinessInfo/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -28,7 +28,7 @@ export default {
 			})
 		}),
 	createSpecialEvent: (event, email) =>
-		fetch(baseURL + `/api/specialevents/post/${email}`, {
+		fetch(baseURL + `api/specialevents/post/${email}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -39,7 +39,7 @@ export default {
 			})
 		}),
 	createWeeklySpecials: (weeklySpecials, email) =>
-		fetch(baseURL + `/api/weeklySpecials/add/${email}`, {
+		fetch(baseURL + `api/weeklySpecials/add/${email}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -50,7 +50,7 @@ export default {
 			})
 		}),
 	createDaySpecials: (email, day, daySpecials) =>
-		fetch(baseURL + `/api/dailySpecials/post/${email}`, {
+		fetch(baseURL + `api/dailySpecials/post/${email}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -65,25 +65,25 @@ export default {
 			})
 		}),
 	getSingleDaySpecials: (day) =>
-		fetch(baseURL + `/api/dailySpecials/get/${day}`),
+		fetch(baseURL + `api/dailySpecials/get/${day}`),
 	deleteSingleDaySpecials: (id) =>
-		fetch(baseURL + `/api/dailySpecials/delete/${id}`, {
+		fetch(baseURL + `api/dailySpecials/delete/${id}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json"
 			}
 		}),
 	createHappyHour: (data) =>
-		fetch(baseURL + "/api/happyhour/add", {
+		fetch(baseURL + "api/happyhour/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(data)
 		}),
-	getHappyHour: () => fetch(baseURL + "/api/happyhour/get"),
+	getHappyHour: () => fetch(baseURL + "api/happyhour/get"),
 	deleteHappyHour: (id) =>
-		fetch(baseURL + `/api/happyhour/delete${id}`, {
+		fetch(baseURL + `api/happyhour/delete${id}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json"

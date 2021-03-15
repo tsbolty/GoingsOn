@@ -2,12 +2,14 @@ const router = require("express").Router();
 const db = require("../../models");
 
 router.post("/add", ({ body }, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.create(body)
 		.then((data) => res.json(data))
 		.catch((err) => console.log(err));
 });
 
 router.get("/get/type/:type", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.find({ businessType: req.params.type })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
@@ -16,6 +18,7 @@ router.get("/get/type/:type", (req, res) => {
 });
 
 router.get("/get/email/:email", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.findOne({ email: req.params.email })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
@@ -24,6 +27,7 @@ router.get("/get/email/:email", (req, res) => {
 });
 
 router.get("/get/id/:id", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.find({ _id: req.params.id })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
@@ -42,6 +46,7 @@ router.get("/get", (req, res) => {
 });
 
 router.put("/update/:id", ({ params, body }, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.findByIdAndUpdate(params.id, body)
 		.then((data) => res.json(data))
 		.catch((err) => console.log(err));
