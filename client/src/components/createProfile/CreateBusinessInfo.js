@@ -5,7 +5,6 @@ import CreateWeeklySpecials from "./CreateWeeklySpecials";
 import Col from "../Col";
 // import PreviewInfo from "./PreviewInfo";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
-import axios from "axios";
 import ViewWeeklySpecials from "../viewProfile/ViewWeeklySpecials";
 import API from "../../utils/API";
 
