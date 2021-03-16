@@ -8,7 +8,7 @@ import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import ViewWeeklySpecials from "../viewProfile/ViewWeeklySpecials";
 import API from "../../utils/API";
 
-const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
+const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo, auth }) => {
 	const [newProfileInfo, setNewProfileInfo] = useState({
 		email: "",
 		businessName: "",
@@ -62,12 +62,15 @@ const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 			}
 		}
 	});
+
+	console.log(user);
+
 	const postAllBusinessInfo = () => {
 		const mapAddress = newProfileInfo.businessAddress
 			.replace(/\s+/g, "")
 			.toLowerCase();
 
-		API.createNewBusiness(user.email, newProfileInfo, mapAddress)
+		API.createNewBusiness(user.email, newProfileInfo, mapAddress, user.id)
 			.then((res) => alert("You just created a new user :)"))
 			.catch((err) => alert("Something went wrong trying to create that user"));
 	};

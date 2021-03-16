@@ -15,6 +15,7 @@ class Register extends Component {
 			email: "",
 			password: "",
 			password2: "",
+			bizOwner: false,
 			errors: {}
 		};
 	}
@@ -123,6 +124,19 @@ class Register extends Component {
 								/>
 								<label htmlFor='password2'>Confirm Password</label>
 								<span className='red-text'>{errors.password2}</span>
+							</div>
+							<div className='col s12'>
+								<input
+									// type='checkbox'
+									checked={this.state.bizOwner}
+									value={this.state.bizOwner}
+									onClick={() =>
+										this.setState({
+											...this.state,
+											bizOwner: !this.state.bizOwner
+										})
+									}
+								/>
 							</div>
 							<div className='col s12' style={{ paddingLeft: "11.250px" }}>
 								<button

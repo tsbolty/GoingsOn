@@ -4,7 +4,13 @@ const db = require("../../models");
 router.post("/add", ({ body }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	db.AllBusinessInfo.create(body)
-		.then((data) => res.json(data))
+		.then((_id) =>
+			db.User.findOneAndUpdate(
+				{ _id: body.id },
+				{ $set: { businessInfo: _id } },
+				{ new: true }
+			)
+		)
 		.catch((err) => console.log(err));
 });
 

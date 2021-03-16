@@ -29,13 +29,14 @@ export default {
 			},
 			body: JSON.stringify(businessInfo)
 		}),
-	createNewBusiness: (email, profileInfo, mapAddress) =>
+	createNewBusiness: (email, profileInfo, mapAddress, id) =>
 		fetch(baseURL + "api/allBusinessInfo/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
+				id,
 				email: email,
 				businessName: profileInfo.businessName,
 				businessAddress: profileInfo.businessAddress,

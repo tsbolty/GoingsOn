@@ -10,8 +10,6 @@ import ViewProfile from "./components/viewProfile/ViewProfile";
 import InfoPage from "./components/allInfo/InfoPage";
 import EditBusinessInfo from "./components/editBusinessInfo/EditBusinessInfo";
 import API from "./utils/API";
-import NewNav from "./components/NewNav";
-import Landing from "./components/Landing";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
@@ -97,9 +95,7 @@ function App(props) {
 			<header>
 				<Router>
 					<BusinessInfoContext.Provider value={allBusinessInfo}>
-						{/* <NavBar id={profileInfo._id || "69"} /> */}
-						<NewNav />
-						<Landing />
+						<NavBar id={profileInfo._id || "69"} />
 						<Route exact path='/register' component={Register} />
 						<Route exact path='/login'>
 							<Login />
