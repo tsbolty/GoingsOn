@@ -2,32 +2,36 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Auth0Provider } from "./react-auth0-spa";
-import config from "./auth_config.json";
-import history from "./utils/history";
+import store from "./store";
+import { Provider } from "react-redux";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-// A function that routes the user to the right place
-// after login
-const onRedirectCallback = appState => {
-  history.push(
-    appState && appState.targetUrl
-      ? appState.targetUrl
-      : window.location.pathname
-  );
-};
-
-//app.use(cors({ origin: "url here", credentials: true}))
+// Check for token to keep user logged in
+if (localStorage.jwtToken) {
+	// Set auth token header auth
+	const token = localStorage.jwtToken;
+	setAuthToken(token);
+	// Decode token and get user info and exp
+	const decoded = jwt_decode(token);
+	// Set user and isAuthenticated
+	store.dispatch(setCurrentUser(decoded));
+	// Check for expired token
+	const currentTime = Date.now() / 1000; // to get in milliseconds
+	if (decoded.exp < currentTime) {
+		// Logout user
+		store.dispatch(logoutUser());
+		// Redirect to login
+		window.location.href = "./login";
+	}
+}
 
 ReactDOM.render(
-  <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
-    redirect_uri={window.location.origin}
-    onRedirectCallback={onRedirectCallback}
-  >
-    <App />
-  </Auth0Provider>,
-  document.getElementById("root")
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("root")
 );
 
 serviceWorker.unregister();

@@ -2,9 +2,25 @@
 const baseURL = "http://localhost:3001/";
 
 export default {
+	createUser: (user) =>
+		fetch("/api/user/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(user)
+		}),
+	userLogin: (user) =>
+		fetch("/api/user/login", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(user)
+		}),
 	getAllBusinessInfo: () => fetch(baseURL + "api/allBusinessInfo/get"),
-	getUserBusinessInfo: (email) =>
-		fetch(baseURL + `api/allBusinessInfo/get/email/${email}`),
+	getUserBusinessInfo: (id) =>
+		fetch(baseURL + `api/allBusinessInfo/get/email/${id}`),
 	updateBusinessInfo: (businessInfo, id) =>
 		fetch(baseURL + `api/allBusinessInfo/update/${id}`, {
 			method: "PUT",
@@ -13,7 +29,7 @@ export default {
 			},
 			body: JSON.stringify(businessInfo)
 		}),
-	createNewUser: (email, profileInfo, mapAddress) =>
+	createNewBusiness: (email, profileInfo, mapAddress) =>
 		fetch(baseURL + "api/allBusinessInfo/add", {
 			method: "POST",
 			headers: {

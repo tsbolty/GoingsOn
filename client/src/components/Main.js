@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { connect } from "react-redux";
 import Filter from "./filter/Filter";
 import BusinessInfoContext from "../context/businessInfoContext";
 import HeadlineCard from "./homePage/HeadlineCard";
@@ -83,4 +84,8 @@ const Main = ({ setAllBusinessInfo }) => {
 	);
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(Main);

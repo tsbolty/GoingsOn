@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useAuth0 } from "./react-auth0-spa";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import BusinessInfoContext from "./context/businessInfoContext";
 import Main from "./components/Main";
 import NavBar from "./components/NavBar";
@@ -10,12 +10,17 @@ import ViewProfile from "./components/viewProfile/ViewProfile";
 import InfoPage from "./components/allInfo/InfoPage";
 import EditBusinessInfo from "./components/editBusinessInfo/EditBusinessInfo";
 import API from "./utils/API";
+import NewNav from "./components/NewNav";
+import Landing from "./components/Landing";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import PrivateRoute from "./components/private-route/PrivateRoute";
+import Dashboard from "./components/Dashboard";
 
-//LOOK IN TO USE CONTEXT HOOK TO DEFINE BUSINESS INFO MODEL AND ACCESS THAT THROUGHOUT THE APPLICATION
-function App() {
-	const { user } = useAuth0();
-	const { loading } = useAuth0();
+function App(props) {
 	const [allBusinessInfo, setAllBusinessInfo] = useState([]);
+	const { user, isAuthenticated } = props.auth;
+
 	const [profileInfo, setProfileInfo] = useState({
 		email: "",
 		businessName: "",
@@ -70,16 +75,9 @@ function App() {
 		}
 	});
 
-	// const getAllBusinessInfo = () => {
-	// 	API.getAllBusinessInfo()
-	// 		.then((data) => data.json())
-	// 		.then((res) => setAllBusinessInfo(res))
-	// 		.catch((err) => console.log("fuck"));
-	// };
-
 	useEffect(() => {
-		if (user) {
-			API.getUserBusinessInfo(user.email).then((info) => {
+		if (isAuthenticated) {
+			API.getUserBusinessInfo(user.id).then((info) => {
 				info
 					.json()
 					.then((data) => {
@@ -94,16 +92,21 @@ function App() {
 		}
 	}, [user]);
 
-	if (loading) {
-		return <div>Loading...</div>;
-	}
-
 	return (
 		<div className='App'>
 			<header>
 				<Router>
 					<BusinessInfoContext.Provider value={allBusinessInfo}>
-						<NavBar id={profileInfo._id || "69"} />
+						{/* <NavBar id={profileInfo._id || "69"} /> */}
+						<NewNav />
+						<Landing />
+						<Route exact path='/register' component={Register} />
+						<Route exact path='/login'>
+							<Login />
+						</Route>
+						<Switch>
+							<PrivateRoute exact path='/dashboard' component={Dashboard} />
+						</Switch>
 						<div>
 							{user && (
 								<>
@@ -138,4 +141,9 @@ function App() {
 	);
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+export default connect(mapStateToProps)(App);

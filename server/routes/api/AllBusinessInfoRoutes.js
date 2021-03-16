@@ -17,9 +17,9 @@ router.get("/get/type/:type", (req, res) => {
 		.catch((err) => console.log(err));
 });
 
-router.get("/get/email/:email", (req, res) => {
+router.get("/get/email/:id", ({ params }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.findOne({ email: req.params.email })
+	db.AllBusinessInfo.findOne({ email: params.id })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
 		.then((data) => res.json(data))
@@ -37,7 +37,6 @@ router.get("/get/id/:id", (req, res) => {
 
 router.get("/get", (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	console.log("hit get route");
 	db.AllBusinessInfo.find({})
 		.populate("specialEvents")
 		// .populate("weeklySpecials")

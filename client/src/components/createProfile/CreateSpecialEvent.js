@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { uploadFile } from "react-s3";
-import { useAuth0 } from "../../react-auth0-spa";
 import { FormGroup, Label, Input } from "reactstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AWS from "../../utils/s3config";
 import API from "../../utils/API";
+import { connect } from "react-redux";
 
-const CreateSpecialEvent = () => {
+const CreateSpecialEvent = (props) => {
 	const [free, setFree] = useState(false);
 	const [event, setEvent] = useState({
 		email: "",
@@ -16,7 +16,7 @@ const CreateSpecialEvent = () => {
 		cost: 0,
 		eventDate: ""
 	});
-	const { user } = useAuth0();
+	const { user } = props.auth;
 
 	useEffect(() => {
 		if (event.cost !== 0) {
@@ -105,4 +105,9 @@ const CreateSpecialEvent = () => {
 	);
 };
 
-export default CreateSpecialEvent;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+export default connect(mapStateToProps)(CreateSpecialEvent);

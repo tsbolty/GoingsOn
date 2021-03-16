@@ -2,7 +2,6 @@
 
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
-// import { useAuth0 } from "../react-auth0-spa";
 
 // const ViewSingleDaySpecials = ({ day })=>{
 //     const [daySpecials, setDaySpecials] = useState([])
