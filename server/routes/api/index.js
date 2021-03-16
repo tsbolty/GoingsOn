@@ -10,7 +10,7 @@ router.use("/specialevents", specialEvents);
 router.use("/businessinfo", businessInfo);
 router.use("/allbusinessinfo", allBusinessInfo);
 router.use("/weeklyspecials", weeklySpecials);
-router.use("/user", users);
+router.use("/users", users);
 // router.use("/happyhour", happyhourRoutes)
 
 module.exports = router;

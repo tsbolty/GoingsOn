@@ -67,7 +67,7 @@ const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 			.replace(/\s+/g, "")
 			.toLowerCase();
 
-		API.createNewUser(user.email, newProfileInfo, mapAddress)
+		API.createNewBusiness(user.email, newProfileInfo, mapAddress)
 			.then((res) => alert("You just created a new user :)"))
 			.catch((err) => alert("Something went wrong trying to create that user"));
 	};

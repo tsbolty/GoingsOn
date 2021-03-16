@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useAuth0 } from "../../react-auth0-spa";
 import Col from "../Col";
 import Form from "react-bootstrap/Form";
 import API from "../../utils/API";
+import { connect } from "react-redux";
 
-const CreateWeeklySpecials = () => {
+const CreateWeeklySpecials = (props) => {
 	const [weeklySpecials, setWeeklySpecials] = useState({
 		monday: {
 			foodSpecialHeading: "",
@@ -49,7 +49,7 @@ const CreateWeeklySpecials = () => {
 			drinkSpecialDescription: ""
 		}
 	});
-	const { user } = useAuth0();
+	const { user } = props.auth;
 
 	let weekArr = Object.entries(weeklySpecials);
 
@@ -114,4 +114,9 @@ const CreateWeeklySpecials = () => {
 	);
 };
 
-export default CreateWeeklySpecials;
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+export default connect(mapStateToProps)(CreateWeeklySpecials);
