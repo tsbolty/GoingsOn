@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import history from "../utils/history";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";

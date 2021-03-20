@@ -13,8 +13,6 @@ import API from "./utils/API";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/Dashboard";
-import { logoutUser } from "./actions/authActions.js";
 
 function App(props) {
 	const [allBusinessInfo, setAllBusinessInfo] = useState([]);
