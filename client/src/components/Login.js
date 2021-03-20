@@ -48,7 +48,7 @@ class Login extends Component {
 
 		this.props.loginUser(userData);
 		setTimeout(() => {
-			window.location.replace("/dashboard");
+			window.location.replace("/");
 		}, 1000);
 	};
 	render() {
