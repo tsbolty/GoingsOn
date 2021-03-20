@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import API from "../utils/API";
 import history from "../utils/history";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
@@ -28,7 +27,9 @@ class Login extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.auth.isAuthenticated) {
-			history.push("/dashboard"); // push user to dashboard when they login
+			// history.push("/dashboard"); // push user to dashboard when they login
+			// PREVIOUS LINE WOULDN'T WORK SO ADDING THIS ONE
+			window.location.replace("/dashboard");
 		}
 		if (nextProps.errors) {
 			this.setState({
@@ -48,6 +49,9 @@ class Login extends Component {
 		};
 
 		this.props.loginUser(userData);
+		setTimeout(() => {
+			window.location.replace("/dashboard");
+		}, 1000);
 	};
 	render() {
 		const { errors } = this.state;

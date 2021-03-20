@@ -14,6 +14,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import { logoutUser } from "./actions/authActions.js";
 
 function App(props) {
 	const [allBusinessInfo, setAllBusinessInfo] = useState([]);
@@ -96,40 +97,40 @@ function App(props) {
 				<Router>
 					<BusinessInfoContext.Provider value={allBusinessInfo}>
 						<NavBar id={profileInfo._id || "69"} />
+						<Route exact path='/'>
+							<Main user={user} setAllBusinessInfo={setAllBusinessInfo} />
+						</Route>
+						<Route path='/infopage/:id' component={InfoPage} />
 						<Route exact path='/register' component={Register} />
 						<Route exact path='/login'>
 							<Login />
 						</Route>
 						<Switch>
-							<PrivateRoute exact path='/dashboard' component={Dashboard} />
-						</Switch>
-						<div>
-							{user && (
-								<>
-									<Route path='/createbusinessprofile'>
-										<CreateBusinessInfo
-											user={user}
-											profileInfo={profileInfo}
-											setProfileInfo={setProfileInfo}
-										/>
-									</Route>
-									<Route path='/editbusinessprofile/:id'>
-										<EditBusinessInfo
-											user={user}
-											profileInfo={profileInfo}
-											setProfileInfo={setProfileInfo}
-										/>
-									</Route>
-									<Route path='/viewbusinessprofile'>
-										<ViewProfile profileInfo={profileInfo} />
-									</Route>
-								</>
-							)}
-							<Route exact path='/'>
+							<PrivateRoute exact path='/dashboard'>
 								<Main user={user} setAllBusinessInfo={setAllBusinessInfo} />
-							</Route>
-							<Route path='/infopage/:id' component={InfoPage} />
-						</div>
+							</PrivateRoute>
+						</Switch>
+						{isAuthenticated && (
+							<>
+								<Route path='/createbusinessprofile'>
+									<CreateBusinessInfo
+										user={user}
+										profileInfo={profileInfo}
+										setProfileInfo={setProfileInfo}
+									/>
+								</Route>
+								<Route path='/editbusinessprofile/:id'>
+									<EditBusinessInfo
+										user={user}
+										profileInfo={profileInfo}
+										setProfileInfo={setProfileInfo}
+									/>
+								</Route>
+								<Route path='/viewbusinessprofile'>
+									<ViewProfile profileInfo={profileInfo} />
+								</Route>
+							</>
+						)}
 					</BusinessInfoContext.Provider>
 				</Router>
 			</header>
