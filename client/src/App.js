@@ -87,7 +87,7 @@ function App(props) {
 					});
 			});
 		}
-	}, [isAuthenticated]);
+	}, [isAuthenticated, user.id]);
 
 	return (
 		<div className='App'>
