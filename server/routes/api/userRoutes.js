@@ -13,6 +13,7 @@ const { User } = require("../../models");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body);
 	// Check validation
@@ -46,6 +47,7 @@ router.post("/register", (req, res) => {
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	// Form validation
 	const { errors, isValid } = validateLoginInput(req.body);
 	// Check validation
