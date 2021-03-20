@@ -19,7 +19,7 @@ class Login extends Component {
 	componentDidMount() {
 		// If logged in and user navigates to Login page, should redirect them to dashboard
 		if (this.props.auth.isAuthenticated) {
-			history.push("/");
+			history.push("/dashboard");
 		}
 	}
 
@@ -27,7 +27,7 @@ class Login extends Component {
 		if (nextProps.auth.isAuthenticated) {
 			// history.push("/dashboard"); // push user to dashboard when they login
 			// PREVIOUS LINE WOULDN'T WORK SO ADDING THIS ONE
-			window.location.replace("/");
+			window.location.replace("/dashboard");
 		}
 		if (nextProps.errors) {
 			this.setState({
@@ -47,9 +47,6 @@ class Login extends Component {
 		};
 
 		this.props.loginUser(userData);
-		setTimeout(() => {
-			window.location.replace("/");
-		}, 1000);
 	};
 	render() {
 		const { errors } = this.state;

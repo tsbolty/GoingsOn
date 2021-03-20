@@ -103,11 +103,9 @@ function App(props) {
 						<Route exact path='/login'>
 							<Login />
 						</Route>
-						<Switch>
-							<PrivateRoute exact path='/dashboard'>
-								<Main user={user} setAllBusinessInfo={setAllBusinessInfo} />
-							</PrivateRoute>
-						</Switch>
+						<PrivateRoute exact path='/dashboard'>
+							<Main user={user} setAllBusinessInfo={setAllBusinessInfo} />
+						</PrivateRoute>
 						{isAuthenticated && (
 							<>
 								<Route path='/createbusinessprofile'>
