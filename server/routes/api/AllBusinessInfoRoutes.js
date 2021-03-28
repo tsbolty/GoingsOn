@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const db = require("../../models");
+const { AllBusinessInfo } = require("../../models");
 
 router.post("/add", ({ body }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.create(body)
+	AllBusinessInfo.create(body)
 		.then((_id) =>
-			db.User.findOneAndUpdate(
+			User.findOneAndUpdate(
 				{ _id: body.id },
 				{ $set: { businessInfo: _id } },
 				{ new: true }
@@ -16,7 +16,7 @@ router.post("/add", ({ body }, res) => {
 
 router.get("/get/type/:type", (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.find({ businessType: req.params.type })
+	AllBusinessInfo.find({ businessType: req.params.type })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
 		.then((data) => res.json(data))
@@ -25,7 +25,7 @@ router.get("/get/type/:type", (req, res) => {
 
 router.get("/get/email/:id", ({ params }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.findOne({ email: params.id })
+	AllBusinessInfo.findOne({ email: params.id })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
 		.then((data) => res.json(data))
@@ -34,7 +34,7 @@ router.get("/get/email/:id", ({ params }, res) => {
 
 router.get("/get/id/:id", (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.find({ _id: req.params.id })
+	AllBusinessInfo.find({ _id: req.params.id })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
 		.then((data) => res.json(data))
@@ -43,7 +43,7 @@ router.get("/get/id/:id", (req, res) => {
 
 router.get("/get", (req, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.find({})
+	AllBusinessInfo.find({})
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
 		.then((data) => res.json(data))
@@ -52,7 +52,7 @@ router.get("/get", (req, res) => {
 
 router.put("/update/:id", ({ params, body }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	db.AllBusinessInfo.findByIdAndUpdate(params.id, body)
+	AllBusinessInfo.findByIdAndUpdate(params.id, body)
 		.then((data) => res.json(data))
 		.catch((err) => console.log(err));
 });
