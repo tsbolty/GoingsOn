@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(routes);
 
-// const { mongoURI } = require("./config/keys");
+const { mongoURI } = require("./config/keys");
 
 // Connect to the Mongo DB
 mongoose.connect(
