@@ -28,12 +28,12 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(routes);
 
-const { mongoURI } = require("./config/keys");
+// const { mongoURI } = require("./config/keys");
 
 // Connect to the Mongo DB
 mongoose.connect(
-	// process.env.MONGODB_URI || "mongodb://localhost/GoingsOn",
-	mongoURI,
+	process.env.MONGODB_URI || "mongodb://localhost/GoingsOn",
+	// mongoURI,
 	{ useNewUrlParser: true },
 	function (err) {
 		if (err) throw err;
