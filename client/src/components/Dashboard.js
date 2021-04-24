@@ -2,8 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
+import history from "../utils/history";
 
 class Dashboard extends Component {
+	componentDidMount() {
+		!this.props.user.businessInfo && history.push(`/createbusinessinfo`);
+	}
+
 	onLogoutClick = (e) => {
 		e.preventDefault();
 		this.props.logoutUser();

@@ -32,9 +32,14 @@ const { mongoURI } = require("./config/keys");
 
 // Connect to the Mongo DB
 mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/GoingsOn",
-	// mongoURI,
-	{ useNewUrlParser: true },
+	// process.env.MONGODB_URI || "mongodb://localhost/GoingsOn",
+	mongoURI,
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false
+	},
 	function (err) {
 		if (err) throw err;
 		console.log(`mongoose connection successful`);

@@ -13,12 +13,14 @@ import API from "./utils/API";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import Footer from "./components/Footer";
 
 function App(props) {
 	const [allBusinessInfo, setAllBusinessInfo] = useState([]);
 	const { user, isAuthenticated } = props.auth;
 
 	const [profileInfo, setProfileInfo] = useState({
+		_id: "",
 		email: "",
 		businessName: "",
 		businessAddress: "",
@@ -111,25 +113,26 @@ function App(props) {
 								<Route path='/createbusinessprofile'>
 									<CreateBusinessInfo
 										user={user}
-										profileInfo={profileInfo}
+										profileInfo={profileInfo.businessInfo}
 										setProfileInfo={setProfileInfo}
 									/>
 								</Route>
 								<Route path='/editbusinessprofile/:id'>
 									<EditBusinessInfo
 										user={user}
-										profileInfo={profileInfo}
+										profileInfo={profileInfo.businessInfo}
 										setProfileInfo={setProfileInfo}
 									/>
 								</Route>
 								<Route path='/viewbusinessprofile'>
-									<ViewProfile profileInfo={profileInfo} />
+									<ViewProfile profileInfo={profileInfo.businessInfo} />
 								</Route>
 							</>
 						)}
 					</BusinessInfoContext.Provider>
 				</Router>
 			</header>
+			{/* <Footer /> */}
 		</div>
 	);
 }

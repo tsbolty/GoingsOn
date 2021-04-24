@@ -58,6 +58,7 @@ router.post("/login", (req, res) => {
 	const password = req.body.password;
 	// Find user by email
 	User.findOne({ email })
+		.populate("businessInfo")
 		.populate({
 			path: "allBusinessInfo",
 			populate: {
@@ -100,6 +101,29 @@ router.post("/login", (req, res) => {
 						.json({ passwordincorrect: "Password incorrect" });
 				}
 			});
+		});
+});
+
+router.get("/get/:id", ({ params }, res) => {
+	// Find user by email
+	User.findOne({ _id: params.id })
+		.populate("businessInfo")
+		.populate({
+			path: "allBusinessInfo",
+			populate: {
+				path: "specialEvents",
+				model: "SpecialEvents"
+			}
+		})
+		.then((user) => {
+			// Check if user exists
+			if (!user) {
+				return res.status(404).json({ emailnotfound: "Email not found" });
+			}
+			res.json(user);
+		})
+		.catch((err) => {
+			res.send(err);
 		});
 });
 

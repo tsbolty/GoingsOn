@@ -25,10 +25,11 @@ router.get("/get/type/:type", (req, res) => {
 
 router.get("/get/email/:id", ({ params }, res) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
-	AllBusinessInfo.findOne({ email: params.id })
+	console.log(params.id);
+	AllBusinessInfo.findOne({ _id: params.id })
 		.populate("specialEvents")
 		// .populate("weeklySpecials")
-		.then((data) => res.json(data))
+		.then((data) => console.log(data))
 		.catch((err) => console.log(err));
 });
 
