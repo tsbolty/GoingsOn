@@ -13,7 +13,7 @@ const { User } = require("../../models");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body);
 	// Check validation
@@ -105,7 +105,8 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/get/:id", ({ params }, res) => {
-	// Find user by email
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	// Find user by id
 	User.findOne({ _id: params.id })
 		.populate("businessInfo")
 		.populate({
@@ -118,7 +119,7 @@ router.get("/get/:id", ({ params }, res) => {
 		.then((user) => {
 			// Check if user exists
 			if (!user) {
-				return res.status(404).json({ emailnotfound: "Email not found" });
+				return res.status(404).json({ usernotfound: "User not found" });
 			}
 			res.json(user);
 		})
