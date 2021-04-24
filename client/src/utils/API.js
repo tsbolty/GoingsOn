@@ -1,5 +1,5 @@
-// const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
-const baseURL = "http://localhost:3001/";
+const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
+// const baseURL = "http://localhost:3001/";
 
 export default {
 	createUser: (user) =>
@@ -19,7 +19,7 @@ export default {
 			body: JSON.stringify(user)
 		}),
 	getAllBusinessInfo: () => fetch(baseURL + "api/allBusinessInfo/get"),
-	getUserBusinessInfo: (id) => fetch(`/api/users/get/${id}`),
+	getUserBusinessInfo: (id) => fetch(baseURL + `api/users/get/${id}`),
 	updateBusinessInfo: (businessInfo, id) =>
 		fetch(baseURL + `api/allBusinessInfo/update/${id}`, {
 			method: "PUT",
@@ -29,7 +29,7 @@ export default {
 			body: JSON.stringify(businessInfo)
 		}),
 	createNewBusiness: (email, profileInfo, mapAddress, id) =>
-		fetch("/api/allBusinessInfo/add", {
+		fetch(baseURL + "api/allBusinessInfo/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
