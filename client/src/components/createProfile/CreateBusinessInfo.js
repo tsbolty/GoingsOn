@@ -7,6 +7,7 @@ import Col from "../Col";
 import HeadlineCardContent from "../homePage/HeadlineCardContent";
 import ViewWeeklySpecials from "../viewProfile/ViewWeeklySpecials";
 import API from "../../utils/API";
+import history from "../../utils/history";
 
 const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo, auth }) => {
 	const [newProfileInfo, setNewProfileInfo] = useState({
@@ -63,15 +64,22 @@ const CreateBusinessInfo = ({ user, profileInfo, setProfileInfo, auth }) => {
 		}
 	});
 
-	console.log(user);
-
 	const postAllBusinessInfo = () => {
 		const mapAddress = newProfileInfo.businessAddress
 			.replace(/\s+/g, "")
 			.toLowerCase();
 
-		API.createNewBusiness(user.email, newProfileInfo, mapAddress, user.id)
-			.then((res) => alert("You just created a new user :)"))
+		API.createNewBusiness(
+			profileInfo.email,
+			newProfileInfo,
+			mapAddress,
+			user.id
+		)
+			.then((res) => {
+				console.log("created a new business");
+				alert("You just created a new user :)");
+				history.push("/");
+			})
 			.catch((err) => alert("Something went wrong trying to create that user"));
 	};
 

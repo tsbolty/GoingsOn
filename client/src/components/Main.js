@@ -49,9 +49,10 @@ const Main = ({ setAllBusinessInfo }) => {
 			const filteredBusinesses = businessInfo.filter((business) => {
 				const arr = [];
 				arr.push(
-					Object.entries(business.weeklySpecials).map((item) => {
-						return Object.values(item[1]).join("").toLowerCase();
-					})
+					business.weeklySpecials &&
+						Object.entries(business.weeklySpecials).map((item) => {
+							return Object.values(item[1]).join("").toLowerCase();
+						})
 				);
 				return arr.join("").includes(keyword.toLowerCase());
 			});
