@@ -13,7 +13,6 @@ import API from "./utils/API";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Footer from "./components/Footer";
 
 function App(props) {
 	const [allBusinessInfo, setAllBusinessInfo] = useState([]);
@@ -132,7 +131,6 @@ function App(props) {
 					</BusinessInfoContext.Provider>
 				</Router>
 			</header>
-			{/* <Footer /> */}
 		</div>
 	);
 }
