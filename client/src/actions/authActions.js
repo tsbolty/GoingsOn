@@ -1,14 +1,21 @@
-import axios from "axios";
+// import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
-// const baseURL = "https://localhost:3001/";
+// const baseURL = "http://localhost:3001/";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
-	axios
-		.post(baseURL + "api/users/register", userData)
+	fetch(baseURL + "api/users/register", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(userData)
+	})
+		// axios
+		// 	.post(baseURL + "api/users/register", userData)
 		.then((res) => history.push("/login")) // re-direct to login on successful register
 		.catch((err) =>
 			dispatch({
@@ -19,8 +26,12 @@ export const registerUser = (userData, history) => (dispatch) => {
 };
 // Login - get user token
 export const loginUser = (userData) => (dispatch) => {
-	axios
-		.post(baseURL + "api/users/login", userData)
+	fetch(baseURL + "api/users/login", {
+		method: "POST",
+		body: JSON.stringify(userData)
+	})
+		// axios
+		// 	.post(baseURL + "api/users/login", userData)
 		.then((res) => {
 			// Save to localStorage
 			// Set token to localStorage
