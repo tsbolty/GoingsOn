@@ -10,6 +10,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 	fetch(baseURL + "api/users/register", {
 		method: "POST",
 		headers: {
+			Host: "http://localhost:3000",
 			"Content-Type": "application/json"
 		},
 		body: JSON.stringify(userData)
