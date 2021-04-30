@@ -1,9 +1,10 @@
-const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
+// OLD ONE const baseURL = "https://ancient-caverns-48527.herokuapp.com/";
 // const baseURL = "http://localhost:3001/";
+const baseURL = "https://aqueous-hollows-16225.herokuapp.com/";
 
 export default {
 	createUser: (user) =>
-		fetch(baseURL + "/api/user/register", {
+		fetch(baseURL + "api/user/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -11,7 +12,7 @@ export default {
 			body: JSON.stringify(user)
 		}),
 	userLogin: (user) =>
-		fetch(baseURL + "/api/user/login", {
+		fetch(baseURL + "api/user/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

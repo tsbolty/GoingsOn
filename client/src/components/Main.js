@@ -19,7 +19,7 @@ const Main = ({ setAllBusinessInfo }) => {
 		API.getAllBusinessInfo()
 			.then((data) => data.json())
 			.then((res) => setAllBusinessInfo(res))
-			.catch((err) => console.log("fuck"));
+			.catch((err) => console.log(err));
 	}, [setAllBusinessInfo]);
 
 	const filterBusinessByName = (name) => {
