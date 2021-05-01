@@ -8,20 +8,15 @@ const baseURL = "https://aqueous-hollows-16225.herokuapp.com/";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
-	// fetch(baseURL + "api/users/register", {
-	// 	method: "POST",
-	// 	mode: "same-origin",
-	// 	credentials: "include",
-	// 	headers: {
-	// 		"Content-Type": "application/json"
-	// 	},
-	// 	body: JSON.stringify(userData)
-	// })
-	axios
-		.post(
-			"https://aqueous-hollows-16225.herokuapp.com/api/users/register",
-			userData
-		)
+	fetch("/api/users/register", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(userData)
+	})
+		// axios
+		// 	.post("/api/users/register", userData)
 		.then((res) => history.push("/login")) // re-direct to login on successful register
 		.catch((err) =>
 			dispatch({
@@ -32,15 +27,12 @@ export const registerUser = (userData, history) => (dispatch) => {
 };
 // Login - get user token
 export const loginUser = (userData) => (dispatch) => {
-	// fetch(baseURL + "api/users/login", {
+	// fetch("/api/users/login", {
 	// 	method: "POST",
 	// 	body: JSON.stringify(userData)
 	// })
 	axios
-		.post(
-			"https://aqueous-hollows-16225.herokuapp.com/api/users/login",
-			userData
-		)
+		.post("/api/users/login", userData)
 		.then((res) => {
 			// Save to localStorage
 			// Set token to localStorage
