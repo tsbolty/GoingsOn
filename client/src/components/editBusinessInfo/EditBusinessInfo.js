@@ -11,6 +11,7 @@ import CreateSpecialEvent from "../createProfile/CreateSpecialEvent";
 import Col from "../Col";
 import API from "../../utils/API";
 
+
 const EditBusinessInfo = ({ user, profileInfo, setProfileInfo }) => {
 	const [businessInfo, setBusinessInfo] = useState({
 		...profileInfo
