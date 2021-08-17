@@ -147,15 +147,15 @@ Project Link: [https://github.com/tsbolty/GoingsOn](https://github.com/tsbolty/G
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/tsbolty/repo.svg?color=green
+[contributors-shield]: https://img.shields.io/github/contributors/tsbolty/GoingsOn.svg?color=green
 [contributors-url]: https://github.com/tsbolty/GoingsOn/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tsbolty/repo.svg?color=purple
+[forks-shield]: https://img.shields.io/github/forks/tsbolty/GoingsOn.svg?color=purple
 [forks-url]: https://github.com/tsbolty/GoingsOn/network/members
-[stars-shield]: https://img.shields.io/github/stars/tsbolty/repo.svg?color=orange
+[stars-shield]: https://img.shields.io/github/stars/tsbolty/GoingsOn.svg?color=orange
 [stars-url]: https://github.com/tsbolty/GoingsOn/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tsbolty/repo.svg?color=red
+[issues-shield]: https://img.shields.io/github/issues/tsbolty/GoingsOn.svg?color=red
 [issues-url]: https://github.com/tsbolty/GoingsOn/issues
-[license-shield]: https://img.shields.io/github/license/tsbolty/repo.svg?color=yellow
+[license-shield]: https://img.shields.io/github/license/tsbolty/GoingsOn.svg?color=yellow
 [license-url]: https://github.com/tsbolty/GoingsOn/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tyler-bolty
