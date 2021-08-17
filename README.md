@@ -82,18 +82,11 @@ This is currently in development. This application is designed to be a web app c
 
 ### Built With
 
-- [React]()
-- [TypeScript]()
-- [MongoDB]()
-- [Nodejs]()
-- [Express.js]()
-- [AWS S3]()
-- [Material-UI]()
-- [Stripe]()
-- [Socket.io]()
-- [Sendgrid]()
-- [Reactour]()
-- [Google OAuth]()
+- [React](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [Nodejs](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/)
 
 <!-- GETTING STARTED -->
 
