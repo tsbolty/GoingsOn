@@ -85,12 +85,6 @@ This is currently in development. This application is designed to be a web app c
 - [Nodejs](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
 
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This application is deployed ![here](https://goingson.netlify.app).
-
 ### Prerequisites
 
 You would need a good understanding of React, MongoDB, Node, Express, and Bootstrap.
