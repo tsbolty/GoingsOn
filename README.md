@@ -73,7 +73,7 @@
 
 ## About The Project
 
-[![GoingsOn Screen Shot](screenshotImageHere)](https://goingson.netlify.app)
+<!-- [![GoingsOn Screen Shot](screenshotImageHere)](https://goingson.netlify.app) -->
 
 This is currently in development. This application is designed to be a web app companion to a mobile app. This web app is designed to allow business owners to create an account and a profile for their business with their daily and weekly specials as well as their special events. Business owners can also search existing specials in our database to research their competition on given days of the week.
 
