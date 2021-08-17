@@ -29,11 +29,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/tsbolty/GoingsOn">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h3 align="center">Goings On</h3>
+  <h1 align="center">Goings On</h1>
 
   <p align="center">
     A MERN application to find restaurant specials by location, keyword, business name, and more.
@@ -150,15 +147,15 @@ Project Link: [https://github.com/tsbolty/GoingsOn](https://github.com/tsbolty/G
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/tsbolty/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/tsbolty/repo.svg?color=green
 [contributors-url]: https://github.com/tsbolty/GoingsOn/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tsbolty/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/tsbolty/repo.svg?color=purple
 [forks-url]: https://github.com/tsbolty/GoingsOn/network/members
-[stars-shield]: https://img.shields.io/github/stars/tsbolty/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/tsbolty/repo.svg?color=orange
 [stars-url]: https://github.com/tsbolty/GoingsOn/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tsbolty/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/tsbolty/repo.svg?color=red
 [issues-url]: https://github.com/tsbolty/GoingsOn/issues
-[license-shield]: https://img.shields.io/github/license/tsbolty/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/tsbolty/repo.svg?color=yellow
 [license-url]: https://github.com/tsbolty/GoingsOn/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/tyler-bolty
